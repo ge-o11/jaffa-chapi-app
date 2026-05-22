@@ -290,21 +290,39 @@ export default function SelfieHunt() {
                   <p className="mt-1 pr-1">{target.hint}</p>
                 </details>
 
-                <button
-                  onClick={() => capture(target)}
-                  disabled={captured}
-                  className="w-full py-2.5 rounded-xl font-bold text-sm transition-all"
+                <label
+                  htmlFor={`cam-${target.id}`}
+                  className="block w-full text-center py-4 rounded-2xl font-black transition-all hover:scale-[1.02] active:scale-[0.98]"
                   style={{
                     background: captured
-                      ? 'rgba(200,169,110,0.15)'
-                      : 'linear-gradient(135deg, var(--gold), var(--terracotta))',
-                    color: captured ? 'var(--gold)' : 'var(--navy)',
+                      ? 'rgba(46,125,50,0.15)'
+                      : 'linear-gradient(135deg, #C4622D 0%, #E8841C 50%, #C4622D 100%)',
+                    color: captured ? '#1B5E20' : '#FFFFFF',
                     cursor: captured ? 'default' : 'pointer',
-                    border: captured ? '1px solid rgba(200,169,110,0.3)' : 'none',
+                    border: captured ? '2px solid rgba(46,125,50,0.4)' : '2px solid rgba(139,62,0,0.6)',
+                    boxShadow: captured
+                      ? 'none'
+                      : '0 8px 24px rgba(196,98,45,0.5), 0 2px 8px rgba(44,26,14,0.2), inset 0 1px 0 rgba(255,255,255,0.3)',
+                    fontSize: '1.05rem',
+                    textShadow: captured ? 'none' : '0 1px 3px rgba(0,0,0,0.35)',
+                    pointerEvents: captured ? 'none' : 'auto',
+                    letterSpacing: '0.02em',
                   }}
                 >
-                  {captured ? '✅ צולם!' : '📸 צילמתי!'}
-                </button>
+                  <input
+                    id={`cam-${target.id}`}
+                    type="file"
+                    accept="image/*"
+                    capture="environment"
+                    onChange={e => {
+                      if (e.target.files?.[0]) capture(target)
+                      e.target.value = ''
+                    }}
+                    style={{ display: 'none' }}
+                    disabled={captured}
+                  />
+                  {captured ? '✅ צולם בהצלחה!' : '📷 פתח מצלמה וצלם!'}
+                </label>
               </div>
             )
           })}

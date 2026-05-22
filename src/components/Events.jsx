@@ -64,7 +64,7 @@ export default function Events() {
           <p className="mb-4 opacity-60" style={{ color: 'var(--gold-light)' }}>
             רוצה לקבל עדכון שבועי ישירות לוואצ'אפ?
           </p>
-          <a href="https://chat.whatsapp.com/JAFFA" target="_blank" rel="noreferrer" className="btn-whatsapp">
+          <a href="https://chat.whatsapp.com/BhnFkwONJd6DeA7KlwG1MC" target="_blank" rel="noreferrer" className="btn-whatsapp">
             קבל עדכון שבועי
           </a>
         </div>

@@ -39,7 +39,7 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-4 justify-end mb-12">
-              <a href="https://chat.whatsapp.com/JAFFA" target="_blank" rel="noreferrer"
+              <a href="https://chat.whatsapp.com/BhnFkwONJd6DeA7KlwG1MC" target="_blank" rel="noreferrer"
                 className="btn-whatsapp text-lg py-4 px-8 rounded-2xl pulse-ring shadow-2xl">
                 <WaIcon /> הצטרפות לקהילה — חינם
               </a>

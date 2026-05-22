@@ -24,7 +24,7 @@ import AuthModal from './components/AuthModal'
 function WaFloat() {
   return (
     <div className="floating-whatsapp">
-      <a href="https://chat.whatsapp.com/JAFFA" target="_blank" rel="noreferrer"
+      <a href="https://chat.whatsapp.com/BhnFkwONJd6DeA7KlwG1MC" target="_blank" rel="noreferrer"
         className="flex items-center gap-2 rounded-full py-3 px-5 font-bold text-white shadow-2xl text-sm"
         style={{ background: 'var(--whatsapp)', boxShadow: '0 4px 20px rgba(37,211,102,0.4)' }}>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">

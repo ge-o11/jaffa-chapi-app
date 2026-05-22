@@ -275,7 +275,7 @@ export default function JaffaQuiz() {
             <div className="flex flex-wrap justify-center gap-4">
               <button onClick={restart} className="btn-outline py-3 px-8">שחק שוב 🔄</button>
               <a href="#game" className="btn-terra py-3 px-8">🎯 נסה את מסע 10 התחנות</a>
-              <a href="https://chat.whatsapp.com/JAFFA" target="_blank" rel="noreferrer" className="btn-whatsapp py-3 px-8">שתף! 📤</a>
+              <a href="https://chat.whatsapp.com/BhnFkwONJd6DeA7KlwG1MC" target="_blank" rel="noreferrer" className="btn-whatsapp py-3 px-8">שתף! 📤</a>
             </div>
           </div>
         )}

@@ -1,6 +1,7 @@
 'use strict';
 
 const APP_URL = 'https://jaffa-chapi.co.il';
+const COMMUNITY_LINK = 'https://chat.whatsapp.com/BhnFkwONJd6DeA7KlwG1MC';
 
 function welcomeMessage(name, coupon, credits = 10) {
   const displayName = name || 'אורח/ת יקר/ה';
@@ -28,6 +29,9 @@ function welcomeMessage(name, coupon, credits = 10) {
 *🗺️ כנס/י לאתר לחוויה המלאה:*
 ${APP_URL}
 
+*👥 קבוצת הוואצ'אפ של הקהילה:*
+${COMMUNITY_LINK}
+
 *יפו העתיקה מחכה לך!* 🏛️✨`;
 }
 
@@ -46,6 +50,9 @@ function returningMemberMessage(name, credits) {
 *🗺️ חווה את יפו:*
 ${APP_URL}
 
+*👥 קבוצת הקהילה:*
+${COMMUNITY_LINK}
+
 יפו העתיקה שמחה שחזרת! 🌟`;
 }
 
@@ -62,7 +69,9 @@ function farewellMessage(name, credits) {
 
 💡 *כדי לשחרר ולהמשיך לצבור:*
 פשוט הצטרף/י שוב לקהילה:
-${APP_URL}
+${COMMUNITY_LINK}
+
+או באתר: ${APP_URL}
 
 יפו העתיקה תמיד כאן 🌊
 נשמח לראות אותך שוב! 🏛️`;

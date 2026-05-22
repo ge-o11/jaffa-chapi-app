@@ -454,7 +454,7 @@ export default function QRHuntGame() {
               <button onClick={startGame} className="btn-outline py-3 px-8">
                 שחק שוב 🔄
               </button>
-              <a href="https://chat.whatsapp.com/JAFFA" target="_blank" rel="noreferrer" className="btn-whatsapp py-3 px-8">
+              <a href="https://chat.whatsapp.com/BhnFkwONJd6DeA7KlwG1MC" target="_blank" rel="noreferrer" className="btn-whatsapp py-3 px-8">
                 שתף בוואצ'אפ!
               </a>
             </div>

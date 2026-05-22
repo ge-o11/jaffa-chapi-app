@@ -29,7 +29,7 @@ export default function Footer() {
 
           <div className="text-right">
             <h4 className="font-bold mb-4" style={{ color: 'var(--gold)' }}>הצטרפו</h4>
-            <a href="https://chat.whatsapp.com/JAFFA" target="_blank" rel="noreferrer" className="btn-whatsapp w-full justify-center mb-4">
+            <a href="https://chat.whatsapp.com/BhnFkwONJd6DeA7KlwG1MC" target="_blank" rel="noreferrer" className="btn-whatsapp w-full justify-center mb-4">
               הצטרפות לקהילה
             </a>
             <div className="flex gap-3 justify-end mt-4">

@@ -2,7 +2,9 @@
   "selectedGroup": null,
   "appUrl": "https://jaffa-chapi.co.il",
   "communityName": "קהילת יפו העתיקה — חפ\"י",
-  "adminPhone": "972500000000",
+  "communityInviteLink": "https://chat.whatsapp.com/BhnFkwONJd6DeA7KlwG1MC",
+  "botPhone": "972502009350",
+  "adminPhone": "972502009350",
   "creditsOnJoin": 10,
   "creditsPerDay": 1
 }
