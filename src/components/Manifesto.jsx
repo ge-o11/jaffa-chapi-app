@@ -9,7 +9,7 @@ const rows = [
 
 export default function Manifesto() {
   return (
-    <section className="py-24 section-bg" style={{ background: 'linear-gradient(180deg, #0D1B2A 0%, #0f2233 50%, #0D1B2A 100%)' }}>
+    <section className="py-24 section-bg" style={{ background: 'linear-gradient(180deg, rgba(237,224,196,0.93) 0%, rgba(245,237,214,0.95) 50%, rgba(237,224,196,0.93) 100%)' }}>
       <div className="max-w-5xl mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-block mb-4 px-4 py-1 rounded-full text-xs font-medium border" style={{ color: 'var(--gold)', borderColor: 'rgba(200,169,110,0.3)', background: 'rgba(200,169,110,0.06)' }}>
@@ -44,9 +44,9 @@ export default function Manifesto() {
             </thead>
             <tbody>
               {rows.map(([past, future], i) => (
-                <tr key={i} style={{ background: i % 2 === 0 ? 'rgba(13,27,42,0.8)' : 'rgba(26,42,58,0.8)' }}>
-                  <td className="py-3 px-6 opacity-60" style={{ borderLeft: '1px solid rgba(200,169,110,0.1)' }}>{past}</td>
-                  <td className="py-3 px-6 font-medium" style={{ color: 'var(--gold)' }}>{future}</td>
+                <tr key={i} style={{ background: i % 2 === 0 ? 'rgba(255,252,245,0.7)' : 'rgba(245,237,214,0.7)' }}>
+                  <td className="py-3 px-6 opacity-70" style={{ borderLeft: '1px solid rgba(200,169,110,0.2)', color: '#6B4A00' }}>{past}</td>
+                  <td className="py-3 px-6 font-medium" style={{ color: '#8B5E00' }}>{future}</td>
                 </tr>
               ))}
             </tbody>

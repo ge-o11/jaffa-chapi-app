@@ -217,7 +217,7 @@ export default function QRHuntGame() {
   const completedCount = phase === 'complete' ? 10 : (phase === 'won' ? current + 1 : current)
 
   return (
-    <section id="game" className="py-24" style={{ background: 'linear-gradient(180deg, #060d18 0%, #0D1B2A 60%, #060d18 100%)' }}>
+    <section id="game" className="py-24" style={{ background: 'linear-gradient(180deg, rgba(237,224,196,0.93) 0%, rgba(245,237,214,0.95) 60%, rgba(237,224,196,0.93) 100%)' }}>
       {/* Confetti */}
       {confetti.map(c => (
         <div key={c.id} style={{
@@ -298,7 +298,7 @@ export default function QRHuntGame() {
                 {/* Station header */}
                 <div className="relative h-48 overflow-hidden">
                   <img src={station.image} alt={station.location} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0" style={{ background:'linear-gradient(to bottom, rgba(6,13,24,0.3), rgba(6,13,24,0.9))' }}/>
+                  <div className="absolute inset-0" style={{ background:'linear-gradient(to bottom, rgba(44,26,14,0.25), rgba(44,26,14,0.8))' }}/>
                   <div className="absolute bottom-4 right-4">
                     <div className="station-number">{station.id}</div>
                   </div>

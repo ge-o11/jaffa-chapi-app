@@ -54,10 +54,10 @@ export default function SpinWheel() {
 
   return (
     <div className="text-center">
-      <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--gold)', fontFamily: 'Frank Ruhl Libre, serif' }}>
+      <h3 className="text-2xl font-bold mb-2" style={{ color: '#8B5E00', fontFamily: 'Frank Ruhl Libre, serif' }}>
         🎡 גלגל המזל
       </h3>
-      <p className="text-sm mb-8 opacity-60" style={{ color: 'var(--gold-light)' }}>לחברי קהילת יפו בלבד — סובב וקבל פרס!</p>
+      <p className="text-sm mb-8" style={{ color: '#6B4A00', opacity: 0.8 }}>לחברי קהילת יפו בלבד — סובב וקבל פרס!</p>
 
       {/* Wheel */}
       <div className="wheel-container mb-8">
@@ -118,18 +118,18 @@ export default function SpinWheel() {
       {/* Result */}
       {winner && result && (
         <div className="fade-in rounded-2xl py-6 px-8 mx-auto max-w-xs"
-          style={{ background: 'linear-gradient(135deg, rgba(200,169,110,0.2), rgba(200,169,110,0.05))', border: '2px solid var(--gold)', boxShadow: '0 0 40px rgba(200,169,110,0.3)' }}>
+          style={{ background: 'linear-gradient(135deg, rgba(255,252,245,0.95), rgba(245,237,214,0.95))', border: '2px solid var(--gold)', boxShadow: '0 0 40px rgba(200,169,110,0.35), 0 8px 32px rgba(44,26,14,0.15)' }}>
           <div className="text-5xl mb-2">🎉</div>
-          <div className="text-2xl font-black mb-1" style={{ color: 'var(--gold)', fontFamily: 'Frank Ruhl Libre, serif' }}>
+          <div className="text-2xl font-black mb-1" style={{ color: '#8B5E00', fontFamily: 'Frank Ruhl Libre, serif' }}>
             זכית!
           </div>
-          <div className="text-xl font-bold mb-2" style={{ color: 'var(--parchment)' }}>
+          <div className="text-xl font-bold mb-2" style={{ color: '#2C1A0E' }}>
             {result.emoji} {result.label}
           </div>
           {user && (
-            <div className="text-sm font-bold mb-2" style={{ color: 'var(--gold)' }}>+{result.pts} נקודות נוספו לחשבונך ⭐</div>
+            <div className="text-sm font-bold mb-2" style={{ color: '#8B5E00' }}>+{result.pts} נקודות נוספו לחשבונך ⭐</div>
           )}
-          <p className="text-xs opacity-60" style={{ color: 'var(--gold-light)' }}>
+          <p className="text-xs opacity-70" style={{ color: '#6B4A00' }}>
             הצג הודעה זו לצוות חפ"י לממש את הפרס
           </p>
           <button onClick={spin} className="btn-outline mt-4 py-2 px-5 text-sm">

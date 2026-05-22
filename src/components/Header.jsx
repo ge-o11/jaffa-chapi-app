@@ -72,18 +72,18 @@ export default function Header({ onLoginClick }) {
 
               {showMenu && (
                 <div className="absolute left-0 top-full mt-2 w-52 rounded-2xl overflow-hidden shadow-2xl z-50 text-right"
-                  style={{ background: 'var(--navy)', border: '1px solid rgba(200,169,110,0.3)' }}>
-                  <div className="px-4 py-3 border-b" style={{ borderColor: 'rgba(200,169,110,0.15)' }}>
-                    <div className="font-bold text-sm" style={{ color: 'var(--gold)' }}>{user.username}</div>
-                    <div className="text-xs opacity-60" style={{ color: 'var(--parchment)' }}>{user.phone}</div>
+                  style={{ background: 'rgba(255,252,245,0.98)', border: '1px solid rgba(200,169,110,0.4)', boxShadow: '0 16px 48px rgba(44,26,14,0.25)' }}>
+                  <div className="px-4 py-3 border-b" style={{ borderColor: 'rgba(200,169,110,0.2)' }}>
+                    <div className="font-bold text-sm" style={{ color: '#8B5E00' }}>{user.username}</div>
+                    <div className="text-xs opacity-70" style={{ color: '#6B4A00' }}>{user.phone}</div>
                   </div>
-                  <div className="px-4 py-3 border-b" style={{ borderColor: 'rgba(200,169,110,0.15)' }}>
-                    <div className="text-xs opacity-50 mb-0.5" style={{ color: 'var(--parchment)' }}>נקודות צבורות</div>
+                  <div className="px-4 py-3 border-b" style={{ borderColor: 'rgba(200,169,110,0.2)' }}>
+                    <div className="text-xs opacity-60 mb-0.5" style={{ color: '#6B4A00' }}>נקודות צבורות</div>
                     <div className="text-2xl font-black gold-shimmer">{user.points} ⭐</div>
                   </div>
                   <button onClick={handleLogout}
-                    className="w-full text-right px-4 py-3 text-sm hover:bg-red-900/20 transition-colors"
-                    style={{ color: '#FCA5A5' }}>
+                    className="w-full text-right px-4 py-3 text-sm hover:bg-red-50 transition-colors font-bold"
+                    style={{ color: '#9F1010' }}>
                     התנתק
                   </button>
                 </div>
@@ -114,7 +114,7 @@ export default function Header({ onLoginClick }) {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t px-4 pb-4 pt-2" style={{ borderColor: 'rgba(200,169,110,0.2)', background: 'rgba(13,27,42,0.98)' }}>
+        <div className="lg:hidden border-t px-4 pb-4 pt-2" style={{ borderColor: 'rgba(200,169,110,0.3)', background: 'rgba(248,240,220,0.98)', backdropFilter: 'blur(12px)' }}>
           {user && (
             <div className="flex items-center gap-3 py-3 mb-2 border-b" style={{ borderColor: 'rgba(200,169,110,0.15)' }}>
               <div className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black"

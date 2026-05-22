@@ -128,7 +128,7 @@ export default function JaffaQuiz() {
   }
 
   return (
-    <section id="quiz" className="py-24" style={{ background: 'linear-gradient(180deg, #060d18 0%, #0D1B2A 100%)' }}>
+    <section id="quiz" className="py-24" style={{ background: 'linear-gradient(180deg, rgba(237,224,196,0.85) 0%, rgba(245,237,214,0.92) 100%)' }}>
       <div className="max-w-3xl mx-auto px-4">
         <div className="text-center mb-12">
           <div className="inline-block mb-4 px-4 py-1 rounded-full text-xs border"
@@ -167,7 +167,7 @@ export default function JaffaQuiz() {
         {phase === 'quiz' && (
           <div className="game-container overflow-hidden fade-in">
             {/* Progress */}
-            <div className="h-2" style={{ background: 'rgba(200,169,110,0.1)' }}>
+            <div className="h-2" style={{ background: 'rgba(200,169,110,0.15)' }}>
               <div className="h-full transition-all duration-500"
                 style={{ width: `${(idx / QUESTIONS.length) * 100}%`, background: 'linear-gradient(90deg, var(--gold), var(--terra))' }} />
             </div>
@@ -175,10 +175,10 @@ export default function JaffaQuiz() {
             {/* Image */}
             <div className="h-40 overflow-hidden relative">
               <img src={q.image} alt="" className="w-full h-full object-cover" />
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(6,13,24,0.2), rgba(6,13,24,0.8))' }} />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(44,26,14,0.15), rgba(44,26,14,0.75))' }} />
               <div className="absolute bottom-3 right-4 flex items-center gap-3">
-                <div className="station-number" style={{ width: 44, height: 44, fontSize: '1.1rem' }}>{idx + 1}</div>
-                <div className="text-sm font-bold" style={{ color: 'var(--gold-light)' }}>שאלה {idx + 1} מתוך {QUESTIONS.length}</div>
+                <div className="station-number" style={{ width: 44, height: 44, fontSize: '1.1rem', background: 'rgba(255,252,245,0.9)' }}>{idx + 1}</div>
+                <div className="text-sm font-bold" style={{ color: '#FFD480', textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>שאלה {idx + 1} מתוך {QUESTIONS.length}</div>
               </div>
               <div className="absolute bottom-3 left-4 flex gap-1">
                 {QUESTIONS.map((_, i) => (
@@ -196,14 +196,14 @@ export default function JaffaQuiz() {
               {/* Options */}
               <div className="space-y-3 mb-6">
                 {q.options.map((opt, i) => {
-                  let bg = 'rgba(200,169,110,0.06)'
-                  let border = 'rgba(200,169,110,0.2)'
-                  let color = 'var(--parchment)'
+                  let bg = 'rgba(200,169,110,0.1)'
+                  let border = 'rgba(200,169,110,0.4)'
+                  let color = '#2C1A0E'
                   if (selected !== null) {
-                    if (i === q.correct) { bg = 'rgba(37,211,102,0.12)'; border = 'rgba(37,211,102,0.6)'; color = '#6EE7A0' }
-                    else if (i === selected && selected !== q.correct) { bg = 'rgba(239,68,68,0.12)'; border = 'rgba(239,68,68,0.5)'; color = '#FCA5A5' }
+                    if (i === q.correct) { bg = 'rgba(46,125,50,0.15)'; border = 'rgba(46,125,50,0.7)'; color = '#1B5E20' }
+                    else if (i === selected && selected !== q.correct) { bg = 'rgba(198,40,40,0.12)'; border = 'rgba(198,40,40,0.6)'; color = '#9F1010' }
                   } else if (selected === null) {
-                    bg = 'rgba(200,169,110,0.06)'
+                    bg = 'rgba(200,169,110,0.1)'
                   }
                   return (
                     <button key={i} onClick={() => choose(i)} disabled={selected !== null}
@@ -223,11 +223,11 @@ export default function JaffaQuiz() {
               {/* Explanation */}
               {showExp && (
                 <div className="fade-in mb-5 p-4 rounded-2xl text-right text-sm leading-relaxed"
-                  style={{ background: selected === q.correct ? 'rgba(37,211,102,0.08)' : 'rgba(239,68,68,0.08)', border: `1px solid ${selected === q.correct ? 'rgba(37,211,102,0.3)' : 'rgba(239,68,68,0.3)'}` }}>
-                  <div className="font-bold mb-1" style={{ color: selected === q.correct ? '#6EE7A0' : '#FCA5A5' }}>
+                  style={{ background: selected === q.correct ? 'rgba(46,125,50,0.1)' : 'rgba(198,40,40,0.1)', border: `1px solid ${selected === q.correct ? 'rgba(46,125,50,0.4)' : 'rgba(198,40,40,0.4)'}` }}>
+                  <div className="font-bold mb-1" style={{ color: selected === q.correct ? '#1B5E20' : '#9F1010' }}>
                     {selected === q.correct ? '✅ נכון!' : '❌ לא נכון'}
                   </div>
-                  <p style={{ color: 'var(--parchment)', opacity: 0.85 }}>{q.explanation}</p>
+                  <p style={{ color: '#2C1A0E', opacity: 0.85 }}>{q.explanation}</p>
                 </div>
               )}
 
@@ -256,7 +256,7 @@ export default function JaffaQuiz() {
             <div className="flex justify-center gap-1.5 mb-8 flex-wrap">
               {answers.map((correct, i) => (
                 <div key={i} className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold"
-                  style={{ background: correct ? 'rgba(37,211,102,0.2)' : 'rgba(239,68,68,0.2)', border: `2px solid ${correct ? 'rgba(37,211,102,0.6)' : 'rgba(239,68,68,0.4)'}`, color: correct ? '#6EE7A0' : '#FCA5A5' }}>
+                  style={{ background: correct ? 'rgba(46,125,50,0.15)' : 'rgba(198,40,40,0.15)', border: `2px solid ${correct ? 'rgba(46,125,50,0.6)' : 'rgba(198,40,40,0.5)'}`, color: correct ? '#1B5E20' : '#9F1010' }}>
                   {correct ? '✓' : '✗'}
                 </div>
               ))}

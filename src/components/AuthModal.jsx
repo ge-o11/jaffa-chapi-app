@@ -41,11 +41,11 @@ export default function AuthModal({ onClose }) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ background: 'rgba(6,13,24,0.92)', backdropFilter: 'blur(8px)' }}
+      style={{ background: 'rgba(44,26,14,0.65)', backdropFilter: 'blur(10px)' }}
     >
       <div
         className="w-full max-w-sm rounded-3xl p-8 text-right relative"
-        style={{ background: 'var(--navy)', border: '1px solid rgba(200,169,110,0.35)', boxShadow: '0 24px 80px rgba(0,0,0,0.7)' }}
+        style={{ background: 'rgba(255,252,245,0.98)', border: '2px solid rgba(200,169,110,0.4)', boxShadow: '0 24px 80px rgba(44,26,14,0.4)' }}
       >
         {/* Close */}
         <button
@@ -80,7 +80,7 @@ export default function AuthModal({ onClose }) {
               value={phone}
               onChange={e => { setPhone(e.target.value); setErr('') }}
               className="w-full rounded-xl px-4 py-3 text-left text-base mb-1 outline-none"
-              style={{ background: 'rgba(200,169,110,0.07)', border: '1px solid rgba(200,169,110,0.3)', color: 'var(--parchment)', fontFamily: 'monospace' }}
+              style={{ background: 'rgba(245,237,214,0.6)', border: '1px solid rgba(200,169,110,0.5)', color: '#2C1A0E', fontFamily: 'monospace' }}
               autoFocus
             />
             {err && <p className="text-xs text-red-400 mb-3">{err}</p>}
@@ -111,7 +111,7 @@ export default function AuthModal({ onClose }) {
               value={username}
               onChange={e => { setUsername(e.target.value); setErr('') }}
               className="w-full rounded-xl px-4 py-3 text-base mb-1 outline-none"
-              style={{ background: 'rgba(200,169,110,0.07)', border: '1px solid rgba(200,169,110,0.3)', color: 'var(--parchment)' }}
+              style={{ background: 'rgba(245,237,214,0.6)', border: '1px solid rgba(200,169,110,0.5)', color: '#2C1A0E' }}
               autoFocus
               maxLength={24}
             />

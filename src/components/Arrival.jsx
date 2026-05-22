@@ -31,7 +31,7 @@ const options = [
 
 export default function Arrival() {
   return (
-    <section id="arrival" className="py-24" style={{ background: 'linear-gradient(180deg, #0f2233 0%, #0D1B2A 100%)' }}>
+    <section id="arrival" className="py-24" style={{ background: 'linear-gradient(180deg, rgba(237,224,196,0.92) 0%, rgba(245,237,214,0.94) 100%)' }}>
       <div className="max-w-5xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="section-title">הגעה ליפו העתיקה</h2>

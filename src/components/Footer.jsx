@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="py-12 border-t" style={{ borderColor: 'rgba(200,169,110,0.2)', background: '#060f18' }}>
+    <footer className="py-12 border-t" style={{ borderColor: 'rgba(200,169,110,0.35)', background: 'rgba(60,42,26,0.94)' }}>
       <div className="max-w-5xl mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 mb-10">
           <div className="text-right">

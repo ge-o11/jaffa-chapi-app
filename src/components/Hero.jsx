@@ -8,9 +8,9 @@ export default function Hero() {
           alt="יפו העתיקה"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(13,27,42,0.88) 0%, rgba(13,27,42,0.65) 50%, rgba(13,27,42,0.80) 100%)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(44,26,14,0.72) 0%, rgba(139,94,0,0.45) 50%, rgba(44,26,14,0.7) 100%)' }} />
         {/* Warm vignette */}
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(13,27,42,0.6) 100%)' }} />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 35%, rgba(44,26,14,0.55) 100%)' }} />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
@@ -19,22 +19,22 @@ export default function Hero() {
           {/* Text */}
           <div className="flex-1 text-right max-w-2xl">
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full text-sm font-medium border backdrop-blur-sm"
-              style={{ color: 'var(--gold)', borderColor: 'rgba(200,169,110,0.4)', background: 'rgba(200,169,110,0.1)' }}>
+              style={{ color: '#F5DDA0', borderColor: 'rgba(232,213,163,0.5)', background: 'rgba(232,213,163,0.15)' }}>
               <span>✦</span> חוויות פעילות ביפו העתיקה — חפ"י
             </div>
 
             <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6"
-              style={{ fontFamily: 'Frank Ruhl Libre, serif', textShadow: '0 2px 20px rgba(0,0,0,0.5)' }}>
-              <span style={{ color: 'var(--gold)' }}>יפו</span>
-              <span style={{ color: 'var(--parchment)' }}> העתיקה</span>
+              style={{ fontFamily: 'Frank Ruhl Libre, serif', textShadow: '0 2px 24px rgba(0,0,0,0.55)' }}>
+              <span style={{ color: '#F5DDA0' }}>יפו</span>
+              <span style={{ color: '#FFFFFF' }}> העתיקה</span>
               <br />
-              <span className="text-4xl md:text-5xl" style={{ color: 'var(--gold-light)' }}>כחוויה חיה</span>
+              <span className="text-4xl md:text-5xl" style={{ color: '#E8D5A3' }}>כחוויה חיה</span>
             </h1>
 
-            <p className="text-xl md:text-2xl mb-3 font-medium" style={{ color: 'rgba(240,230,211,0.9)' }}>
+            <p className="text-xl md:text-2xl mb-3 font-medium" style={{ color: 'rgba(255,250,235,0.95)' }}>
               להפוך את יפו העתיקה ממקום שמבקרים בו —
             </p>
-            <p className="text-2xl md:text-3xl mb-10 font-black" style={{ color: 'var(--gold)', textShadow: '0 0 30px rgba(200,169,110,0.5)' }}>
+            <p className="text-2xl md:text-3xl mb-10 font-black" style={{ color: '#FFD480', textShadow: '0 0 30px rgba(255,212,128,0.5)' }}>
               לחוויה שמשתתפים בה. ✨
             </p>
 
@@ -55,8 +55,8 @@ export default function Hero() {
                 { num: '10', label: 'תחנות במסע' },
               ].map(s => (
                 <div key={s.label} className="text-right">
-                  <div className="text-4xl font-black gold-shimmer">{s.num}</div>
-                  <div className="text-sm opacity-70" style={{ color: 'var(--gold-light)' }}>{s.label}</div>
+                  <div className="text-4xl font-black" style={{ color: '#FFD480', textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}>{s.num}</div>
+                  <div className="text-sm" style={{ color: '#E8D5A3', opacity: 0.9 }}>{s.label}</div>
                 </div>
               ))}
             </div>
@@ -71,12 +71,12 @@ export default function Hero() {
                   <img src="https://images.pexels.com/photos/18809933/pexels-photo-18809933.jpeg?w=200&q=80"
                     alt="יפו" className="w-full h-full object-cover" />
                 </div>
-                <div className="font-black text-base mb-0.5 text-center" style={{ color: 'var(--gold)', fontFamily: 'Frank Ruhl Libre, serif' }}>חפ"י — יפו העתיקה</div>
-                <div className="text-xs opacity-50 mb-3" style={{ color: 'var(--parchment)' }}>Old Jaffa Experience</div>
+                <div className="font-black text-base mb-0.5 text-center" style={{ color: '#FFD480', fontFamily: 'Frank Ruhl Libre, serif' }}>חפ"י — יפו העתיקה</div>
+                <div className="text-xs opacity-60 mb-3" style={{ color: '#F0E6D3' }}>Old Jaffa Experience</div>
                 <div className="w-full space-y-1.5 text-xs">
                   {['🗺️ סיורים אינטראקטיביים','🎯 מסע 10 התחנות','🎁 קופונים והטבות','🏆 הגרלות ופרסים','🛒 חנות מקומית'].map(item => (
                     <div key={item} className="flex items-center gap-2 rounded-lg px-3 py-1.5"
-                      style={{ background: 'rgba(200,169,110,0.12)', color: 'var(--parchment)' }}>{item}</div>
+                      style={{ background: 'rgba(232,213,163,0.18)', color: '#F0E6D3' }}>{item}</div>
                   ))}
                 </div>
                 <div className="mt-3 w-full rounded-lg py-2 text-center text-xs font-bold" style={{ background: 'var(--whatsapp)', color: 'white' }}>
@@ -88,14 +88,14 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom fade */}
+      {/* Bottom fade to stone */}
       <div className="absolute bottom-0 left-0 right-0 h-32"
-        style={{ background: 'linear-gradient(to bottom, transparent, var(--navy))' }} />
+        style={{ background: 'linear-gradient(to bottom, transparent, rgba(245,237,214,0.9))' }} />
 
       {/* Scroll hint */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
-        <div className="text-xs" style={{ color: 'var(--gold-light)' }}>גלול למטה</div>
-        <div className="w-px h-8 animate-bounce" style={{ background: 'var(--gold)' }} />
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+        <div className="text-xs" style={{ color: '#E8D5A3' }}>גלול למטה</div>
+        <div className="w-px h-8 animate-bounce" style={{ background: '#FFD480' }} />
       </div>
     </section>
   )

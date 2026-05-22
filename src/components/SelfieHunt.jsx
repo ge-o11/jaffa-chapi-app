@@ -142,13 +142,13 @@ export default function SelfieHunt() {
   })
 
   return (
-    <section id="selfie-hunt" className="py-24" style={{ background: 'var(--navy)' }}>
+    <section id="selfie-hunt" className="py-24" style={{ background: 'linear-gradient(180deg, rgba(245,237,214,0.95) 0%, rgba(237,224,196,0.92) 100%)' }}>
       <FlashOverlay visible={flash} />
 
       {showCelebration && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center"
-          style={{ background: 'rgba(13,27,42,0.92)' }}
+          style={{ background: 'rgba(44,26,14,0.7)', backdropFilter: 'blur(8px)' }}
           onClick={() => setShowCelebration(null)}
         >
           <div className="card text-center p-10 max-w-sm mx-4" style={{ border: '2px solid var(--gold)' }}>

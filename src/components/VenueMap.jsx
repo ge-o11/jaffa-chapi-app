@@ -111,12 +111,12 @@ export default function VenueMap() {
   const visible = LOCATIONS.filter(l => filter === 'all' || l.type === filter)
 
   return (
-    <section id="map" className="py-24" style={{ background: 'linear-gradient(180deg, #060d18 0%, #0D1B2A 100%)' }}>
+    <section id="map" className="py-24" style={{ background: 'linear-gradient(180deg, rgba(245,237,214,0.92) 0%, rgba(237,224,196,0.92) 100%)' }}>
       <style>{`
-        .leaflet-container { border-radius: 1.5rem; }
-        .leaflet-control-attribution { font-size: 9px !important; opacity: 0.5; }
-        .leaflet-control-zoom a { background: rgba(13,27,42,0.9) !important; color: #C8A96E !important; border-color: rgba(200,169,110,0.3) !important; }
-        .leaflet-control-zoom a:hover { background: rgba(200,169,110,0.2) !important; }
+        .leaflet-container { border-radius: 1.5rem; background: #f5edd6; }
+        .leaflet-control-attribution { font-size: 9px !important; opacity: 0.55; background: rgba(255,250,235,0.85) !important; }
+        .leaflet-control-zoom a { background: rgba(255,250,235,0.95) !important; color: #8B5E00 !important; border-color: rgba(200,169,110,0.4) !important; font-weight: bold; }
+        .leaflet-control-zoom a:hover { background: var(--gold) !important; color: #fff !important; }
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4">
@@ -157,7 +157,7 @@ export default function VenueMap() {
               scrollWheelZoom={false}
             >
               <TileLayer
-                url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
                 maxZoom={19}
               />
