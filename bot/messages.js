@@ -1,6 +1,6 @@
 'use strict';
 
-const APP_URL = 'https://jaffa-chapi.co.il';
+const APP_URL = 'https://jaffa-chapi.pages.dev';
 const COMMUNITY_LINK = 'https://chat.whatsapp.com/BhnFkwONJd6DeA7KlwG1MC';
 
 function welcomeMessage(name, coupon, credits = 10) {
