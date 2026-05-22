@@ -7,6 +7,7 @@ import Credits from './components/Credits'
 import VenueMap from './components/VenueMap'
 import QRHuntGame from './components/QRHuntGame'
 import JaffaQuiz from './components/JaffaQuiz'
+import SelfieHunt from './components/SelfieHunt'
 import Tours from './components/Tours'
 import Lottery from './components/Lottery'
 import Events from './components/Events'
@@ -43,6 +44,7 @@ export default function App() {
         <VenueMap />
         <QRHuntGame />
         <JaffaQuiz />
+        <SelfieHunt />
         <Community />
         <Credits />
         <Tours />
