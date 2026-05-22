@@ -1,14 +1,15 @@
 import { useState, useRef } from 'react'
+import { useUser } from '../context/UserContext'
 
 const PRIZES = [
-  { label: 'גלידה חינם!', color: '#E91E63', emoji: '🍦' },
-  { label: '10 נקודות', color: '#C8A96E', emoji: '🏅' },
-  { label: 'קפה חינם!', color: '#795548', emoji: '☕' },
-  { label: '15 נקודות', color: '#1E6B8A', emoji: '🏅' },
-  { label: 'הפתעה! 🎁', color: '#8B2500', emoji: '🎁' },
-  { label: '5 נקודות', color: '#2E7D32', emoji: '🏅' },
-  { label: 'הנחה 20%!', color: '#1565C0', emoji: '🎫' },
-  { label: '20 נקודות', color: '#C4622D', emoji: '🏅' },
+  { label: 'גלידה חינם!', color: '#E91E63', emoji: '🍦', pts: 3 },
+  { label: '10 נקודות', color: '#C8A96E', emoji: '🏅', pts: 10 },
+  { label: 'קפה חינם!', color: '#795548', emoji: '☕', pts: 3 },
+  { label: '15 נקודות', color: '#1E6B8A', emoji: '🏅', pts: 15 },
+  { label: 'הפתעה! 🎁', color: '#8B2500', emoji: '🎁', pts: 5 },
+  { label: '5 נקודות', color: '#2E7D32', emoji: '🏅', pts: 5 },
+  { label: 'הנחה 20%!', color: '#1565C0', emoji: '🎫', pts: 2 },
+  { label: '20 נקודות', color: '#C4622D', emoji: '🏅', pts: 20 },
 ]
 
 const N = PRIZES.length
@@ -25,6 +26,7 @@ export default function SpinWheel() {
   const [result, setResult] = useState(null)
   const [winner, setWinner] = useState(false)
   const baseRef             = useRef(0)
+  const { user, addPoints } = useUser()
 
   function spin() {
     if (spinning) return
@@ -32,7 +34,7 @@ export default function SpinWheel() {
     setResult(null)
     setWinner(false)
 
-    const extra    = 5 + Math.random() * 5          // 5-10 full rotations
+    const extra    = 5 + Math.random() * 5
     const stop     = Math.random() * 360
     const total    = baseRef.current + extra * 360 + stop
     baseRef.current = total
@@ -42,10 +44,11 @@ export default function SpinWheel() {
       setSpin(false)
       setWinner(true)
       const norm = ((total % 360) + 360) % 360
-      // Arrow at top (270° of wheel) — find which segment is there
       const adjusted = (270 - norm + 360) % 360
       const idx = Math.floor(adjusted / SEG) % N
-      setResult(PRIZES[idx])
+      const prize = PRIZES[idx]
+      setResult(prize)
+      if (user) addPoints(prize.pts)
     }, 4200)
   }
 
@@ -120,9 +123,12 @@ export default function SpinWheel() {
           <div className="text-2xl font-black mb-1" style={{ color: 'var(--gold)', fontFamily: 'Frank Ruhl Libre, serif' }}>
             זכית!
           </div>
-          <div className="text-xl font-bold mb-3" style={{ color: 'var(--parchment)' }}>
+          <div className="text-xl font-bold mb-2" style={{ color: 'var(--parchment)' }}>
             {result.emoji} {result.label}
           </div>
+          {user && (
+            <div className="text-sm font-bold mb-2" style={{ color: 'var(--gold)' }}>+{result.pts} נקודות נוספו לחשבונך ⭐</div>
+          )}
           <p className="text-xs opacity-60" style={{ color: 'var(--gold-light)' }}>
             הצג הודעה זו לצוות חפ"י לממש את הפרס
           </p>

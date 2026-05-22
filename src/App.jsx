@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { UserProvider } from './context/UserContext'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Manifesto from './components/Manifesto'
@@ -6,8 +8,6 @@ import Community from './components/Community'
 import Credits from './components/Credits'
 import VenueMap from './components/VenueMap'
 import QRHuntGame from './components/QRHuntGame'
-import JaffaQuiz from './components/JaffaQuiz'
-import SelfieHunt from './components/SelfieHunt'
 import Tours from './components/Tours'
 import Lottery from './components/Lottery'
 import Events from './components/Events'
@@ -17,6 +17,9 @@ import FAQ from './components/FAQ'
 import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import JaffaQuiz from './components/JaffaQuiz'
+import SelfieHunt from './components/SelfieHunt'
+import AuthModal from './components/AuthModal'
 
 function WaFloat() {
   return (
@@ -33,10 +36,11 @@ function WaFloat() {
   )
 }
 
-export default function App() {
+function AppInner() {
+  const [showAuth, setShowAuth] = useState(false)
   return (
     <div style={{ direction: 'rtl', textAlign: 'right' }}>
-      <Header />
+      <Header onLoginClick={() => setShowAuth(true)} />
       <main>
         <Hero />
         <Manifesto />
@@ -58,6 +62,15 @@ export default function App() {
       </main>
       <Footer />
       <WaFloat />
+      {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <UserProvider>
+      <AppInner />
+    </UserProvider>
   )
 }

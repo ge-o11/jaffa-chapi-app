@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useUser } from '../context/UserContext'
 
 const TARGETS = [
   {
@@ -112,8 +113,9 @@ export default function SelfieHunt() {
   const [done, setDone] = useState(new Set())
   const [flash, setFlash] = useState(false)
   const [lastCaptured, setLastCaptured] = useState(null)
-  const [showCelebration, setShowCelebration] = useState(null) // null | 'half' | 'full'
-  const [filter, setFilter] = useState('all') // all | open | done
+  const [showCelebration, setShowCelebration] = useState(null)
+  const [filter, setFilter] = useState('all')
+  const { user, addPoints } = useUser()
 
   const totalEarned = [...done].reduce((s, id) => {
     const t = TARGETS.find(t => t.id === id)
@@ -125,6 +127,7 @@ export default function SelfieHunt() {
     setFlash(true)
     setTimeout(() => setFlash(false), 180)
     setLastCaptured(target)
+    if (user) addPoints(target.pts)
     const next = new Set(done)
     next.add(target.id)
     setDone(next)

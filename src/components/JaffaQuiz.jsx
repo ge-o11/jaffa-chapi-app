@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { useUser } from '../context/UserContext'
 
 const QUESTIONS = [
   {
@@ -82,11 +83,13 @@ const SCORE_MSGS = [
 ]
 
 export default function JaffaQuiz() {
-  const [phase, setPhase]   = useState('intro')   // intro | quiz | result
+  const [phase, setPhase]   = useState('intro')
   const [idx, setIdx]       = useState(0)
   const [selected, setSel]  = useState(null)
   const [answers, setAns]   = useState([])
   const [showExp, setShowExp] = useState(false)
+  const { user, addPoints } = useUser()
+  const bonusGiven = useRef(false)
 
   const q = QUESTIONS[idx]
   const score = answers.filter(Boolean).length
@@ -99,11 +102,20 @@ export default function JaffaQuiz() {
   }
 
   function next() {
-    setAns(a => [...a, selected === q.correct])
+    const updated = [...answers, selected === q.correct]
+    setAns(updated)
     setSel(null)
     setShowExp(false)
-    if (idx + 1 >= QUESTIONS.length) setPhase('result')
-    else setIdx(i => i + 1)
+    if (idx + 1 >= QUESTIONS.length) {
+      setPhase('result')
+      const finalScore = updated.filter(Boolean).length
+      if (finalScore >= 7 && user && !bonusGiven.current) {
+        addPoints(5)
+        bonusGiven.current = true
+      }
+    } else {
+      setIdx(i => i + 1)
+    }
   }
 
   function restart() {
@@ -112,6 +124,7 @@ export default function JaffaQuiz() {
     setSel(null)
     setAns([])
     setShowExp(false)
+    bonusGiven.current = false
   }
 
   return (
@@ -251,8 +264,11 @@ export default function JaffaQuiz() {
 
             {score >= 7 && (
               <div className="card text-center mb-6" style={{ borderColor: 'rgba(200,169,110,0.4)' }}>
-                <p className="font-bold" style={{ color: 'var(--gold)' }}>🎁 מומחה יפו — מגיע לך!</p>
-                <p className="text-sm opacity-70 mt-1" style={{ color: 'var(--parchment)' }}>הצג מסך זה לצוות חפ"י לקבל 5 נקודות קרדיט בונוס</p>
+                <p className="font-bold" style={{ color: 'var(--gold)' }}>🎁 מומחה יפו!</p>
+                {user
+                  ? <p className="text-sm opacity-70 mt-1" style={{ color: 'var(--parchment)' }}>+5 נקודות בונוס זוכו לחשבון שלך ⭐</p>
+                  : <p className="text-sm opacity-70 mt-1" style={{ color: 'var(--parchment)' }}>הצג מסך זה לצוות חפ"י לקבל 5 נקודות בונוס</p>
+                }
               </div>
             )}
 
