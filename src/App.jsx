@@ -36,6 +36,7 @@ const MODAL_CONTENT = {
   about:     { title: '🏛️ על חפ"י',          render: () => <About /> },
   faq:       { title: '❓ שאלות נפוצות',      render: () => <FAQ /> },
   contact:   { title: '✉️ צור קשר',          render: () => <Contact /> },
+  feedback:  { title: '💌 תנו לנו משוב',     render: () => <Contact /> },
 }
 
 function WaFloat() {
@@ -78,21 +79,21 @@ function AppInner() {
       {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
       <CreditToast />
 
-      {/* Fixed logo badge — bottom right on all screens */}
+      {/* Fixed logo badge — bottom right, above nav buttons on mobile */}
       <div style={{
-        position: 'fixed', bottom: 24, right: 24, zIndex: 9990,
+        position: 'fixed', bottom: 68, right: 12, zIndex: 9990,
         background: 'linear-gradient(135deg, #0D3A56, #1A6B8A)',
         border: '2px solid rgba(74,157,184,0.7)',
-        borderRadius: 12,
-        padding: '8px 14px',
+        borderRadius: 10,
+        padding: '6px 10px',
         textAlign: 'center',
         boxShadow: '0 4px 20px rgba(13,58,86,0.4)',
         backdropFilter: 'blur(8px)',
-        minWidth: 90,
+        minWidth: 70,
       }}>
         <div style={{
           fontFamily: 'Arial, Helvetica, sans-serif',
-          fontSize: 18,
+          fontSize: 15,
           fontWeight: 900,
           color: '#FFFFFF',
           lineHeight: 1.2,
@@ -100,7 +101,7 @@ function AppInner() {
         }}>חפי</div>
         <div style={{
           fontFamily: 'Arial, Helvetica, sans-serif',
-          fontSize: 11,
+          fontSize: 10,
           fontWeight: 700,
           color: '#B0D4E3',
           lineHeight: 1.3,

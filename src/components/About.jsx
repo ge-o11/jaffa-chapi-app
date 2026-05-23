@@ -40,10 +40,10 @@ export default function About() {
             style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif' }}>
             על חפ"י
           </h2>
-          <p className="text-sm md:text-base font-semibold tracking-widest mb-1" style={{ color: '#4A9DB8', letterSpacing: '0.08em' }}>
+          <p className="text-sm md:text-base font-semibold tracking-widest mb-1 text-center" dir="ltr" style={{ color: '#4A9DB8', letterSpacing: '0.08em' }}>
             The new era of Old Jaffa
           </p>
-          <p className="text-xs md:text-sm mb-3" style={{ color: '#1A6B8A', opacity: 0.75 }}>
+          <p className="text-xs md:text-sm mb-3 text-center" dir="ltr" style={{ color: '#1A6B8A', opacity: 0.75 }}>
             Old Jaffa Development Company
           </p>
           <p className="text-base md:text-lg max-w-2xl mx-auto" style={{ color: '#0D3A56', opacity: 0.85 }}>

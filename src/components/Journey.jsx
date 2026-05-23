@@ -27,7 +27,7 @@ const INFO = [
   { key: 'about',   icon: '🏛️', title: 'על חפ"י',       sub: 'אמנות העתיד · חוויה חיה', color: '#0D3A56' },
   { key: 'faq',     icon: '❓', title: 'שאלות נפוצות',   sub: 'תשובות לכל שאלה',         color: '#2D5F8B' },
   { key: 'contact', icon: '✉️', title: 'צור קשר',        sub: 'שלחו לנו הודעה',          color: '#4A9DB8' },
-  { key: 'contact', icon: '💌', title: 'תנו לנו משוב',   sub: 'נשמח לשמוע מכם',          color: '#1A6B8A' },
+  { key: 'feedback', icon: '💌', title: 'תנו לנו משוב',   sub: 'נשמח לשמוע מכם',          color: '#1A6B8A' },
 ]
 
 function CardFrame({ active, children }) {
@@ -55,7 +55,7 @@ function CardFrame({ active, children }) {
 
 function CategoryGrid({ items, onOpen, cols }) {
   const gridCls = cols === 2 ? 'grid-cols-2'
-    : cols === 3 ? 'grid-cols-2 md:grid-cols-3'
+    : cols === 3 ? 'grid-cols-3'
     : 'grid-cols-2 md:grid-cols-4'
   return (
     <div className={`grid gap-2 md:gap-4 ${gridCls}`}>
@@ -79,7 +79,7 @@ function CategoryGrid({ items, onOpen, cols }) {
             style={{ color: '#FFFFFF', textShadow: '0 2px 8px rgba(0,0,0,0.4)', fontFamily: 'Frank Ruhl Libre, serif' }}>
             {it.title}
           </div>
-          <div className="text-[11px] md:text-sm font-medium leading-tight mt-0.5"
+          <div className="text-xs md:text-sm font-medium leading-tight mt-0.5"
             style={{ color: 'rgba(255,255,255,0.95)' }}>
             {it.sub}
           </div>
@@ -400,20 +400,21 @@ export default function Journey({ onOpenDrawer }) {
         <button
           onClick={prev}
           disabled={active === 0}
-          className="md:hidden py-2 px-4 rounded-xl font-bold text-xs transition-all hover:scale-105 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
-          style={{ background: 'rgba(225,240,245,0.95)', color: '#0D3A56', border: '2px solid rgba(74,157,184,0.5)', boxShadow: '0 2px 8px rgba(13,58,86,0.12)' }}>
+          className="md:hidden py-3 px-5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
+          style={{ background: 'rgba(225,240,245,0.95)', color: '#0D3A56', border: '2px solid rgba(74,157,184,0.5)', boxShadow: '0 2px 8px rgba(13,58,86,0.12)', minHeight: 44 }}>
           → הקודם
         </button>
         {active < TOTAL - 1 && (
           <button
             onClick={next}
-            className="md:hidden py-2 px-5 rounded-xl font-black text-sm transition-all hover:scale-105 active:scale-95"
+            className="md:hidden py-3 px-6 rounded-xl font-black text-sm transition-all hover:scale-105 active:scale-95"
             style={{
               background: 'linear-gradient(135deg, #0D3A56, #4A9DB8)',
               color: '#FFFFFF',
               boxShadow: '0 6px 16px rgba(26,107,138,0.55), inset 0 1px 0 rgba(255,255,255,0.35)',
               border: '2px solid rgba(255,255,255,0.4)',
               textShadow: '0 1px 3px rgba(0,0,0,0.3)',
+              minHeight: 44,
             }}>
             המשך ←
           </button>

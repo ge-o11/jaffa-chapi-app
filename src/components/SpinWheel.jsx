@@ -54,14 +54,14 @@ export default function SpinWheel() {
   }
 
   return (
-    <div className="text-center">
-      <h3 className="text-2xl font-bold mb-2" style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif' }}>
+    <div className="text-center px-2">
+      <h3 className="text-xl font-bold mb-1" style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif' }}>
         🎡 גלגל המזל
       </h3>
-      <p className="text-sm mb-8" style={{ color: '#1A6B8A', opacity: 0.9 }}>סובבו וצברו נקודות לחשבון שלכם — הקרדיטים שלכם נצברים אוטומטית!</p>
+      <p className="text-xs mb-4" style={{ color: '#1A6B8A', opacity: 0.9 }}>סובבו וצברו נקודות — הקרדיטים נצברים אוטומטית!</p>
 
       {/* Wheel */}
-      <div className="wheel-container mb-8">
+      <div className="wheel-container mb-4">
         <div className="wheel-arrow" />
 
         <div
@@ -106,7 +106,7 @@ export default function SpinWheel() {
 
       {/* Spin button */}
       <button onClick={spin} disabled={spinning}
-        className="btn-terra text-xl py-4 px-12 rounded-2xl mb-6 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="btn-terra text-base py-3 px-8 rounded-2xl mb-4 disabled:opacity-50 disabled:cursor-not-allowed"
         style={{ boxShadow: '0 4px 24px rgba(26,107,138,0.4)' }}>
         {spinning ? (
           <span className="flex items-center gap-2">
@@ -139,7 +139,7 @@ export default function SpinWheel() {
       )}
 
       {/* Prizes legend */}
-      <div className="grid grid-cols-4 gap-2 mt-8 max-w-sm mx-auto">
+      <div className="grid grid-cols-4 gap-1.5 mt-4 max-w-sm mx-auto">
         {PRIZES.map(p => (
           <div key={p.label} className="text-center rounded-xl p-2"
             style={{ background: p.color + '22', border: `1px solid ${p.color}44` }}>
