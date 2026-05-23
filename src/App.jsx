@@ -66,8 +66,6 @@ function AppInner() {
       {/* Journey is the ONLY content — no scroll below */}
       <Journey onOpenDrawer={setModal} />
 
-      <WaFloat />
-
       <CenterModal
         open={!!modal}
         title={active?.title || ''}
@@ -78,35 +76,6 @@ function AppInner() {
 
       {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
       <CreditToast />
-
-      {/* Fixed logo badge — bottom right, above nav buttons on mobile */}
-      <div style={{
-        position: 'fixed', bottom: 68, right: 12, zIndex: 9990,
-        background: 'linear-gradient(135deg, #0D3A56, #1A6B8A)',
-        border: '2px solid rgba(74,157,184,0.7)',
-        borderRadius: 10,
-        padding: '6px 10px',
-        textAlign: 'center',
-        boxShadow: '0 4px 20px rgba(13,58,86,0.4)',
-        backdropFilter: 'blur(8px)',
-        minWidth: 70,
-      }}>
-        <div style={{
-          fontFamily: 'Arial, Helvetica, sans-serif',
-          fontSize: 15,
-          fontWeight: 900,
-          color: '#FFFFFF',
-          lineHeight: 1.2,
-          textShadow: '0 1px 4px rgba(0,0,0,0.4)',
-        }}>חפי</div>
-        <div style={{
-          fontFamily: 'Arial, Helvetica, sans-serif',
-          fontSize: 10,
-          fontWeight: 700,
-          color: '#B0D4E3',
-          lineHeight: 1.3,
-        }}>יפו העתיקה</div>
-      </div>
     </div>
   )
 }

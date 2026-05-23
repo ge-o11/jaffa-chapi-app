@@ -15,13 +15,17 @@ const faqs = [
 function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false)
   return (
-    <div className="card mb-3 cursor-pointer" onClick={() => setOpen(!open)}>
-      <div className="flex items-center justify-between gap-4">
-        <ChevronDown size={20} style={{ color: 'var(--gold)', transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s', flexShrink: 0 }} />
-        <span className="font-bold text-base text-right flex-1" style={{ color: 'var(--parchment)' }}>{q}</span>
+    <div
+      onClick={() => setOpen(!open)}
+      className="mb-2 rounded-2xl cursor-pointer transition-all"
+      style={{ background: 'rgba(225,240,245,0.75)', border: '1.5px solid rgba(74,157,184,0.3)', padding: '14px 16px' }}
+    >
+      <div className="flex items-center justify-between gap-3">
+        <ChevronDown size={18} style={{ color: '#1A6B8A', transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s', flexShrink: 0 }} />
+        <span className="font-bold text-sm md:text-base text-right flex-1" style={{ color: '#0D3A56' }}>{q}</span>
       </div>
       {open && (
-        <div className="mt-4 pt-4 border-t text-right text-sm leading-relaxed" style={{ borderColor: 'rgba(74,157,184,0.15)', color: 'var(--gold-light)', opacity: 0.85 }}>
+        <div className="mt-3 pt-3 border-t text-right text-sm leading-relaxed" style={{ borderColor: 'rgba(74,157,184,0.2)', color: '#1A6B8A' }}>
           {a}
         </div>
       )}
@@ -31,19 +35,17 @@ function FAQItem({ q, a }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-24" style={{ background: 'var(--navy)' }}>
-      <div className="max-w-3xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="section-title">שאלות נפוצות</h2>
-          <div className="gold-divider"></div>
-          <p className="section-subtitle">מצאו תשובות לשאלות הנפוצות ביותר</p>
-        </div>
+    <div id="faq" className="px-3 py-4">
+      <div className="max-w-2xl mx-auto">
         {faqs.map((f, i) => <FAQItem key={i} q={f.q} a={f.a} />)}
-        <div className="text-center mt-10">
-          <p className="mb-4 opacity-60 text-sm" style={{ color: 'var(--gold-light)' }}>לא מצאתם תשובה?</p>
-          <a href="#contact" className="btn-gold">שאלו אותנו ישירות →</a>
+        <div className="text-center mt-6">
+          <p className="mb-3 text-sm opacity-70" style={{ color: '#1A6B8A' }}>לא מצאתם תשובה?</p>
+          <a href="https://wa.me/972502009350" target="_blank" rel="noreferrer"
+            className="btn-whatsapp text-sm py-3 px-6">
+            שאלו אותנו בוואצ'אפ →
+          </a>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

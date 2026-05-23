@@ -12,7 +12,7 @@ const GAMES = [
 
 const PLACES = [
   { key: 'map',     icon: '🗺️', title: 'מפת המתחם',          sub: '12 מקומות אמיתיים', color: '#0D3A56' },
-  { key: 'tours',   icon: '🚶', title: 'סיורים אינטראקטיביים', sub: 'משפחות · זוגות · יחידים', color: '#1A6B8A' },
+  { key: 'tours',   icon: '🚶', title: 'סיורים מודרכים', sub: 'משפחות · זוגות', color: '#1A6B8A' },
   { key: 'arrival', icon: '🚗', title: 'הגעה ליפו העתיקה',     sub: 'איך להגיע בקלות',   color: '#4A9DB8' },
 ]
 
@@ -168,7 +168,7 @@ function CardWelcome({ active, onNext }) {
     <CardFrame active={active}>
       <div className="text-center">
         <PhoneLogo />
-        <div className="inline-block mb-2 md:mb-4 px-3 md:px-5 py-1 md:py-2 rounded-full text-[11px] md:text-sm font-bold border-2"
+        <div className="inline-block mb-2 md:mb-4 px-3 md:px-5 py-1 md:py-2 rounded-full text-xs md:text-sm font-bold border-2"
           style={{ color: '#0D3A56', borderColor: 'rgba(74,157,184,0.55)', background: 'rgba(225,240,245,0.75)' }}>
           🏛️ ברוכים הבאים לחפ"י
         </div>
@@ -188,7 +188,7 @@ function CardWelcome({ active, onNext }) {
             <div key={s.label} className="px-3 py-1.5 md:px-5 md:py-2.5 rounded-xl md:rounded-2xl"
               style={{ background: 'rgba(74,157,184,0.22)', border: '2px solid rgba(26,107,138,0.45)' }}>
               <div className="text-lg md:text-3xl font-black leading-none" style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif' }}>{s.num}</div>
-              <div className="text-[10px] md:text-xs font-bold mt-0.5" style={{ color: '#1A6B8A' }}>{s.label}</div>
+              <div className="text-xs font-bold mt-0.5" style={{ color: '#1A6B8A' }}>{s.label}</div>
             </div>
           ))}
         </div>
@@ -261,7 +261,7 @@ function CardCommunity(p) {
             <div className="font-black text-sm md:text-2xl leading-tight" style={{ color: '#FFFFFF', textShadow: '0 2px 8px rgba(0,0,0,0.4)', fontFamily: 'Frank Ruhl Libre, serif' }}>
               הצטרפו לקהילת וואצ'אפ
             </div>
-            <div className="text-[11px] md:text-sm font-medium leading-tight mt-0.5" style={{ color: 'rgba(255,255,255,0.95)' }}>
+            <div className="text-xs md:text-sm font-medium leading-tight mt-0.5" style={{ color: 'rgba(255,255,255,0.95)' }}>
               10 נקודות מתנה + הטבות
             </div>
           </div>
@@ -423,8 +423,8 @@ export default function Journey({ onOpenDrawer }) {
 
       {/* Swipe hint - first card mobile only */}
       {active === 0 && (
-        <div className="md:hidden absolute bottom-12 left-1/2 -translate-x-1/2 text-[10px] font-bold flex items-center gap-2"
-          style={{ color: '#0D3A56', opacity: 0.7 }}>
+        <div className="md:hidden absolute bottom-16 left-1/2 -translate-x-1/2 text-xs font-bold flex items-center gap-2"
+          style={{ color: '#0D3A56', opacity: 0.65 }}>
           <span className="animate-pulse">👉 החלק ימינה</span>
         </div>
       )}

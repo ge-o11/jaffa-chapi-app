@@ -142,7 +142,7 @@ export default function SelfieHunt() {
   })
 
   return (
-    <section id="selfie-hunt" className="py-24" style={{ background: 'linear-gradient(180deg, rgba(245,237,214,0.95) 0%, rgba(237,224,196,0.92) 100%)' }}>
+    <div id="selfie-hunt" className="px-3 py-4">
       <FlashOverlay visible={flash} />
 
       {showCelebration && (
@@ -171,16 +171,9 @@ export default function SelfieHunt() {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="section-title">ציד הסלפי</h2>
-          <div className="gold-divider"></div>
-          <p className="section-subtitle">10 יעדים לצלם ביפו העתיקה — אספו נקודות וקבלו פרס</p>
-        </div>
-
+      <div className="max-w-2xl mx-auto">
         {/* Progress bar */}
-        <div className="max-w-2xl mx-auto mb-10">
+        <div className="mb-5">
           <div className="flex justify-between text-sm mb-2" style={{ color: 'var(--parchment)' }}>
             <span>{done.size} / {TARGETS.length} יעדים</span>
             <span className="font-bold" style={{ color: 'var(--gold)' }}>{totalEarned} / {TOTAL_PTS} נקודות</span>
@@ -204,7 +197,7 @@ export default function SelfieHunt() {
         {/* Last captured toast */}
         {lastCaptured && (
           <div
-            className="max-w-sm mx-auto mb-8 rounded-2xl px-5 py-3 text-center text-sm font-bold"
+            className="mb-4 rounded-2xl px-4 py-3 text-center text-sm font-bold"
             style={{ background: 'rgba(74,157,184,0.15)', border: '1px solid var(--gold)', color: 'var(--gold)' }}
           >
             📸 {lastCaptured.title} — +{lastCaptured.pts} נקודות!
@@ -212,7 +205,7 @@ export default function SelfieHunt() {
         )}
 
         {/* Filter tabs */}
-        <div className="flex justify-center gap-3 mb-8">
+        <div className="flex justify-center gap-2 mb-4">
           {[
             { key: 'all', label: 'הכל' },
             { key: 'open', label: `נותר (${TARGETS.length - done.size})` },
@@ -221,7 +214,8 @@ export default function SelfieHunt() {
             <button
               key={f.key}
               onClick={() => setFilter(f.key)}
-              className="px-5 py-2 rounded-full text-sm font-bold transition-all"
+              className="px-4 py-2.5 rounded-full text-sm font-bold transition-all"
+              style={{ minHeight: 44 }}
               style={{
                 background: filter === f.key ? 'var(--gold)' : 'rgba(74,157,184,0.1)',
                 color: filter === f.key ? 'var(--navy)' : 'var(--gold)',
@@ -234,7 +228,7 @@ export default function SelfieHunt() {
         </div>
 
         {/* Target grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
+        <div className="grid md:grid-cols-2 gap-3 mb-6">
           {visible.map(target => {
             const captured = done.has(target.id)
             return (
@@ -330,13 +324,13 @@ export default function SelfieHunt() {
 
         {/* Reward tiers */}
         <div
-          className="rounded-3xl p-8"
+          className="rounded-3xl p-5"
           style={{ background: 'linear-gradient(135deg, rgba(74,157,184,0.08), rgba(74,157,184,0.02))', border: '1px solid rgba(74,157,184,0.25)' }}
         >
           <h3 className="text-xl font-bold text-center mb-6" style={{ color: 'var(--gold)', fontFamily: 'Frank Ruhl Libre, serif' }}>
             🎁 מדרגות הפרסים
           </h3>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-2">
             {[
               { needed: 3, icon: '🥉', title: '3 יעדים', reward: 'כוס קפה על הבית', pts: 6 },
               { needed: 5, icon: '🥈', title: '5 יעדים', reward: 'הנחה 15% בכל מסעדות חפ״י', pts: 11 },
@@ -369,6 +363,6 @@ export default function SelfieHunt() {
           </p>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
