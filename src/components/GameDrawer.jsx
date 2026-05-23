@@ -68,12 +68,12 @@ export default function CenterModal({ open, onClose, title, children }) {
             width: '100%',
             maxWidth: 1000,
             maxHeight: '92vh',
-            background: 'rgba(255,252,245,0.38)',
+            background: 'rgba(176,212,227,0.40)',
             backdropFilter: 'blur(36px) saturate(1.4)',
             WebkitBackdropFilter: 'blur(36px) saturate(1.4)',
-            border: '2px solid rgba(255,255,255,0.45)',
+            border: '2px solid rgba(225,240,245,0.55)',
             borderRadius: 28,
-            boxShadow: '0 32px 80px rgba(44,26,14,0.45), 0 8px 24px rgba(44,26,14,0.15), inset 0 1px 0 rgba(255,255,255,0.4)',
+            boxShadow: '0 32px 80px rgba(13,58,86,0.45), 0 8px 24px rgba(13,58,86,0.18), inset 0 1px 0 rgba(255,255,255,0.45)',
             transform: open ? 'scale(1) translateY(0)' : 'scale(0.92) translateY(20px)',
             transition: 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)',
             display: 'flex',
@@ -94,10 +94,10 @@ export default function CenterModal({ open, onClose, title, children }) {
               width: 44,
               height: 44,
               borderRadius: '50%',
-              background: 'linear-gradient(135deg, #C4622D, #E8841C)',
+              background: 'linear-gradient(135deg, #1A6B8A, #4A9DB8)',
               color: '#FFFFFF',
               border: '3px solid rgba(255,255,255,0.5)',
-              boxShadow: '0 6px 18px rgba(196,98,45,0.5)',
+              boxShadow: '0 6px 18px rgba(26,107,138,0.5)',
               cursor: 'pointer',
               fontSize: 20,
               fontWeight: 900,
@@ -117,8 +117,8 @@ export default function CenterModal({ open, onClose, title, children }) {
           <div
             style={{
               padding: '20px 70px 16px 24px',
-              borderBottom: '1px solid rgba(200,169,110,0.3)',
-              background: 'linear-gradient(180deg, rgba(255,252,245,0.95), rgba(255,252,245,0.85))',
+              borderBottom: '1px solid rgba(74,157,184,0.35)',
+              background: 'linear-gradient(180deg, rgba(225,240,245,0.85), rgba(225,240,245,0.65))',
               flexShrink: 0,
             }}
           >
@@ -127,7 +127,7 @@ export default function CenterModal({ open, onClose, title, children }) {
                 margin: 0,
                 fontSize: 22,
                 fontWeight: 900,
-                color: '#8B5E00',
+                color: '#0D3A56',
                 fontFamily: 'Frank Ruhl Libre, serif',
                 textAlign: 'right',
               }}

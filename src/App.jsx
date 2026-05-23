@@ -19,6 +19,7 @@ import Contact from './components/Contact'
 import JaffaQuiz from './components/JaffaQuiz'
 import SelfieHunt from './components/SelfieHunt'
 import AuthModal from './components/AuthModal'
+import CreditToast from './components/CreditToast'
 
 const MODAL_CONTENT = {
   qr:        { title: '🎯 מסע 10 התחנות',   render: () => <QRHuntGame /> },
@@ -75,6 +76,7 @@ function AppInner() {
       </CenterModal>
 
       {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
+      <CreditToast />
     </div>
   )
 }

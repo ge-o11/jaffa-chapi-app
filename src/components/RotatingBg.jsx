@@ -40,11 +40,11 @@ export default function RotatingBg() {
           }}
         />
       ))}
-      {/* Warm overlay for readability — light so photos shine through */}
+      {/* Sea-blue overlay for readability — photos still shine through */}
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(180deg, rgba(255,250,235,0.42) 0%, rgba(245,237,214,0.48) 50%, rgba(237,224,196,0.55) 100%)',
+        background: 'linear-gradient(180deg, rgba(176,212,227,0.42) 0%, rgba(122,184,209,0.48) 50%, rgba(74,157,184,0.52) 100%)',
       }} />
       {/* Photo indicator dots */}
       <div style={{
@@ -61,7 +61,7 @@ export default function RotatingBg() {
             width: i === idx ? 18 : 6,
             height: 6,
             borderRadius: 6,
-            background: i === idx ? '#8B5E00' : 'rgba(139,94,0,0.35)',
+            background: i === idx ? '#0D3A56' : 'rgba(13,58,86,0.35)',
             transition: 'all 0.3s',
           }} />
         ))}

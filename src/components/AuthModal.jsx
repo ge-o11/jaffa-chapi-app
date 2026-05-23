@@ -66,7 +66,7 @@ export default function AuthModal({ onClose }) {
         {/* ── PHONE ── */}
         {phase === 'phone' && (
           <form onSubmit={handlePhone} className="fade-in">
-            <h2 className="text-2xl font-black mb-1" style={{ color: 'var(--gold)', fontFamily: 'Frank Ruhl Libre, serif' }}>
+            <h2 className="text-2xl font-black mb-1" style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif' }}>
               כניסה / הרשמה
             </h2>
             <p className="text-sm mb-6 opacity-60" style={{ color: 'var(--parchment)' }}>
@@ -98,7 +98,7 @@ export default function AuthModal({ onClose }) {
         {phase === 'name' && (
           <form onSubmit={handleRegister} className="fade-in">
             <div className="text-4xl mb-3 text-center">🎉</div>
-            <h2 className="text-2xl font-black mb-1 text-center" style={{ color: 'var(--gold)', fontFamily: 'Frank Ruhl Libre, serif' }}>
+            <h2 className="text-2xl font-black mb-1 text-center" style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif' }}>
               ברוך הבא לחפ"י!
             </h2>
             <p className="text-sm mb-6 opacity-60 text-center" style={{ color: 'var(--parchment)' }}>
@@ -137,7 +137,7 @@ export default function AuthModal({ onClose }) {
         {phase === 'returning' && returnUser && (
           <div className="fade-in text-center">
             <div className="text-5xl mb-3">👋</div>
-            <h2 className="text-2xl font-black mb-1" style={{ color: 'var(--gold)', fontFamily: 'Frank Ruhl Libre, serif' }}>
+            <h2 className="text-2xl font-black mb-1" style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif' }}>
               ברוך השב, {returnUser.username}!
             </h2>
             <p className="text-sm mb-6 opacity-60" style={{ color: 'var(--parchment)' }}>
@@ -163,7 +163,7 @@ export default function AuthModal({ onClose }) {
         {phase === 'welcome' && (
           <div className="fade-in text-center">
             <div className="text-6xl mb-4 animate-bounce">🎊</div>
-            <h2 className="text-2xl font-black mb-2" style={{ color: 'var(--gold)', fontFamily: 'Frank Ruhl Libre, serif' }}>
+            <h2 className="text-2xl font-black mb-2" style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif' }}>
               ברוך הבא לחפ"י!
             </h2>
             <div className="rounded-2xl px-6 py-5 mb-6"

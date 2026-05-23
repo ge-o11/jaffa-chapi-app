@@ -3,16 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --gold: #C8A96E;
-  --gold-light: #A67C1A;
-  --gold-pale: #E8D5A3;
-  --navy: rgba(245,237,214,0.55);
-  --navy-light: rgba(255,252,245,0.92);
-  --parchment: #2C1A0E;
-  --terra: #C4622D;
-  --stone: #8B7355;
+  /* Sea-blue palette (Mediterranean Jaffa) */
+  --gold: #1A6B8A;              /* Deep sea (was warm gold accent) */
+  --gold-light: #0D3A56;        /* Navy for muted text */
+  --gold-pale: #B0D4E3;         /* Pale sea */
+  --navy: rgba(176,212,227,0.55);     /* Light sea bg */
+  --navy-light: rgba(225,240,245,0.92); /* Pale sea card */
+  --parchment: #0D3A56;         /* Deep navy text */
+  --terra: #1A6B8A;             /* Sea blue accent (was terracotta) */
+  --stone: #4A9DB8;             /* Mid sea */
   --sea: #1A6B8A;
   --whatsapp: #25D366;
+  /* CTA gradient pair (was orange #C4622D → #E8841C) */
+  --cta-from: #1A6B8A;
+  --cta-to: #4A9DB8;
+  --cta-shadow: rgba(26,107,138,0.5);
 }
 
 * { box-sizing: border-box; }
@@ -35,12 +40,12 @@ body {
 h1,h2,h3,h4 { font-family: 'Frank Ruhl Libre', serif; }
 
 /* ── Buttons ── */
-.btn-gold { background: var(--gold); color: #2C1A0E; @apply font-bold py-3 px-6 rounded-xl transition-all duration-300 inline-flex items-center gap-2; }
-.btn-gold:hover { filter: brightness(1.08); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(200,169,110,0.4); }
+.btn-gold { background: linear-gradient(135deg, var(--cta-from), var(--cta-to)); color: #FFFFFF; @apply font-bold py-3 px-6 rounded-xl transition-all duration-300 inline-flex items-center gap-2; }
+.btn-gold:hover { filter: brightness(1.08); transform: translateY(-1px); box-shadow: 0 6px 20px var(--cta-shadow); }
 .btn-whatsapp { background: var(--whatsapp); @apply text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 inline-flex items-center gap-2; }
 .btn-whatsapp:hover { filter: brightness(1.08); transform: translateY(-1px); }
-.btn-outline { border: 2px solid var(--gold); color: #8B6200; @apply font-bold py-3 px-6 rounded-xl transition-all duration-300 inline-flex items-center gap-2; }
-.btn-outline:hover { background: var(--gold); color: #2C1A0E; }
+.btn-outline { border: 2px solid var(--gold); color: var(--gold); @apply font-bold py-3 px-6 rounded-xl transition-all duration-300 inline-flex items-center gap-2; }
+.btn-outline:hover { background: var(--gold); color: #FFFFFF; }
 .btn-terra { background: var(--terra); @apply text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 inline-flex items-center gap-2; }
 .btn-terra:hover { filter: brightness(1.08); transform: translateY(-1px); }
 
@@ -58,10 +63,10 @@ h1,h2,h3,h4 { font-family: 'Frank Ruhl Libre', serif; }
 }
 
 /* ── Section helpers ── */
-.section-title { @apply text-3xl md:text-4xl font-bold text-center mb-4; color: #8B5E00; font-family: 'Frank Ruhl Libre', serif; }
-.section-subtitle { @apply text-center text-lg mb-10; color: #6B4A00; opacity: 0.85; }
+.section-title { @apply text-3xl md:text-4xl font-bold text-center mb-4; color: #0D3A56; font-family: 'Frank Ruhl Libre', serif; }
+.section-subtitle { @apply text-center text-lg mb-10; color: #1A6B8A; opacity: 0.9; }
 .gold-divider { @apply w-24 h-1 mx-auto rounded-full mb-8; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-.credit-badge { background: linear-gradient(135deg, var(--gold), #D4B060); color: #2C1A0E; font-weight: 700; border-radius: 12px; padding: 3px 10px; font-size: 0.8rem; }
+.credit-badge { background: linear-gradient(135deg, var(--gold), #4A9DB8); color: #FFFFFF; font-weight: 700; border-radius: 12px; padding: 3px 10px; font-size: 0.8rem; }
 
 /* ── Menu cards ── */
 .menu-card {
@@ -83,9 +88,9 @@ h1,h2,h3,h4 { font-family: 'Frank Ruhl Libre', serif; }
   position: sticky; top: 0; z-index: 1000;
   backdrop-filter: blur(28px) saturate(1.2);
   -webkit-backdrop-filter: blur(28px) saturate(1.2);
-  background: rgba(248,240,220,0.55);
-  border-bottom: 1px solid rgba(200,169,110,0.4);
-  box-shadow: 0 2px 20px rgba(44,26,14,0.08);
+  background: rgba(176,212,227,0.45);
+  border-bottom: 1px solid rgba(74,157,184,0.4);
+  box-shadow: 0 2px 20px rgba(13,58,86,0.1);
 }
 
 /* ── Image sections ── */

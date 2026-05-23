@@ -2,30 +2,31 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 
 const TOTAL = 5
 
+// Sea-blue palette tiles
 const GAMES = [
-  { key: 'qr',     icon: '🎯', title: 'מסע 10 התחנות', sub: 'ציד QR בסמטאות', color: '#C4622D' },
-  { key: 'spin',   icon: '🎡', title: 'גלגל המזל',     sub: 'סובב וקבל פרס',  color: '#B8951A' },
-  { key: 'quiz',   icon: '🧠', title: 'חידון יפו',      sub: '10 שאלות + פרס', color: '#1A6B8A' },
-  { key: 'selfie', icon: '📷', title: 'ציד הסלפי',     sub: '10 צילומים',     color: '#8B2500' },
+  { key: 'qr',     icon: '🎯', title: 'מצאו את המטמון', sub: 'ציד QR בסמטאות',  color: '#0D3A56' },
+  { key: 'spin',   icon: '🎡', title: 'הגרלת היום',     sub: 'גלגל מזל לילדים', color: '#1A6B8A' },
+  { key: 'quiz',   icon: '🧠', title: 'חידון יפו',       sub: '10 שאלות + פרס',  color: '#2D5F8B' },
+  { key: 'selfie', icon: '📷', title: 'ציד הסלפי',      sub: '10 צילומים שווים', color: '#4A9DB8' },
 ]
 
 const PLACES = [
-  { key: 'map',     icon: '🗺️', title: 'מפת המתחם',     sub: '12 מקומות אמיתיים', color: '#2E7D32' },
-  { key: 'tours',   icon: '🚶', title: 'סיורים מודרכים', sub: 'משפחות, זוגות',     color: '#6B4A00' },
-  { key: 'arrival', icon: '🚗', title: 'איך מגיעים',     sub: 'הוראות הגעה ליפו',  color: '#455A64' },
+  { key: 'map',     icon: '🗺️', title: 'מפת המתחם',          sub: '12 מקומות אמיתיים', color: '#0D3A56' },
+  { key: 'tours',   icon: '🚶', title: 'סיורים אינטראקטיביים', sub: 'משפחות · זוגות · יחידים', color: '#1A6B8A' },
+  { key: 'arrival', icon: '🚗', title: 'הגעה ליפו העתיקה',     sub: 'איך להגיע בקלות',   color: '#4A9DB8' },
 ]
 
 const COMMUNITY = [
-  { key: 'community', icon: '👥', title: 'הקהילה שלנו',    sub: 'מי אנחנו ולמה',     color: '#0D6356' },
-  { key: 'credits',   icon: '🏅', title: 'הקרדיטים שלי',   sub: 'איך צוברים והטבות', color: '#C8951A' },
-  { key: 'events',    icon: '🎪', title: 'אירועים',         sub: 'מה קורה ביפו',      color: '#7B1FA2' },
-  { key: 'store',     icon: '🛒', title: 'חנות מקומית',     sub: 'מוצרים יפואים',      color: '#5D4037' },
+  { key: 'community', icon: '👥', title: 'הקהילה שלנו',     sub: 'הצטרפות ושיתוף',    color: '#0D3A56' },
+  { key: 'credits',   icon: '🏅', title: 'קופונים וקרדיטים', sub: 'איך צוברים והטבות', color: '#1A6B8A' },
+  { key: 'events',    icon: '🎪', title: 'השבוע ביפו',       sub: 'מה קורה היום ביפו', color: '#2D5F8B' },
+  { key: 'store',     icon: '🛒', title: 'חנות מוצרי השבוע',  sub: 'מוצרי גלריות יפואיות', color: '#4A9DB8' },
 ]
 
 const INFO = [
-  { key: 'about',   icon: '🏛️', title: 'על חפ"י',       sub: 'מה זה ולמה',       color: '#1565C0' },
-  { key: 'faq',     icon: '❓', title: 'שאלות נפוצות',   sub: 'תשובות לכל שאלה',   color: '#6A1B9A' },
-  { key: 'contact', icon: '✉️', title: 'צור קשר',        sub: 'שאל אותנו',         color: '#00695C' },
+  { key: 'about',   icon: '🏛️', title: 'על חפ"י',       sub: 'אמנות העתיד · חוויה חיה', color: '#0D3A56' },
+  { key: 'faq',     icon: '❓', title: 'שאלות נפוצות',   sub: 'תשובות לכל שאלה',         color: '#2D5F8B' },
+  { key: 'contact', icon: '✉️', title: 'צור קשר',        sub: 'שלח לנו הודעה',           color: '#4A9DB8' },
 ]
 
 function CardFrame({ active, children }) {
@@ -34,11 +35,11 @@ function CardFrame({ active, children }) {
       <div
         className="w-full max-w-3xl rounded-3xl md:rounded-[36px] p-4 md:p-10 transition-all duration-500"
         style={{
-          background: 'rgba(255,252,245,0.55)',
-          backdropFilter: 'blur(28px) saturate(1.25)',
-          WebkitBackdropFilter: 'blur(28px) saturate(1.25)',
-          border: '2px solid rgba(200,169,110,0.55)',
-          boxShadow: '0 16px 50px rgba(44,26,14,0.25), 0 4px 16px rgba(44,26,14,0.12)',
+          background: 'rgba(176,212,227,0.48)',
+          backdropFilter: 'blur(28px) saturate(1.3)',
+          WebkitBackdropFilter: 'blur(28px) saturate(1.3)',
+          border: '2px solid rgba(225,240,245,0.55)',
+          boxShadow: '0 16px 50px rgba(13,58,86,0.3), 0 4px 16px rgba(13,58,86,0.15), inset 0 1px 0 rgba(255,255,255,0.4)',
           opacity: active ? 1 : 0.82,
           transform: active ? 'scale(1)' : 'scale(0.96)',
           maxHeight: 'calc(100vh - 140px)',
@@ -92,16 +93,19 @@ function CardWelcome({ active, onNext }) {
     <CardFrame active={active}>
       <div className="text-center">
         <div className="inline-block mb-3 md:mb-5 px-3 md:px-5 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-bold border-2"
-          style={{ color: '#8B5E00', borderColor: 'rgba(200,169,110,0.5)', background: 'rgba(255,255,255,0.7)' }}>
+          style={{ color: '#0D3A56', borderColor: 'rgba(74,157,184,0.55)', background: 'rgba(225,240,245,0.75)' }}>
           🏛️ ברוכים הבאים לחפ"י
         </div>
         <h1 className="text-3xl md:text-7xl font-black mb-2 md:mb-4 leading-tight"
-          style={{ color: '#8B5E00', fontFamily: 'Frank Ruhl Libre, serif' }}>
+          style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif', textShadow: '0 2px 8px rgba(255,255,255,0.5)' }}>
           יפו העתיקה<br />
-          <span style={{ color: '#C4622D' }}>כחוויה חיה</span>
+          <span style={{ color: '#1A6B8A' }}>כחוויה חיה</span>
         </h1>
-        <p className="text-sm md:text-2xl mb-4 md:mb-6 max-w-2xl mx-auto font-medium" style={{ color: '#2C1A0E' }}>
+        <p className="text-sm md:text-xl mb-3 md:mb-4 max-w-2xl mx-auto font-medium" style={{ color: '#0D3A56' }}>
           משחקים · מפה · קהילה — הכל במקום אחד 🎉
+        </p>
+        <p className="text-xs md:text-sm mb-4 md:mb-6 max-w-2xl mx-auto" style={{ color: '#1A6B8A' }}>
+          להפוך את יפו העתיקה ממקום שמבקרים בו — לחוויה שמשתתפים בה ✨
         </p>
         <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-4 md:mb-6">
           {[
@@ -110,18 +114,18 @@ function CardWelcome({ active, onNext }) {
             { num: '12', label: 'מקומות' },
           ].map(s => (
             <div key={s.label} className="px-3 py-1.5 md:px-5 md:py-3 rounded-xl md:rounded-2xl"
-              style={{ background: 'rgba(200,169,110,0.18)', border: '2px solid rgba(200,169,110,0.4)' }}>
-              <div className="text-xl md:text-3xl font-black leading-none" style={{ color: '#8B5E00', fontFamily: 'Frank Ruhl Libre, serif' }}>{s.num}</div>
-              <div className="text-[10px] md:text-xs font-bold mt-0.5" style={{ color: '#6B4A00' }}>{s.label}</div>
+              style={{ background: 'rgba(74,157,184,0.22)', border: '2px solid rgba(26,107,138,0.45)' }}>
+              <div className="text-xl md:text-3xl font-black leading-none" style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif' }}>{s.num}</div>
+              <div className="text-[10px] md:text-xs font-bold mt-0.5" style={{ color: '#1A6B8A' }}>{s.label}</div>
             </div>
           ))}
         </div>
         <button onClick={onNext}
           className="py-3 md:py-5 px-8 md:px-12 rounded-2xl font-black text-base md:text-xl transition-all hover:scale-105 active:scale-95"
           style={{
-            background: 'linear-gradient(135deg, #C4622D, #E8841C)',
+            background: 'linear-gradient(135deg, #0D3A56, #4A9DB8)',
             color: '#FFFFFF',
-            boxShadow: '0 8px 24px rgba(196,98,45,0.5), inset 0 1px 0 rgba(255,255,255,0.35)',
+            boxShadow: '0 8px 24px rgba(26,107,138,0.55), inset 0 1px 0 rgba(255,255,255,0.35)',
             border: '2px solid rgba(255,255,255,0.4)',
             textShadow: '0 1px 4px rgba(0,0,0,0.3)',
           }}>
@@ -137,10 +141,10 @@ function CardCategory({ active, icon, title, desc, items, cols, onOpen }) {
     <CardFrame active={active}>
       <div className="text-center mb-3 md:mb-5">
         <div className="text-3xl md:text-5xl mb-1 md:mb-2">{icon}</div>
-        <h2 className="text-xl md:text-4xl font-black mb-0.5 md:mb-1" style={{ color: '#8B5E00', fontFamily: 'Frank Ruhl Libre, serif' }}>
+        <h2 className="text-xl md:text-4xl font-black mb-0.5 md:mb-1" style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif', textShadow: '0 1px 4px rgba(255,255,255,0.3)' }}>
           {title}
         </h2>
-        <p className="text-xs md:text-base" style={{ color: '#2C1A0E', opacity: 0.85 }}>
+        <p className="text-xs md:text-base font-medium" style={{ color: '#1A6B8A' }}>
           {desc}
         </p>
       </div>
@@ -160,10 +164,10 @@ function CardCommunity(p) {
     <CardFrame active={p.active}>
       <div className="text-center mb-3 md:mb-5">
         <div className="text-3xl md:text-5xl mb-1 md:mb-2">💬</div>
-        <h2 className="text-xl md:text-4xl font-black mb-0.5 md:mb-1" style={{ color: '#8B5E00', fontFamily: 'Frank Ruhl Libre, serif' }}>
+        <h2 className="text-xl md:text-4xl font-black mb-0.5 md:mb-1" style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif', textShadow: '0 1px 4px rgba(255,255,255,0.3)' }}>
           קהילה ופעילות
         </h2>
-        <p className="text-xs md:text-base" style={{ color: '#2C1A0E', opacity: 0.85 }}>
+        <p className="text-xs md:text-base font-medium" style={{ color: '#1A6B8A' }}>
           הצטרף, צבור נקודות, קבל הטבות
         </p>
       </div>
@@ -249,7 +253,7 @@ export default function Journey({ onOpenDrawer }) {
     >
       {/* Progress pill at top — compact on mobile */}
       <div className="absolute top-2 md:top-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 md:gap-2 px-2.5 md:px-4 py-1.5 md:py-2 rounded-full"
-        style={{ background: 'rgba(255,252,245,0.85)', backdropFilter: 'blur(10px)', border: '1px solid rgba(200,169,110,0.4)', boxShadow: '0 4px 14px rgba(44,26,14,0.1)' }}>
+        style={{ background: 'rgba(225,240,245,0.85)', backdropFilter: 'blur(10px)', border: '1px solid rgba(74,157,184,0.45)', boxShadow: '0 4px 14px rgba(13,58,86,0.12)' }}>
         {DOT_LABELS.map((label, i) => (
           <button key={i} onClick={() => go(i)}
             className="transition-all rounded-full"
@@ -257,13 +261,13 @@ export default function Journey({ onOpenDrawer }) {
             style={{
               width: i === active ? 32 : 8,
               height: 8,
-              background: i === active ? 'linear-gradient(90deg, #C4622D, #E8841C)' : i < active ? '#C8A96E' : 'rgba(139,94,0,0.25)',
+              background: i === active ? 'linear-gradient(90deg, #0D3A56, #4A9DB8)' : i < active ? '#4A9DB8' : 'rgba(13,58,86,0.25)',
               border: 'none',
               cursor: 'pointer',
             }}
           />
         ))}
-        <span className="mr-2 text-[10px] md:text-xs font-bold tabular-nums" style={{ color: '#8B5E00' }}>
+        <span className="mr-2 text-[10px] md:text-xs font-bold tabular-nums" style={{ color: '#0D3A56' }}>
           {active + 1}/{TOTAL}
         </span>
       </div>
@@ -296,10 +300,10 @@ export default function Journey({ onOpenDrawer }) {
         aria-label="הקודם"
         className="hidden md:flex absolute top-1/2 -translate-y-1/2 right-4 z-20 w-14 h-14 rounded-full items-center justify-center text-2xl font-black transition-all hover:scale-110 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
         style={{
-          background: 'rgba(255,252,245,0.95)',
-          color: '#8B5E00',
-          border: '2px solid rgba(200,169,110,0.5)',
-          boxShadow: '0 8px 24px rgba(44,26,14,0.15)',
+          background: 'rgba(225,240,245,0.95)',
+          color: '#0D3A56',
+          border: '2px solid rgba(74,157,184,0.5)',
+          boxShadow: '0 8px 24px rgba(13,58,86,0.15)',
           cursor: 'pointer',
         }}>
         →
@@ -310,10 +314,10 @@ export default function Journey({ onOpenDrawer }) {
         aria-label="הבא"
         className="hidden md:flex absolute top-1/2 -translate-y-1/2 left-4 z-20 w-14 h-14 rounded-full items-center justify-center text-2xl font-black transition-all hover:scale-110 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
         style={{
-          background: 'linear-gradient(135deg, #C4622D, #E8841C)',
+          background: 'linear-gradient(135deg, #0D3A56, #4A9DB8)',
           color: '#FFFFFF',
           border: '2px solid rgba(255,255,255,0.4)',
-          boxShadow: '0 8px 24px rgba(196,98,45,0.5)',
+          boxShadow: '0 8px 24px rgba(26,107,138,0.55)',
           cursor: 'pointer',
         }}>
         ←
@@ -325,7 +329,7 @@ export default function Journey({ onOpenDrawer }) {
           onClick={prev}
           disabled={active === 0}
           className="md:hidden py-2 px-4 rounded-xl font-bold text-xs transition-all hover:scale-105 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
-          style={{ background: 'rgba(255,252,245,0.95)', color: '#8B5E00', border: '2px solid rgba(200,169,110,0.5)', boxShadow: '0 2px 8px rgba(44,26,14,0.1)' }}>
+          style={{ background: 'rgba(225,240,245,0.95)', color: '#0D3A56', border: '2px solid rgba(74,157,184,0.5)', boxShadow: '0 2px 8px rgba(13,58,86,0.12)' }}>
           → הקודם
         </button>
         {active < TOTAL - 1 && (
@@ -333,9 +337,9 @@ export default function Journey({ onOpenDrawer }) {
             onClick={next}
             className="md:hidden py-2 px-5 rounded-xl font-black text-sm transition-all hover:scale-105 active:scale-95"
             style={{
-              background: 'linear-gradient(135deg, #C4622D, #E8841C)',
+              background: 'linear-gradient(135deg, #0D3A56, #4A9DB8)',
               color: '#FFFFFF',
-              boxShadow: '0 6px 16px rgba(196,98,45,0.5), inset 0 1px 0 rgba(255,255,255,0.35)',
+              boxShadow: '0 6px 16px rgba(26,107,138,0.55), inset 0 1px 0 rgba(255,255,255,0.35)',
               border: '2px solid rgba(255,255,255,0.4)',
               textShadow: '0 1px 3px rgba(0,0,0,0.3)',
             }}>
@@ -347,7 +351,7 @@ export default function Journey({ onOpenDrawer }) {
       {/* Swipe hint - first card mobile only */}
       {active === 0 && (
         <div className="md:hidden absolute bottom-12 left-1/2 -translate-x-1/2 text-[10px] font-bold flex items-center gap-2"
-          style={{ color: '#8B5E00', opacity: 0.6 }}>
+          style={{ color: '#0D3A56', opacity: 0.7 }}>
           <span className="animate-pulse">👉 החלק ימינה</span>
         </div>
       )}
