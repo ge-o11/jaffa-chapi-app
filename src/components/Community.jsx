@@ -8,7 +8,7 @@ const steps = [
 
 export default function Community() {
   return (
-    <section id="community" className="py-24" style={{ background: 'linear-gradient(180deg, rgba(245,237,214,0.94) 0%, rgba(237,224,196,0.92) 100%)' }}>
+    <section id="community" className="py-24" style={{ background: 'linear-gradient(180deg, rgba(245,237,214,0.58) 0%, rgba(237,224,196,0.55) 100%)' }}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-block mb-4 px-4 py-1 rounded-full text-xs border" style={{ color: 'var(--gold)', borderColor: 'rgba(200,169,110,0.3)', background: 'rgba(200,169,110,0.06)' }}>

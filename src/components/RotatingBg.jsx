@@ -40,11 +40,11 @@ export default function RotatingBg() {
           }}
         />
       ))}
-      {/* Warm overlay for readability */}
+      {/* Warm overlay for readability — light so photos shine through */}
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(180deg, rgba(255,250,235,0.75) 0%, rgba(245,237,214,0.82) 50%, rgba(237,224,196,0.88) 100%)',
+        background: 'linear-gradient(180deg, rgba(255,250,235,0.42) 0%, rgba(245,237,214,0.48) 50%, rgba(237,224,196,0.55) 100%)',
       }} />
       {/* Photo indicator dots */}
       <div style={{

@@ -15,8 +15,8 @@ function CardFrame({ active, color, children }) {
       <div
         className="w-full max-w-4xl rounded-[36px] p-6 md:p-12 transition-all duration-500"
         style={{
-          background: 'rgba(255,252,245,0.94)',
-          backdropFilter: 'blur(14px)',
+          background: 'rgba(255,252,245,0.82)',
+          backdropFilter: 'blur(18px) saturate(1.1)',
           border: '3px solid rgba(200,169,110,0.5)',
           boxShadow: `0 24px 70px rgba(44,26,14,0.22), 0 4px 16px rgba(44,26,14,0.1)`,
           opacity: active ? 1 : 0.85,

@@ -18,7 +18,7 @@ const categoryColors = {
 
 export default function Events() {
   return (
-    <section id="events" className="py-24" style={{ background: 'linear-gradient(180deg, rgba(245,237,214,0.94) 0%, rgba(237,224,196,0.92) 100%)' }}>
+    <section id="events" className="py-24" style={{ background: 'linear-gradient(180deg, rgba(245,237,214,0.58) 0%, rgba(237,224,196,0.55) 100%)' }}>
       <div className="max-w-5xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="section-title">השבוע ביפו העתיקה</h2>

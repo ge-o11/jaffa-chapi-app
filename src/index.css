@@ -6,8 +6,8 @@
   --gold: #C8A96E;
   --gold-light: #A67C1A;
   --gold-pale: #E8D5A3;
-  --navy: rgba(245,237,214,0.9);
-  --navy-light: rgba(255,252,245,0.94);
+  --navy: rgba(245,237,214,0.55);
+  --navy-light: rgba(255,252,245,0.92);
   --parchment: #2C1A0E;
   --terra: #C4622D;
   --stone: #8B7355;
@@ -81,9 +81,9 @@ h1,h2,h3,h4 { font-family: 'Frank Ruhl Libre', serif; }
 /* ── Header ── */
 .sticky-header {
   position: sticky; top: 0; z-index: 1000;
-  backdrop-filter: blur(20px);
-  background: rgba(248,240,220,0.96);
-  border-bottom: 1px solid rgba(200,169,110,0.35);
+  backdrop-filter: blur(24px) saturate(1.15);
+  background: rgba(248,240,220,0.72);
+  border-bottom: 1px solid rgba(200,169,110,0.4);
   box-shadow: 0 2px 20px rgba(44,26,14,0.08);
 }
 
