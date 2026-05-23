@@ -3,6 +3,7 @@ import { UserProvider } from './context/UserContext'
 import Header from './components/Header'
 import RotatingBg from './components/RotatingBg'
 import Journey from './components/Journey'
+import GameDrawer from './components/GameDrawer'
 import Community from './components/Community'
 import Credits from './components/Credits'
 import VenueMap from './components/VenueMap'
@@ -19,6 +20,14 @@ import Footer from './components/Footer'
 import JaffaQuiz from './components/JaffaQuiz'
 import SelfieHunt from './components/SelfieHunt'
 import AuthModal from './components/AuthModal'
+
+const DRAWER_CONTENT = {
+  qr:     { title: '🎯 מסע 10 התחנות', render: () => <QRHuntGame /> },
+  spin:   { title: '🎡 גלגל המזל',     render: () => <Lottery /> },
+  quiz:   { title: '🧠 חידון יפו',      render: () => <JaffaQuiz /> },
+  selfie: { title: '📷 ציד הסלפי',     render: () => <SelfieHunt /> },
+  map:    { title: '🗺️ מפת יפו העתיקה', render: () => <VenueMap /> },
+}
 
 function WaFloat() {
   return (
@@ -37,21 +46,18 @@ function WaFloat() {
 
 function AppInner() {
   const [showAuth, setShowAuth] = useState(false)
+  const [drawer, setDrawer] = useState(null) // 'qr' | 'spin' | 'quiz' | 'selfie' | 'map' | null
+  const active = drawer ? DRAWER_CONTENT[drawer] : null
+
   return (
     <div style={{ direction: 'rtl', textAlign: 'right' }}>
       <RotatingBg />
       <Header onLoginClick={() => setShowAuth(true)} />
 
-      {/* The 5-card guided journey is the main landing experience */}
-      <Journey />
+      <Journey onOpenDrawer={setDrawer} />
 
-      {/* Detailed experiences — accessible from journey cards */}
+      {/* Sections that stay in the main scroll (info / about / contact pages) */}
       <main>
-        <VenueMap />
-        <QRHuntGame />
-        <JaffaQuiz />
-        <SelfieHunt />
-        <Lottery />
         <Community />
         <Credits />
         <Tours />
@@ -64,6 +70,15 @@ function AppInner() {
       </main>
       <Footer />
       <WaFloat />
+
+      <GameDrawer
+        open={!!drawer}
+        title={active?.title || ''}
+        onClose={() => setDrawer(null)}
+      >
+        {active?.render()}
+      </GameDrawer>
+
       {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
     </div>
   )

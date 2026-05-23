@@ -3,10 +3,10 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 const TOTAL = 5
 
 const GAMES = [
-  { href: '#game', icon: '🎯', title: 'מסע 10 התחנות', sub: 'ציד QR בסמטאות', color: '#C4622D' },
-  { href: '#lottery', icon: '🎡', title: 'גלגל המזל', sub: 'סובב וקבל פרס', color: '#B8951A' },
-  { href: '#quiz', icon: '🧠', title: 'חידון יפו', sub: '10 שאלות + פרס', color: '#1A6B8A' },
-  { href: '#selfie-hunt', icon: '📷', title: 'ציד הסלפי', sub: '10 צילומים שווי פרס', color: '#8B2500' },
+  { key: 'qr', icon: '🎯', title: 'מסע 10 התחנות', sub: 'ציד QR בסמטאות', color: '#C4622D' },
+  { key: 'spin', icon: '🎡', title: 'גלגל המזל', sub: 'סובב וקבל פרס', color: '#B8951A' },
+  { key: 'quiz', icon: '🧠', title: 'חידון יפו', sub: '10 שאלות + פרס', color: '#1A6B8A' },
+  { key: 'selfie', icon: '📷', title: 'ציד הסלפי', sub: '10 צילומים שווי פרס', color: '#8B2500' },
 ]
 
 function CardFrame({ active, color, children }) {
@@ -74,7 +74,7 @@ function CardWelcome({ active, onNext }) {
   )
 }
 
-function CardGames({ active }) {
+function CardGames({ active, onOpen }) {
   return (
     <CardFrame active={active} color="#C4622D">
       <div className="text-center mb-6">
@@ -88,27 +88,27 @@ function CardGames({ active }) {
       </div>
       <div className="grid grid-cols-2 gap-3 md:gap-5">
         {GAMES.map(g => (
-          <a key={g.href} href={g.href}
-            className="group block rounded-3xl p-4 md:p-6 text-center transition-all hover:-translate-y-2 active:scale-95"
+          <button key={g.key} onClick={() => onOpen(g.key)}
+            className="group block rounded-3xl p-4 md:p-6 text-center transition-all hover:-translate-y-2 active:scale-95 w-full"
             style={{
               background: `linear-gradient(135deg, ${g.color}, ${g.color}cc)`,
               boxShadow: `0 10px 28px ${g.color}66, inset 0 1px 0 rgba(255,255,255,0.35)`,
               border: '3px solid rgba(255,255,255,0.45)',
-              textDecoration: 'none',
+              cursor: 'pointer',
             }}>
             <div className="text-4xl md:text-6xl mb-2 transition-transform group-hover:scale-110"
               style={{ filter: 'drop-shadow(0 3px 8px rgba(0,0,0,0.3))' }}>{g.icon}</div>
             <div className="font-black text-base md:text-2xl mb-1"
               style={{ color: '#FFFFFF', textShadow: '0 2px 8px rgba(0,0,0,0.4)', fontFamily: 'Frank Ruhl Libre, serif' }}>{g.title}</div>
             <div className="text-xs md:text-sm font-medium" style={{ color: 'rgba(255,255,255,0.95)' }}>{g.sub}</div>
-          </a>
+          </button>
         ))}
       </div>
     </CardFrame>
   )
 }
 
-function CardMap({ active }) {
+function CardMap({ active, onOpen }) {
   return (
     <CardFrame active={active} color="#2E7D32">
       <div className="text-center">
@@ -131,7 +131,7 @@ function CardMap({ active }) {
             </div>
           ))}
         </div>
-        <a href="#map"
+        <button onClick={() => onOpen('map')}
           className="inline-block py-4 md:py-5 px-10 md:px-12 rounded-2xl font-black text-lg md:text-xl transition-all hover:scale-105 active:scale-95"
           style={{
             background: 'linear-gradient(135deg, #2E7D32, #66BB6A)',
@@ -139,10 +139,10 @@ function CardMap({ active }) {
             boxShadow: '0 12px 32px rgba(46,125,50,0.5), inset 0 1px 0 rgba(255,255,255,0.35)',
             border: '3px solid rgba(255,255,255,0.4)',
             textShadow: '0 1px 4px rgba(0,0,0,0.3)',
-            textDecoration: 'none',
+            cursor: 'pointer',
           }}>
           🗺️ פתח את המפה
-        </a>
+        </button>
       </div>
     </CardFrame>
   )
@@ -191,7 +191,26 @@ function CardCommunity({ active }) {
   )
 }
 
-function CardDone({ active }) {
+function CardDone({ active, onOpen }) {
+  const drawerItems = [
+    { key: 'qr', icon: '🎯', label: 'מסע QR' },
+    { key: 'map', icon: '🗺️', label: 'מפה' },
+    { key: 'spin', icon: '🎡', label: 'גלגל' },
+    { key: 'quiz', icon: '🧠', label: 'חידון' },
+    { key: 'selfie', icon: '📷', label: 'סלפי' },
+  ]
+  const anchorItems = [
+    { href: '#tours', icon: '🚶', label: 'סיורים' },
+    { href: '#events', icon: '🎪', label: 'אירועים' },
+    { href: '#contact', icon: '✉️', label: 'צור קשר' },
+  ]
+  const tileStyle = {
+    background: 'rgba(255,252,245,0.95)',
+    border: '2px solid rgba(200,169,110,0.45)',
+    boxShadow: '0 4px 12px rgba(44,26,14,0.08)',
+    textDecoration: 'none',
+    cursor: 'pointer',
+  }
   return (
     <CardFrame active={active} color="#B8951A">
       <div className="text-center">
@@ -203,24 +222,18 @@ function CardDone({ active }) {
           קח קיצור דרך לכל מקום שתרצה 👇
         </p>
         <div className="grid grid-cols-4 gap-2 md:gap-3 mb-8 max-w-3xl mx-auto">
-          {[
-            { href: '#game', icon: '🎯', label: 'מסע QR' },
-            { href: '#map', icon: '🗺️', label: 'מפה' },
-            { href: '#lottery', icon: '🎡', label: 'גלגל' },
-            { href: '#quiz', icon: '🧠', label: 'חידון' },
-            { href: '#selfie-hunt', icon: '📷', label: 'סלפי' },
-            { href: '#tours', icon: '🚶', label: 'סיורים' },
-            { href: '#events', icon: '🎪', label: 'אירועים' },
-            { href: '#contact', icon: '✉️', label: 'צור קשר' },
-          ].map(s => (
+          {drawerItems.map(s => (
+            <button key={s.key} onClick={() => onOpen(s.key)}
+              className="p-3 md:p-4 rounded-2xl text-center transition-all hover:-translate-y-1 active:scale-95 w-full"
+              style={tileStyle}>
+              <div className="text-2xl md:text-3xl mb-1">{s.icon}</div>
+              <div className="text-xs font-bold" style={{ color: '#8B5E00' }}>{s.label}</div>
+            </button>
+          ))}
+          {anchorItems.map(s => (
             <a key={s.href} href={s.href}
               className="p-3 md:p-4 rounded-2xl text-center transition-all hover:-translate-y-1 active:scale-95"
-              style={{
-                background: 'rgba(255,252,245,0.95)',
-                border: '2px solid rgba(200,169,110,0.45)',
-                boxShadow: '0 4px 12px rgba(44,26,14,0.08)',
-                textDecoration: 'none',
-              }}>
+              style={tileStyle}>
               <div className="text-2xl md:text-3xl mb-1">{s.icon}</div>
               <div className="text-xs font-bold" style={{ color: '#8B5E00' }}>{s.label}</div>
             </a>
@@ -238,7 +251,7 @@ function CardDone({ active }) {
 
 const CARDS = [CardWelcome, CardGames, CardMap, CardCommunity, CardDone]
 
-export default function Journey() {
+export default function Journey({ onOpenDrawer }) {
   const [active, setActive] = useState(0)
   const touchStartRef = useRef(null)
   const containerRef = useRef(null)
@@ -321,7 +334,7 @@ export default function Journey() {
                 pointerEvents: offset === 0 ? 'auto' : 'none',
               }}
             >
-              <Card active={offset === 0} onNext={next} onPrev={prev} />
+              <Card active={offset === 0} onNext={next} onPrev={prev} onOpen={onOpenDrawer} />
             </div>
           )
         })}
