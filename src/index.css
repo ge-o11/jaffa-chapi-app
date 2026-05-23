@@ -19,8 +19,7 @@
 html {
   scroll-behavior: smooth;
   direction: rtl;
-  background: url('https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?w=1600&q=50') center/cover fixed;
-  background-color: #2C1A0E;
+  background-color: #F5EDD6;
 }
 
 body {

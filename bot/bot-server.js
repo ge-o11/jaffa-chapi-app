@@ -408,8 +408,16 @@ function initWhatsApp() {
     const JOIN_SUBTYPES  = ['add', 'invite', 'linked_group_join'];
     const LEAVE_SUBTYPES = ['remove', 'leave', 'linked_group_leave'];
 
+    async function groupNameOf(id) {
+        try { const c = await waClient.getChatById(id); return c?.name || id; } catch { return id; }
+    }
+
     waClient.on('group_join', async notification => {
         const groupId = notification.id.remote;
+        const gName = await groupNameOf(groupId);
+        const inSelected = selectedGroup && groupId === selectedGroup.id;
+        log(`📥 group_join in "${gName}" (${groupId})${inSelected ? ' ← MONITORED' : ' ← not monitored'}`);
+        pushActivity(`📥 הצטרפות ב-"${gName}"${inSelected ? ' (קבוצה מנוטרת)' : ' (קבוצה אחרת)'}`);
         if (selectedGroup && groupId !== selectedGroup.id) return;
         const notifId = notification.id._serialized || `join-${Date.now()}`;
         let userIds = notification.recipientIds || [];
@@ -421,6 +429,9 @@ function initWhatsApp() {
 
     waClient.on('group_leave', async notification => {
         const groupId = notification.id.remote;
+        const gName = await groupNameOf(groupId);
+        log(`📤 group_leave in "${gName}" (${groupId})`);
+        pushActivity(`📤 עזיבה ב-"${gName}"`);
         if (selectedGroup && groupId !== selectedGroup.id) return;
         const notifId = notification.id._serialized || `leave-${Date.now()}`;
         let userIds = notification.recipientIds || [];
@@ -433,6 +444,9 @@ function initWhatsApp() {
     waClient.on('message', async msg => {
         if (msg.type !== 'gp2') return;
         const groupId = msg.id?.remote || msg.from;
+        const gName = await groupNameOf(groupId);
+        const inSelected = selectedGroup && groupId === selectedGroup.id;
+        log(`💬 gp2 [${msg.subtype}] in "${gName}"${inSelected ? ' ← MONITORED' : ''}`);
         if (selectedGroup && groupId !== selectedGroup.id) return;
         const notifId = msg.id?._serialized || `gp2-${Date.now()}`;
         if (JOIN_SUBTYPES.includes(msg.subtype)) {
