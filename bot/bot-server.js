@@ -26,30 +26,238 @@ const appUrl         = cfg.appUrl || 'https://jaffa-chapi.co.il';
 const CREDITS_JOIN   = cfg.creditsOnJoin || 10;
 const CREDITS_PER_DAY = cfg.creditsPerDay || 1;
 
-// ── Supabase ──────────────────────────────────────────────────────────────────
-// Replace with your own Supabase project credentials
-const SUPABASE_URL = process.env.SUPABASE_URL || 'https://YOUR_PROJECT.supabase.co';
-const SUPABASE_KEY = process.env.SUPABASE_KEY || 'YOUR_ANON_KEY';
+// ── Supabase (optional — bot works without it) ────────────────────────────────
+const SUPABASE_URL = process.env.SUPABASE_URL || '';
+const SUPABASE_KEY = process.env.SUPABASE_KEY || '';
+const HAS_SUPABASE = SUPABASE_URL.startsWith('https://') && SUPABASE_KEY.startsWith('eyJ');
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, { realtime: { transport: ws } });
+const supabase = HAS_SUPABASE
+    ? createClient(SUPABASE_URL, SUPABASE_KEY, { realtime: { transport: ws } })
+    : null;
+
+if (!HAS_SUPABASE) {
+    console.log('[JAFFA-BOT] ⚠️  Supabase not configured — running in stateless mode (no member persistence)');
+}
 
 // ── HTTP server for QR display ────────────────────────────────────────────────
 const app  = express();
 let qrDataUrl = null;
 let botStatus = 'initializing';
+let connectedPhone = null;
+let groupsList = [];
+const activityLog = [];
+function pushActivity(text) {
+    activityLog.unshift({ time: new Date().toLocaleTimeString('he-IL'), text });
+    if (activityLog.length > 20) activityLog.pop();
+}
+
+app.get('/status', (req, res) => {
+    res.json({
+        status: botStatus,
+        qr: qrDataUrl,
+        phone: connectedPhone,
+        groups: groupsList,
+        selectedGroup,
+        activity: activityLog,
+        appUrl,
+    });
+});
+
+app.get('/select-group/:id', async (req, res) => {
+    const group = groupsList.find(g => g.id === req.params.id);
+    if (!group) return res.status(404).send('Group not found');
+    selectedGroup = group;
+    saveConfig({ selectedGroup: group });
+    pushActivity(`✓ נבחרה קבוצה: ${group.name}`);
+    log(`Selected group: ${group.name} (${group.id})`);
+    res.redirect('/');
+});
 
 app.get('/', (req, res) => {
     res.send(`<!DOCTYPE html>
 <html dir="rtl" lang="he">
-<head><meta charset="UTF-8"><title>חפ"י — בוט ניהול קהילה</title>
-<style>body{font-family:Arial,sans-serif;background:#0D1B2A;color:#E8D5A3;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;margin:0;text-align:center;}
-h1{color:#C8A96E;} img{border:4px solid #C8A96E;border-radius:16px;padding:12px;background:#fff;}</style>
+<head>
+<meta charset="UTF-8">
+<title>חפ"י — דשבורד הבוט</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #F5EDD6;
+    background-image: linear-gradient(rgba(245,237,214,0.92), rgba(245,237,214,0.92)),
+                      url('https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?w=1600&q=50');
+    background-attachment: fixed;
+    background-size: cover;
+    color: #2C1A0E;
+    min-height: 100vh;
+    margin: 0;
+    padding: 24px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  .card {
+    background: rgba(255,252,245,0.96);
+    border: 2px solid rgba(200,169,110,0.4);
+    border-radius: 24px;
+    padding: 32px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 32px rgba(44,26,14,0.12);
+    text-align: center;
+  }
+  h1 { color: #8B5E00; font-size: 28px; margin: 0 0 8px; font-family: 'Georgia', serif; }
+  .subtitle { color: #6B4A00; font-size: 14px; opacity: 0.7; margin-bottom: 24px; }
+  .badge {
+    display: inline-block; padding: 8px 20px; border-radius: 999px;
+    font-weight: bold; font-size: 14px; margin: 8px 0;
+  }
+  .badge.qr { background: rgba(196,98,45,0.15); color: #8B3E00; border: 1px solid #C4622D; }
+  .badge.loading { background: rgba(30,107,138,0.15); color: #0A3A56; border: 1px solid #1A6B8A; }
+  .badge.auth { background: rgba(232,184,28,0.18); color: #6B4A00; border: 1px solid #C8A96E; animation: pulse 1.5s infinite; }
+  .badge.ready { background: rgba(46,125,50,0.15); color: #1B5E20; border: 1px solid #2E7D32; }
+  .badge.error { background: rgba(198,40,40,0.12); color: #9F1010; border: 1px solid #C62828; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.6; } }
+  .qr-img { border: 4px solid #C8A96E; border-radius: 20px; padding: 16px; background: white; margin: 16px 0; max-width: 100%; box-shadow: 0 8px 32px rgba(200,169,110,0.3); }
+  .info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(200,169,110,0.2); text-align: right; }
+  .info-row:last-child { border-bottom: none; }
+  .info-label { color: #6B4A00; font-size: 14px; }
+  .info-value { color: #2C1A0E; font-weight: bold; }
+  .group-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 16px; margin: 6px 0; border-radius: 12px;
+    background: rgba(200,169,110,0.08); border: 1px solid rgba(200,169,110,0.3);
+    transition: all 0.2s;
+  }
+  .group-item:hover { background: rgba(200,169,110,0.15); }
+  .group-item.selected { background: rgba(46,125,50,0.12); border-color: #2E7D32; }
+  .group-name { color: #2C1A0E; font-weight: bold; text-align: right; flex: 1; }
+  .group-btn {
+    background: linear-gradient(135deg, #C8A96E, #B8951A);
+    color: white; border: none; padding: 8px 16px; border-radius: 8px;
+    cursor: pointer; font-weight: bold; font-size: 13px;
+    box-shadow: 0 2px 8px rgba(200,169,110,0.4);
+  }
+  .group-btn:hover { filter: brightness(1.1); }
+  .group-btn.selected { background: #2E7D32; cursor: default; }
+  .spinner {
+    border: 4px solid rgba(200,169,110,0.2); border-top: 4px solid #C8A96E;
+    border-radius: 50%; width: 50px; height: 50px;
+    animation: spin 1s linear infinite; margin: 24px auto;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .activity {
+    text-align: right; max-height: 240px; overflow-y: auto;
+    background: rgba(245,237,214,0.5); border-radius: 12px; padding: 12px;
+  }
+  .activity-item { padding: 6px 0; border-bottom: 1px solid rgba(200,169,110,0.15); font-size: 13px; }
+  .activity-item:last-child { border: none; }
+  .activity-time { color: #8B5E00; font-size: 11px; opacity: 0.7; margin-left: 8px; }
+  .step { text-align: right; padding: 8px 0; color: #2C1A0E; font-size: 14px; }
+  .step.done { color: #2E7D32; }
+  .step.current { color: #C4622D; font-weight: bold; }
+  .step.pending { opacity: 0.5; }
+  .footer { text-align: center; color: #6B4A00; font-size: 11px; opacity: 0.5; margin-top: 24px; }
+  h2 { color: #8B5E00; font-size: 20px; margin: 0 0 16px; text-align: right; }
+</style>
 </head>
 <body>
-<h1>🏛️ חפ"י — בוט קהילת יפו העתיקה</h1>
-<p>סטטוס: <strong>${botStatus}</strong></p>
-${qrDataUrl ? `<p>סרוק את קוד ה-QR בוואצ'אפ:</p><img src="${qrDataUrl}" width="260" />` : '<p>ממתין לחיבור...</p>'}
-<p style="opacity:.5;font-size:12px;margin-top:30px">${appUrl}</p>
+<div class="wrap">
+  <div class="card">
+    <h1>🏛️ חפ"י — דשבורד הבוט</h1>
+    <div class="subtitle">קהילת יפו העתיקה · 0502009350</div>
+
+    <div id="content">
+      <div class="spinner"></div>
+      <p style="color:#6B4A00">טוען...</p>
+    </div>
+  </div>
+</div>
+
+<script>
+async function refresh() {
+  try {
+    const data = await fetch('/status').then(r => r.json());
+    document.getElementById('content').innerHTML = render(data);
+  } catch (e) {
+    document.getElementById('content').innerHTML = '<div class="badge error">⚠️ הבוט לא זמין — בדוק שהוא רץ</div>';
+  }
+}
+
+function render(d) {
+  const labels = {
+    initializing: '🔄 מאתחל',
+    qr: '📱 ממתין לסריקה',
+    authenticated: '⏳ מאומת — מסיים טעינה...',
+    ready: '✅ מחובר ופעיל!',
+    disconnected: '❌ מנותק',
+    auth_failure: '⚠️ אימות נכשל',
+  };
+  const cls = d.status === 'ready' ? 'ready'
+    : d.status === 'qr' ? 'qr'
+    : d.status === 'authenticated' ? 'auth'
+    : (d.status || '').startsWith('loading') ? 'loading'
+    : (d.status || '').includes('fail') || d.status === 'disconnected' ? 'error'
+    : 'loading';
+
+  let html = '<div class="badge ' + cls + '">' + (labels[d.status] || d.status) + '</div>';
+
+  // QR phase
+  if (d.qr && d.status !== 'ready') {
+    html += '<p style="margin:16px 0;color:#2C1A0E">סרוק עם וואצ\\'אפ בטלפון 0502009350</p>';
+    html += '<img class="qr-img" src="' + d.qr + '" width="280" />';
+    html += '<div class="step current">📱 פתח את וואצ\\'אפ</div>';
+    html += '<div class="step pending">⋮ → מכשירים מקושרים → קישור מכשיר</div>';
+    html += '<div class="step pending">סרוק את הקוד שלמעלה</div>';
+  }
+  // Authenticated phase - waiting for ready
+  else if (d.status === 'authenticated' || (d.status || '').startsWith('loading')) {
+    html += '<div class="spinner"></div>';
+    html += '<p style="color:#2C1A0E;font-size:15px"><b>סריקה הצליחה!</b> ✓</p>';
+    html += '<p style="color:#6B4A00;font-size:14px;margin:8px 0">ממתין ש-WhatsApp Web יסיים לטעון...</p>';
+    html += '<p style="color:#8B5E00;font-size:12px;opacity:0.7">זה עשוי לקחת 1-3 דקות בהפעלה ראשונה</p>';
+    html += '<div style="margin-top:24px;text-align:right">';
+    html += '<div class="step done">✓ QR נסרק</div>';
+    html += '<div class="step done">✓ אימות בוצע</div>';
+    html += '<div class="step current">⏳ טוען נתוני קבוצות וצ\\'אטים...</div>';
+    html += '<div class="step pending">○ מוכן לפעולה</div>';
+    html += '</div>';
+  }
+  // Ready phase
+  else if (d.status === 'ready') {
+    html += '<div style="margin:24px 0;text-align:right">';
+    html += '<div class="info-row"><span class="info-label">מספר מחובר</span><span class="info-value">+' + (d.phone || '?') + '</span></div>';
+    html += '<div class="info-row"><span class="info-label">סטטוס</span><span class="info-value" style="color:#2E7D32">פעיל</span></div>';
+    if (d.selectedGroup) {
+      html += '<div class="info-row"><span class="info-label">קבוצה מנוטרת</span><span class="info-value">' + d.selectedGroup.name + '</span></div>';
+    }
+    html += '</div>';
+
+    if (!d.selectedGroup && d.groups && d.groups.length) {
+      html += '<h2 style="margin-top:24px">בחר קבוצה לניטור:</h2>';
+      d.groups.forEach(g => {
+        html += '<div class="group-item"><span class="group-name">' + g.name + ' (' + g.participants + ' חברים)</span>';
+        html += '<a href="/select-group/' + encodeURIComponent(g.id) + '" class="group-btn">בחר</a></div>';
+      });
+    }
+
+    if (d.activity && d.activity.length) {
+      html += '<h2 style="margin-top:24px">פעילות אחרונה</h2><div class="activity">';
+      d.activity.forEach(a => {
+        html += '<div class="activity-item"><span class="activity-time">' + a.time + '</span>' + a.text + '</div>';
+      });
+      html += '</div>';
+    }
+  }
+  // Error states
+  else if (d.status === 'disconnected' || (d.status || '').includes('fail')) {
+    html += '<p style="margin-top:16px;color:#9F1010">הבוט מנותק. ייבחן חיבור מחדש בתוך כמה שניות.</p>';
+  }
+
+  html += '<div class="footer">' + (d.appUrl || '') + '</div>';
+  return html;
+}
+
+refresh();
+setInterval(refresh, 2000);
+</script>
 </body></html>`);
 });
 
@@ -67,18 +275,21 @@ function calcCredits(dateJoined) {
     return CREDITS_JOIN + (days * CREDITS_PER_DAY);
 }
 
-// ── Supabase helpers ──────────────────────────────────────────────────────────
+// ── Supabase helpers (no-op if Supabase not configured) ──────────────────────
 async function getMember(phone) {
+    if (!supabase) return null;
     const { data } = await supabase.from('jaffa_members').select('*').eq('phone', phone).single();
     return data;
 }
 
 async function upsertMember(data) {
+    if (!supabase) return;
     const { error } = await supabase.from('jaffa_members').upsert(data, { onConflict: 'phone' });
     if (error) log(`Supabase upsert error: ${error.message}`);
 }
 
 async function updateMember(phone, data) {
+    if (!supabase) return;
     const { error } = await supabase.from('jaffa_members').update(data).eq('phone', phone);
     if (error) log(`Supabase update error: ${error.message}`);
 }
@@ -113,16 +324,18 @@ function initWhatsApp() {
     botStatus = 'initializing';
 
     const { Client, LocalAuth } = require('whatsapp-web.js');
-    const puppeteer = require('puppeteer');
 
     log('Initializing WhatsApp...');
 
     waClient = new Client({
         authStrategy: new LocalAuth({ clientId: 'jaffa-bot', dataPath: SESSION_DIR }),
         puppeteer: {
-            executablePath: puppeteer.executablePath(),
             headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--no-first-run', '--disable-extensions', '--no-zygote'],
+        },
+        webVersionCache: {
+            type: 'remote',
+            remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.3000.1023040093-alpha.html',
         },
     });
 
@@ -138,15 +351,13 @@ function initWhatsApp() {
     waClient.on('loading_screen', pct => { log(`Loading: ${pct}%`); botStatus = `loading_${pct}`; });
 
     waClient.on('authenticated', () => {
-        log('Authenticated ✓');
+        log('Authenticated ✓ — waiting for WhatsApp Web to finish loading...');
         botStatus = 'authenticated';
+        // Soft warning at 3 minutes — do NOT clear session, just log
         if (!readyTimer) {
-            readyTimer = setTimeout(async () => {
-                log('Ready not received — resetting...');
-                isInitializing = false;
-                await destroyClient(); clearSession();
-                setTimeout(initWhatsApp, 3000);
-            }, 45000);
+            readyTimer = setTimeout(() => {
+                log('⚠️  Still no "ready" event after 3 min — connection is slow but session is intact. Be patient.');
+            }, 180000);
         }
     });
 
@@ -159,13 +370,25 @@ function initWhatsApp() {
         setTimeout(initWhatsApp, 3000);
     });
 
-    waClient.on('ready', () => {
+    waClient.on('ready', async () => {
         clearTimeout(readyTimer);
         isInitializing = false;
         botStatus = 'ready';
         qrDataUrl = null;
-        log(`Ready! Connected as +${waClient.info.wid.user}`);
-        if (!selectedGroup) log('⚠️  No group selected — set selectedGroup in config.json');
+        connectedPhone = waClient.info.wid.user;
+        log(`Ready! Connected as +${connectedPhone}`);
+        pushActivity(`✓ הבוט מחובר כ-+${connectedPhone}`);
+        // Load groups list for the dashboard
+        try {
+            const chats = await waClient.getChats();
+            groupsList = chats
+                .filter(c => c.isGroup)
+                .map(c => ({ id: c.id._serialized, name: c.name, participants: c.participants?.length || 0 }))
+                .sort((a, b) => b.participants - a.participants);
+            log(`Loaded ${groupsList.length} groups`);
+            pushActivity(`נטענו ${groupsList.length} קבוצות`);
+        } catch (e) { log(`Group load error: ${e.message}`); }
+        if (!selectedGroup) log('⚠️  No group selected — choose one from the dashboard');
     });
 
     waClient.on('disconnected', async reason => {

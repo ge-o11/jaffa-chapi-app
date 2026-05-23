@@ -39,12 +39,20 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-4 justify-end mb-12">
+              <a href="#play"
+                className="text-xl py-5 px-10 rounded-2xl font-black inline-flex items-center gap-2 transition-all hover:scale-105 active:scale-95"
+                style={{
+                  background: 'linear-gradient(135deg, #FFD480, #E8841C)',
+                  color: '#2C1A0E',
+                  boxShadow: '0 8px 28px rgba(232,132,28,0.55), 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.4)',
+                  border: '2px solid rgba(255,255,255,0.3)',
+                  textShadow: '0 1px 2px rgba(255,255,255,0.3)',
+                }}>
+                🚀 התחל עכשיו!
+              </a>
               <a href="https://chat.whatsapp.com/BhnFkwONJd6DeA7KlwG1MC" target="_blank" rel="noreferrer"
                 className="btn-whatsapp text-lg py-4 px-8 rounded-2xl pulse-ring shadow-2xl">
-                <WaIcon /> הצטרפות לקהילה — חינם
-              </a>
-              <a href="#game" className="btn-gold text-lg py-4 px-8 rounded-2xl shadow-2xl">
-                🎯 שחק את המסע
+                <WaIcon /> הצטרף לקהילה
               </a>
             </div>
 

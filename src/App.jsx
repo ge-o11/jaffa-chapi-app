@@ -19,6 +19,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import JaffaQuiz from './components/JaffaQuiz'
 import SelfieHunt from './components/SelfieHunt'
+import BigActions from './components/BigActions'
 import AuthModal from './components/AuthModal'
 
 function WaFloat() {
@@ -43,6 +44,7 @@ function AppInner() {
       <Header onLoginClick={() => setShowAuth(true)} />
       <main>
         <Hero />
+        <BigActions />
         <Manifesto />
         <MenuGrid />
         <VenueMap />

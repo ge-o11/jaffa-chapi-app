@@ -12,6 +12,14 @@ dist
 dist-ssr
 *.local
 
+# Bot runtime files
+bot/.wwebjs_auth/
+bot/.wwebjs_cache/
+bot/.env
+
+# Cloudflare Wrangler
+.wrangler/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
