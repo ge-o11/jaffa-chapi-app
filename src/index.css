@@ -151,3 +151,9 @@ h1,h2,h3,h4 { font-family: 'Frank Ruhl Libre', serif; }
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: rgba(245,237,214,0.5); }
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* Make sections inside the centered modal transparent so the panel's glass
+   effect & the rotating background photo can show through. The cards/
+   tiles inside each section still have their own backgrounds. */
+[role="dialog"] section { background: transparent !important; }
+[role="dialog"] section.section-bg { background: transparent !important; }

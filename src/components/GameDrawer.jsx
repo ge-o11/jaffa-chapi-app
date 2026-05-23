@@ -26,7 +26,7 @@ export default function CenterModal({ open, onClose, title, children }) {
 
   return (
     <>
-      {/* Backdrop */}
+      {/* Backdrop — softly dimmed, photo still visible */}
       <div
         onClick={onClose}
         aria-hidden
@@ -34,8 +34,9 @@ export default function CenterModal({ open, onClose, title, children }) {
           position: 'fixed',
           inset: 0,
           zIndex: 1000,
-          background: 'rgba(44,26,14,0.55)',
-          backdropFilter: 'blur(8px)',
+          background: 'rgba(44,26,14,0.32)',
+          backdropFilter: 'blur(4px)',
+          WebkitBackdropFilter: 'blur(4px)',
           opacity: open ? 1 : 0,
           pointerEvents: open ? 'auto' : 'none',
           transition: 'opacity 0.35s',
@@ -67,11 +68,12 @@ export default function CenterModal({ open, onClose, title, children }) {
             width: '100%',
             maxWidth: 1000,
             maxHeight: '92vh',
-            background: 'rgba(255,252,245,0.97)',
-            backdropFilter: 'blur(20px) saturate(1.15)',
-            border: '3px solid rgba(200,169,110,0.5)',
+            background: 'rgba(255,252,245,0.38)',
+            backdropFilter: 'blur(36px) saturate(1.4)',
+            WebkitBackdropFilter: 'blur(36px) saturate(1.4)',
+            border: '2px solid rgba(255,255,255,0.45)',
             borderRadius: 28,
-            boxShadow: '0 32px 80px rgba(44,26,14,0.45), 0 8px 24px rgba(44,26,14,0.15)',
+            boxShadow: '0 32px 80px rgba(44,26,14,0.45), 0 8px 24px rgba(44,26,14,0.15), inset 0 1px 0 rgba(255,255,255,0.4)',
             transform: open ? 'scale(1) translateY(0)' : 'scale(0.92) translateY(20px)',
             transition: 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)',
             display: 'flex',

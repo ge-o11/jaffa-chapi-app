@@ -233,8 +233,9 @@ export default function Journey({ onOpenDrawer }) {
   function onTouchEnd(e) {
     if (touchStartRef.current === null) return
     const dx = e.changedTouches[0].clientX - touchStartRef.current
-    if (dx < -60) next()
-    if (dx > 60) prev()
+    // RTL-natural: swipe right (positive dx) → next, swipe left → previous
+    if (dx > 60) next()
+    if (dx < -60) prev()
     touchStartRef.current = null
   }
 
@@ -347,7 +348,7 @@ export default function Journey({ onOpenDrawer }) {
       {active === 0 && (
         <div className="md:hidden absolute bottom-12 left-1/2 -translate-x-1/2 text-[10px] font-bold flex items-center gap-2"
           style={{ color: '#8B5E00', opacity: 0.6 }}>
-          <span className="animate-pulse">👈 החלק שמאלה</span>
+          <span className="animate-pulse">👉 החלק ימינה</span>
         </div>
       )}
     </section>
