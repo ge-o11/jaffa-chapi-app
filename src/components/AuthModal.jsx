@@ -45,19 +45,19 @@ export default function AuthModal({ onClose }) {
     >
       <div
         className="w-full max-w-sm rounded-3xl p-8 text-right relative"
-        style={{ background: 'rgba(255,252,245,0.98)', border: '2px solid rgba(200,169,110,0.4)', boxShadow: '0 24px 80px rgba(44,26,14,0.4)' }}
+        style={{ background: 'rgba(255,252,245,0.98)', border: '2px solid rgba(74,157,184,0.4)', boxShadow: '0 24px 80px rgba(44,26,14,0.4)' }}
       >
         {/* Close */}
         <button
           onClick={onClose}
           className="absolute top-4 left-4 w-8 h-8 rounded-full flex items-center justify-center text-sm opacity-50 hover:opacity-100 transition-opacity"
-          style={{ background: 'rgba(200,169,110,0.1)', color: 'var(--gold)' }}
+          style={{ background: 'rgba(74,157,184,0.1)', color: 'var(--gold)' }}
         >✕</button>
 
         {/* Logo */}
         <div className="text-center mb-6">
           <div className="w-16 h-16 rounded-full border-2 flex items-center justify-center text-lg font-black mx-auto mb-3"
-            style={{ borderColor: 'var(--gold)', color: 'var(--gold)', background: 'rgba(200,169,110,0.1)', fontFamily: 'Frank Ruhl Libre, serif' }}>
+            style={{ borderColor: 'var(--gold)', color: 'var(--gold)', background: 'rgba(74,157,184,0.1)', fontFamily: 'Frank Ruhl Libre, serif' }}>
             חפ"י
           </div>
           <div className="font-bold text-sm opacity-60" style={{ color: 'var(--gold-light)' }}>חוויות פעילות · יפו העתיקה</div>
@@ -80,7 +80,7 @@ export default function AuthModal({ onClose }) {
               value={phone}
               onChange={e => { setPhone(e.target.value); setErr('') }}
               className="w-full rounded-xl px-4 py-3 text-left text-base mb-1 outline-none"
-              style={{ background: 'rgba(245,237,214,0.6)', border: '1px solid rgba(200,169,110,0.5)', color: '#2C1A0E', fontFamily: 'monospace' }}
+              style={{ background: 'rgba(245,237,214,0.6)', border: '1px solid rgba(74,157,184,0.5)', color: '#2C1A0E', fontFamily: 'monospace' }}
               autoFocus
             />
             {err && <p className="text-xs text-red-400 mb-3">{err}</p>}
@@ -111,14 +111,14 @@ export default function AuthModal({ onClose }) {
               value={username}
               onChange={e => { setUsername(e.target.value); setErr('') }}
               className="w-full rounded-xl px-4 py-3 text-base mb-1 outline-none"
-              style={{ background: 'rgba(245,237,214,0.6)', border: '1px solid rgba(200,169,110,0.5)', color: '#2C1A0E' }}
+              style={{ background: 'rgba(245,237,214,0.6)', border: '1px solid rgba(74,157,184,0.5)', color: '#2C1A0E' }}
               autoFocus
               maxLength={24}
             />
             {err && <p className="text-xs text-red-400 mb-3">{err}</p>}
             {!err && <div className="h-4 mb-3" />}
             <div className="rounded-2xl px-4 py-3 mb-4 text-center text-sm"
-              style={{ background: 'rgba(200,169,110,0.08)', border: '1px solid rgba(200,169,110,0.2)' }}>
+              style={{ background: 'rgba(74,157,184,0.08)', border: '1px solid rgba(74,157,184,0.2)' }}>
               <span style={{ color: 'var(--gold)' }}>🏅 +10 נקודות</span>
               <span className="opacity-50 mr-1" style={{ color: 'var(--parchment)' }}>ייזכפו לחשבון שלך מיד</span>
             </div>
@@ -144,7 +144,7 @@ export default function AuthModal({ onClose }) {
               המשך מאיפה שהפסקת
             </p>
             <div className="rounded-2xl px-6 py-5 mb-6"
-              style={{ background: 'rgba(200,169,110,0.1)', border: '1px solid rgba(200,169,110,0.3)' }}>
+              style={{ background: 'rgba(74,157,184,0.1)', border: '1px solid rgba(74,157,184,0.3)' }}>
               <div className="text-4xl font-black gold-shimmer">{returnUser.points}</div>
               <div className="text-sm opacity-70" style={{ color: 'var(--gold-light)' }}>נקודות צבורות</div>
             </div>
@@ -167,7 +167,7 @@ export default function AuthModal({ onClose }) {
               ברוך הבא לחפ"י!
             </h2>
             <div className="rounded-2xl px-6 py-5 mb-6"
-              style={{ background: 'linear-gradient(135deg, rgba(200,169,110,0.2), rgba(200,169,110,0.05))', border: '2px solid var(--gold)' }}>
+              style={{ background: 'linear-gradient(135deg, rgba(74,157,184,0.2), rgba(74,157,184,0.05))', border: '2px solid var(--gold)' }}>
               <div className="text-5xl font-black gold-shimmer">+10</div>
               <div className="text-sm mt-1" style={{ color: 'var(--gold)' }}>נקודות הצטרפות זוכו לחשבונך</div>
             </div>

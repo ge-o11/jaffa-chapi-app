@@ -79,7 +79,7 @@ const SCORE_MSGS = [
   { min: 7,  msg: '🥇 מצוין! יודע את יפו לעומק', color: '#C8A96E' },
   { min: 5,  msg: '🥈 טוב! כדאי לבקר ולגלות עוד', color: '#C8A96E' },
   { min: 3,  msg: '🥉 לא רע! יפו מחכה שתגיע ותלמד', color: '#8B7355' },
-  { min: 0,  msg: '📚 בוא תבקר ביפו — זה הלימוד הכי טוב!', color: '#C4622D' },
+  { min: 0,  msg: '📚 בוא תבקר ביפו — זה הלימוד הכי טוב!', color: '#1A6B8A' },
 ]
 
 export default function JaffaQuiz() {
@@ -132,7 +132,7 @@ export default function JaffaQuiz() {
       <div className="max-w-3xl mx-auto px-4">
         <div className="text-center mb-12">
           <div className="inline-block mb-4 px-4 py-1 rounded-full text-xs border"
-            style={{ color: 'var(--terra)', borderColor: 'rgba(196,98,45,0.4)', background: 'rgba(196,98,45,0.08)' }}>
+            style={{ color: 'var(--terra)', borderColor: 'rgba(26,107,138,0.4)', background: 'rgba(26,107,138,0.08)' }}>
             🧠 חידון אמיתי
           </div>
           <h2 className="section-title">חידון יפו העתיקה</h2>
@@ -167,7 +167,7 @@ export default function JaffaQuiz() {
         {phase === 'quiz' && (
           <div className="game-container overflow-hidden fade-in">
             {/* Progress */}
-            <div className="h-2" style={{ background: 'rgba(200,169,110,0.15)' }}>
+            <div className="h-2" style={{ background: 'rgba(74,157,184,0.15)' }}>
               <div className="h-full transition-all duration-500"
                 style={{ width: `${(idx / QUESTIONS.length) * 100}%`, background: 'linear-gradient(90deg, var(--gold), var(--terra))' }} />
             </div>
@@ -178,12 +178,12 @@ export default function JaffaQuiz() {
               <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(44,26,14,0.15), rgba(44,26,14,0.75))' }} />
               <div className="absolute bottom-3 right-4 flex items-center gap-3">
                 <div className="station-number" style={{ width: 44, height: 44, fontSize: '1.1rem', background: 'rgba(255,252,245,0.9)' }}>{idx + 1}</div>
-                <div className="text-sm font-bold" style={{ color: '#FFD480', textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>שאלה {idx + 1} מתוך {QUESTIONS.length}</div>
+                <div className="text-sm font-bold" style={{ color: '#B0D4E3', textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>שאלה {idx + 1} מתוך {QUESTIONS.length}</div>
               </div>
               <div className="absolute bottom-3 left-4 flex gap-1">
                 {QUESTIONS.map((_, i) => (
                   <div key={i} className="h-1.5 w-5 rounded-full transition-all"
-                    style={{ background: i < idx ? 'var(--gold)' : i === idx ? 'var(--terra)' : 'rgba(200,169,110,0.2)' }} />
+                    style={{ background: i < idx ? 'var(--gold)' : i === idx ? 'var(--terra)' : 'rgba(74,157,184,0.2)' }} />
                 ))}
               </div>
             </div>
@@ -196,14 +196,14 @@ export default function JaffaQuiz() {
               {/* Options */}
               <div className="space-y-3 mb-6">
                 {q.options.map((opt, i) => {
-                  let bg = 'rgba(200,169,110,0.1)'
-                  let border = 'rgba(200,169,110,0.4)'
+                  let bg = 'rgba(74,157,184,0.1)'
+                  let border = 'rgba(74,157,184,0.4)'
                   let color = '#2C1A0E'
                   if (selected !== null) {
                     if (i === q.correct) { bg = 'rgba(46,125,50,0.15)'; border = 'rgba(46,125,50,0.7)'; color = '#1B5E20' }
                     else if (i === selected && selected !== q.correct) { bg = 'rgba(198,40,40,0.12)'; border = 'rgba(198,40,40,0.6)'; color = '#9F1010' }
                   } else if (selected === null) {
-                    bg = 'rgba(200,169,110,0.1)'
+                    bg = 'rgba(74,157,184,0.1)'
                   }
                   return (
                     <button key={i} onClick={() => choose(i)} disabled={selected !== null}
@@ -263,7 +263,7 @@ export default function JaffaQuiz() {
             </div>
 
             {score >= 7 && (
-              <div className="card text-center mb-6" style={{ borderColor: 'rgba(200,169,110,0.4)' }}>
+              <div className="card text-center mb-6" style={{ borderColor: 'rgba(74,157,184,0.4)' }}>
                 <p className="font-bold" style={{ color: 'var(--gold)' }}>🎁 מומחה יפו!</p>
                 {user
                   ? <p className="text-sm opacity-70 mt-1" style={{ color: 'var(--parchment)' }}>+5 נקודות בונוס זוכו לחשבון שלך ⭐</p>

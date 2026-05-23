@@ -67,10 +67,10 @@ export default function Tours() {
               <div className="text-sm mb-4 opacity-60" style={{ color: 'var(--parchment)' }}>{tour.subtitle}</div>
 
               <div className="flex gap-4 mb-5">
-                <div className="flex items-center gap-1 text-xs px-3 py-1 rounded-full" style={{ background: 'rgba(200,169,110,0.1)', color: 'var(--gold-light)' }}>
+                <div className="flex items-center gap-1 text-xs px-3 py-1 rounded-full" style={{ background: 'rgba(74,157,184,0.1)', color: 'var(--gold-light)' }}>
                   ⏱ {tour.duration}
                 </div>
-                <div className="flex items-center gap-1 text-xs px-3 py-1 rounded-full" style={{ background: 'rgba(200,169,110,0.1)', color: 'var(--gold-light)' }}>
+                <div className="flex items-center gap-1 text-xs px-3 py-1 rounded-full" style={{ background: 'rgba(74,157,184,0.1)', color: 'var(--gold-light)' }}>
                   👤 {tour.audience}
                 </div>
               </div>
@@ -92,7 +92,7 @@ export default function Tours() {
         </div>
 
         {/* Booking section */}
-        <div className="rounded-3xl p-8 text-center" style={{ background: 'linear-gradient(135deg, rgba(200,169,110,0.1) 0%, rgba(200,169,110,0.03) 100%)', border: '1px solid rgba(200,169,110,0.3)' }}>
+        <div className="rounded-3xl p-8 text-center" style={{ background: 'linear-gradient(135deg, rgba(74,157,184,0.1) 0%, rgba(74,157,184,0.03) 100%)', border: '1px solid rgba(74,157,184,0.3)' }}>
           <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--gold)' }}>הזמנת סיורים</h3>
           <p className="mb-6 opacity-70 max-w-xl mx-auto" style={{ color: 'var(--parchment)' }}>
             מידע נוסף, תמחור וזמינות — צרו קשר ישירות. נשמח לבנות עבורכם חוויה מותאמת אישית.

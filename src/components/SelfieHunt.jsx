@@ -185,7 +185,7 @@ export default function SelfieHunt() {
             <span>{done.size} / {TARGETS.length} יעדים</span>
             <span className="font-bold" style={{ color: 'var(--gold)' }}>{totalEarned} / {TOTAL_PTS} נקודות</span>
           </div>
-          <div className="rounded-full h-4 overflow-hidden" style={{ background: 'rgba(200,169,110,0.15)', border: '1px solid rgba(200,169,110,0.3)' }}>
+          <div className="rounded-full h-4 overflow-hidden" style={{ background: 'rgba(74,157,184,0.15)', border: '1px solid rgba(74,157,184,0.3)' }}>
             <div
               className="h-full rounded-full transition-all duration-500"
               style={{
@@ -205,7 +205,7 @@ export default function SelfieHunt() {
         {lastCaptured && (
           <div
             className="max-w-sm mx-auto mb-8 rounded-2xl px-5 py-3 text-center text-sm font-bold"
-            style={{ background: 'rgba(200,169,110,0.15)', border: '1px solid var(--gold)', color: 'var(--gold)' }}
+            style={{ background: 'rgba(74,157,184,0.15)', border: '1px solid var(--gold)', color: 'var(--gold)' }}
           >
             📸 {lastCaptured.title} — +{lastCaptured.pts} נקודות!
           </div>
@@ -223,9 +223,9 @@ export default function SelfieHunt() {
               onClick={() => setFilter(f.key)}
               className="px-5 py-2 rounded-full text-sm font-bold transition-all"
               style={{
-                background: filter === f.key ? 'var(--gold)' : 'rgba(200,169,110,0.1)',
+                background: filter === f.key ? 'var(--gold)' : 'rgba(74,157,184,0.1)',
                 color: filter === f.key ? 'var(--navy)' : 'var(--gold)',
-                border: '1px solid rgba(200,169,110,0.4)',
+                border: '1px solid rgba(74,157,184,0.4)',
               }}
             >
               {f.label}
@@ -243,7 +243,7 @@ export default function SelfieHunt() {
                 className="card text-right transition-all duration-300"
                 style={{
                   opacity: captured ? 0.65 : 1,
-                  border: captured ? '1px solid rgba(200,169,110,0.6)' : undefined,
+                  border: captured ? '1px solid rgba(74,157,184,0.6)' : undefined,
                   position: 'relative',
                   overflow: 'hidden',
                 }}
@@ -263,7 +263,7 @@ export default function SelfieHunt() {
                     <div className="flex items-center gap-2 mb-1">
                       <span
                         className="text-xs px-2 py-0.5 rounded-full font-bold"
-                        style={{ background: 'rgba(200,169,110,0.15)', color: 'var(--gold)', border: '1px solid rgba(200,169,110,0.3)' }}
+                        style={{ background: 'rgba(74,157,184,0.15)', color: 'var(--gold)', border: '1px solid rgba(74,157,184,0.3)' }}
                       >
                         +{target.pts} נק׳
                       </span>
@@ -296,13 +296,13 @@ export default function SelfieHunt() {
                   style={{
                     background: captured
                       ? 'rgba(46,125,50,0.15)'
-                      : 'linear-gradient(135deg, #C4622D 0%, #E8841C 50%, #C4622D 100%)',
+                      : 'linear-gradient(135deg, #1A6B8A 0%, #4A9DB8 50%, #1A6B8A 100%)',
                     color: captured ? '#1B5E20' : '#FFFFFF',
                     cursor: captured ? 'default' : 'pointer',
                     border: captured ? '2px solid rgba(46,125,50,0.4)' : '2px solid rgba(139,62,0,0.6)',
                     boxShadow: captured
                       ? 'none'
-                      : '0 8px 24px rgba(196,98,45,0.5), 0 2px 8px rgba(44,26,14,0.2), inset 0 1px 0 rgba(255,255,255,0.3)',
+                      : '0 8px 24px rgba(26,107,138,0.5), 0 2px 8px rgba(44,26,14,0.2), inset 0 1px 0 rgba(255,255,255,0.3)',
                     fontSize: '1.05rem',
                     textShadow: captured ? 'none' : '0 1px 3px rgba(0,0,0,0.35)',
                     pointerEvents: captured ? 'none' : 'auto',
@@ -331,7 +331,7 @@ export default function SelfieHunt() {
         {/* Reward tiers */}
         <div
           className="rounded-3xl p-8"
-          style={{ background: 'linear-gradient(135deg, rgba(200,169,110,0.08), rgba(200,169,110,0.02))', border: '1px solid rgba(200,169,110,0.25)' }}
+          style={{ background: 'linear-gradient(135deg, rgba(74,157,184,0.08), rgba(74,157,184,0.02))', border: '1px solid rgba(74,157,184,0.25)' }}
         >
           <h3 className="text-xl font-bold text-center mb-6" style={{ color: 'var(--gold)', fontFamily: 'Frank Ruhl Libre, serif' }}>
             🎁 מדרגות הפרסים

@@ -62,7 +62,7 @@ export default function Arrival() {
         </div>
 
         {/* Map embed placeholder */}
-        <div className="rounded-2xl overflow-hidden border" style={{ borderColor: 'rgba(200,169,110,0.3)', height: 300, background: 'var(--navy-light)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div className="rounded-2xl overflow-hidden border" style={{ borderColor: 'rgba(74,157,184,0.3)', height: 300, background: 'var(--navy-light)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div className="text-center">
             <div className="text-5xl mb-4">🗺️</div>
             <p className="mb-4" style={{ color: 'var(--gold)' }}>יפו העתיקה, תל אביב-יפו</p>

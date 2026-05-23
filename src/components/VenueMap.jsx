@@ -10,7 +10,7 @@ const LOCATIONS = [
     hours: 'כל שעות היממה (מסעדות וחנויות: 09:00–22:00)', phone: '03-6037686', website: 'https://www.namalyafo.co.il', category: 'אטרקציה',
   },
   {
-    id: 'clock', lat: 32.0536, lng: 34.7521, emoji: '🕐', label: 'מגדל השעון', type: 'landmark', color: '#C4622D',
+    id: 'clock', lat: 32.0536, lng: 34.7521, emoji: '🕐', label: 'מגדל השעון', type: 'landmark', color: '#1A6B8A',
     desc: 'נבנה בין 1900–1903 לציון יובל הכסף לשלטון הסולטן עבד אל-חמיד השני. יזמו אנשי העיר — יהודים, ערבים, ארמנים ומרוניטים יחד. ציון דרך מרכזי ביפו.',
     hours: 'מבנה חיצוני — פתוח תמיד', phone: '', website: '', category: 'ציון דרך',
   },
@@ -45,7 +45,7 @@ const LOCATIONS = [
     hours: 'כל שעות היממה', phone: '', website: '', category: 'אטרקציה',
   },
   {
-    id: 'flea', lat: 32.0558, lng: 34.7524, emoji: '🛍️', label: 'שוק הפשפשים', type: 'market', color: '#C4622D',
+    id: 'flea', lat: 32.0558, lng: 34.7524, emoji: '🛍️', label: 'שוק הפשפשים', type: 'market', color: '#1A6B8A',
     desc: 'שוק וינטאג׳ ועתיקות מפורסם בסמטאות יפו הדרומית. מאות דוכנים: ריהוט ישן, תקליטים, תכשיטים ויודאיקה. האזור הסובב מלא בגלריות, ברים וקפות.',
     hours: 'א-ה 09:00–17:00 | ו 09:00–14:00 | שבת — סגור', phone: '052-4734028', website: 'https://en.shuktlv.co.il', category: 'שוק',
   },
@@ -115,14 +115,14 @@ export default function VenueMap() {
       <style>{`
         .leaflet-container { border-radius: 1.5rem; background: #f5edd6; }
         .leaflet-control-attribution { font-size: 9px !important; opacity: 0.55; background: rgba(255,250,235,0.85) !important; }
-        .leaflet-control-zoom a { background: rgba(255,250,235,0.95) !important; color: #8B5E00 !important; border-color: rgba(200,169,110,0.4) !important; font-weight: bold; }
+        .leaflet-control-zoom a { background: rgba(255,250,235,0.95) !important; color: #0D3A56 !important; border-color: rgba(74,157,184,0.4) !important; font-weight: bold; }
         .leaflet-control-zoom a:hover { background: var(--gold) !important; color: #fff !important; }
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-10">
           <div className="inline-block mb-4 px-4 py-1 rounded-full text-xs border"
-            style={{ color: 'var(--gold)', borderColor: 'rgba(200,169,110,0.3)', background: 'rgba(200,169,110,0.06)' }}>
+            style={{ color: 'var(--gold)', borderColor: 'rgba(74,157,184,0.3)', background: 'rgba(74,157,184,0.06)' }}>
             🗺️ מפת המתחם האינטראקטיבית
           </div>
           <h2 className="section-title">יפו העתיקה — מפת הנקודות</h2>
@@ -136,9 +136,9 @@ export default function VenueMap() {
             <button key={f.key} onClick={() => setFilter(f.key)}
               className="px-4 py-2 rounded-full text-sm font-medium transition-all"
               style={{
-                background: filter === f.key ? 'var(--gold)' : 'rgba(200,169,110,0.1)',
+                background: filter === f.key ? 'var(--gold)' : 'rgba(74,157,184,0.1)',
                 color: filter === f.key ? 'var(--navy)' : 'var(--gold-light)',
-                border: '1px solid rgba(200,169,110,0.3)',
+                border: '1px solid rgba(74,157,184,0.3)',
               }}>
               {f.emoji} {f.label}
             </button>
@@ -148,7 +148,7 @@ export default function VenueMap() {
         <div className="flex flex-col xl:flex-row gap-6 items-start">
           {/* Real Leaflet Map */}
           <div className="relative flex-1 rounded-3xl overflow-hidden"
-            style={{ border: '2px solid rgba(200,169,110,0.3)', minHeight: 480 }}>
+            style={{ border: '2px solid rgba(74,157,184,0.3)', minHeight: 480 }}>
             <MapContainer
               center={[32.0522, 34.7505]}
               zoom={16}
@@ -245,7 +245,7 @@ export default function VenueMap() {
                   {LOCATIONS.slice(0, 5).map(l => (
                     <button key={l.id} onClick={() => setActive(l.id)}
                       className="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm transition-all hover:opacity-80"
-                      style={{ background: 'rgba(200,169,110,0.06)', border: '1px solid rgba(200,169,110,0.12)' }}>
+                      style={{ background: 'rgba(74,157,184,0.06)', border: '1px solid rgba(74,157,184,0.12)' }}>
                       <span>{l.emoji}</span>
                       <span style={{ color: 'var(--gold-light)' }}>{l.label}</span>
                       <span className="mr-auto text-xs opacity-50" style={{ color: 'var(--gold)' }}>{l.category}</span>
@@ -267,7 +267,7 @@ export default function VenueMap() {
                   { c: '#E65100', label: 'קפה ואוכל רחוב' },
                   { c: '#8B2500', label: 'גלריות ומוזיאונים' },
                   { c: '#C8A96E', label: 'אטרקציות תיירותיות' },
-                  { c: '#C4622D', label: 'שווקים' },
+                  { c: '#1A6B8A', label: 'שווקים' },
                   { c: '#8B7355', label: 'אתרי מורשת' },
                   { c: '#1E6B8A', label: 'ים ונמל' },
                 ].map(i => (

@@ -47,7 +47,7 @@ export default function Contact() {
               </div>
             ))}
 
-            <div className="card text-right" style={{ borderColor: 'rgba(200,169,110,0.4)' }}>
+            <div className="card text-right" style={{ borderColor: 'rgba(74,157,184,0.4)' }}>
               <h4 className="font-bold mb-2" style={{ color: 'var(--gold)' }}>🏪 בעל מתחם ביפו?</h4>
               <p className="text-sm opacity-70 leading-relaxed mb-4" style={{ color: 'var(--parchment)' }}>
                 תהליך ההרשמה מתבצע בליווי אנשי חפ"י. נפגש, נסביר את המערכת ונקים עבורך את המיני-סייט.
@@ -83,7 +83,7 @@ export default function Contact() {
                       value={form[f.name]}
                       onChange={e => setForm({ ...form, [f.name]: e.target.value })}
                       className="w-full rounded-xl px-4 py-3 text-right outline-none border transition-all"
-                      style={{ background: 'var(--navy-light)', color: 'var(--parchment)', border: '1px solid rgba(200,169,110,0.3)', direction: 'rtl' }}
+                      style={{ background: 'var(--navy-light)', color: 'var(--parchment)', border: '1px solid rgba(74,157,184,0.3)', direction: 'rtl' }}
                     />
                   </div>
                 ))}
@@ -94,7 +94,7 @@ export default function Contact() {
                     value={form.type}
                     onChange={e => setForm({ ...form, type: e.target.value })}
                     className="w-full rounded-xl px-4 py-3 text-right outline-none border"
-                    style={{ background: 'var(--navy-light)', color: 'var(--parchment)', border: '1px solid rgba(200,169,110,0.3)', direction: 'rtl' }}>
+                    style={{ background: 'var(--navy-light)', color: 'var(--parchment)', border: '1px solid rgba(74,157,184,0.3)', direction: 'rtl' }}>
                     <option>מבקר</option>
                     <option>בעל מתחם</option>
                     <option>שיתוף פעולה</option>
@@ -110,7 +110,7 @@ export default function Contact() {
                     value={form.message}
                     onChange={e => setForm({ ...form, message: e.target.value })}
                     className="w-full rounded-xl px-4 py-3 text-right outline-none border resize-none"
-                    style={{ background: 'var(--navy-light)', color: 'var(--parchment)', border: '1px solid rgba(200,169,110,0.3)', direction: 'rtl' }}
+                    style={{ background: 'var(--navy-light)', color: 'var(--parchment)', border: '1px solid rgba(74,157,184,0.3)', direction: 'rtl' }}
                   />
                 </div>
 

@@ -21,7 +21,7 @@ function FAQItem({ q, a }) {
         <span className="font-bold text-base text-right flex-1" style={{ color: 'var(--parchment)' }}>{q}</span>
       </div>
       {open && (
-        <div className="mt-4 pt-4 border-t text-right text-sm leading-relaxed" style={{ borderColor: 'rgba(200,169,110,0.15)', color: 'var(--gold-light)', opacity: 0.85 }}>
+        <div className="mt-4 pt-4 border-t text-right text-sm leading-relaxed" style={{ borderColor: 'rgba(74,157,184,0.15)', color: 'var(--gold-light)', opacity: 0.85 }}>
           {a}
         </div>
       )}

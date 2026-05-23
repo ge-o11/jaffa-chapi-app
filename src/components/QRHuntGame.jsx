@@ -137,15 +137,15 @@ const STATIONS = [
 
 const PRIZE_LADDER = [
   { station: 10, label: '100 נק\' + ארוחה חינם!', emoji: '🏆', isCheckpoint: false, color: '#FFD700' },
-  { station: 9,  label: 'ארוחה זוגית בהנחה',       emoji: '🍽️', isCheckpoint: true,  color: '#C4622D' },
-  { station: 8,  label: '50 נקודות קרדיט',          emoji: '🏅', isCheckpoint: false, color: '#C8A96E' },
-  { station: 7,  label: '40 נקודות קרדיט',          emoji: '🏅', isCheckpoint: false, color: '#C8A96E' },
-  { station: 6,  label: '30 נקודות קרדיט',          emoji: '🏅', isCheckpoint: false, color: '#C8A96E' },
-  { station: 5,  label: '☕ קפה + עוגה חינם',       emoji: '☕', isCheckpoint: true,  color: '#C4622D' },
-  { station: 4,  label: '20 נקודות קרדיט',          emoji: '🏅', isCheckpoint: false, color: '#C8A96E' },
-  { station: 3,  label: '15 נק\' + משקה קר',        emoji: '🥤', isCheckpoint: false, color: '#C8A96E' },
-  { station: 2,  label: '10 נקודות קרדיט',          emoji: '🏅', isCheckpoint: false, color: '#C8A96E' },
-  { station: 1,  label: '5 נקודות קרדיט',           emoji: '🏅', isCheckpoint: false, color: '#C8A96E' },
+  { station: 9,  label: 'ארוחה זוגית בהנחה',       emoji: '🍽️', isCheckpoint: true,  color: '#1A6B8A' },
+  { station: 8,  label: '50 נקודות קרדיט',          emoji: '🏅', isCheckpoint: false, color: '#4A9DB8' },
+  { station: 7,  label: '40 נקודות קרדיט',          emoji: '🏅', isCheckpoint: false, color: '#4A9DB8' },
+  { station: 6,  label: '30 נקודות קרדיט',          emoji: '🏅', isCheckpoint: false, color: '#4A9DB8' },
+  { station: 5,  label: '☕ קפה + עוגה חינם',       emoji: '☕', isCheckpoint: true,  color: '#1A6B8A' },
+  { station: 4,  label: '20 נקודות קרדיט',          emoji: '🏅', isCheckpoint: false, color: '#4A9DB8' },
+  { station: 3,  label: '15 נק\' + משקה קר',        emoji: '🥤', isCheckpoint: false, color: '#4A9DB8' },
+  { station: 2,  label: '10 נקודות קרדיט',          emoji: '🏅', isCheckpoint: false, color: '#4A9DB8' },
+  { station: 1,  label: '5 נקודות קרדיט',           emoji: '🏅', isCheckpoint: false, color: '#4A9DB8' },
 ]
 
 export default function QRHuntGame() {
@@ -200,7 +200,7 @@ export default function QRHuntGame() {
     const items = Array.from({ length: 30 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
-      color: ['#C8A96E','#E8D5A3','#C4622D','#25D366','#1E6B8A'][Math.floor(Math.random()*5)],
+      color: ['#C8A96E','#E8D5A3','#1A6B8A','#25D366','#1E6B8A'][Math.floor(Math.random()*5)],
       delay: Math.random() * 1,
       size: 6 + Math.random() * 8,
     }))
@@ -232,7 +232,7 @@ export default function QRHuntGame() {
       <div className="max-w-5xl mx-auto px-4">
         <div className="text-center mb-12">
           <div className="inline-block mb-4 px-4 py-1 rounded-full text-xs border"
-            style={{ color:'var(--terra)', borderColor:'rgba(196,98,45,0.4)', background:'rgba(196,98,45,0.08)' }}>
+            style={{ color:'var(--terra)', borderColor:'rgba(26,107,138,0.4)', background:'rgba(26,107,138,0.08)' }}>
             🎯 משחק אינטראקטיבי
           </div>
           <h2 className="section-title">מסע 10 התחנות ביפו</h2>
@@ -257,7 +257,7 @@ export default function QRHuntGame() {
             <div className="max-w-xs mx-auto mb-10 space-y-1.5">
               {PRIZE_LADDER.slice(0,5).map((p,i) => (
                 <div key={i} className="flex items-center justify-between px-4 py-2 rounded-xl text-sm"
-                  style={{ background: p.isCheckpoint ? 'rgba(196,98,45,0.15)':'rgba(200,169,110,0.07)', border:`1px solid ${p.isCheckpoint ? 'rgba(196,98,45,0.4)':'rgba(200,169,110,0.15)'}` }}>
+                  style={{ background: p.isCheckpoint ? 'rgba(26,107,138,0.15)':'rgba(74,157,184,0.07)', border:`1px solid ${p.isCheckpoint ? 'rgba(26,107,138,0.4)':'rgba(74,157,184,0.15)'}` }}>
                   <span style={{ color: p.isCheckpoint ? 'var(--terra)':'var(--gold-light)' }}>{p.emoji} {p.label}</span>
                   <span className="font-bold text-xs" style={{ color: p.isCheckpoint ? 'var(--terra)':'var(--gold)' }}>תחנה {p.station}</span>
                 </div>
@@ -266,7 +266,7 @@ export default function QRHuntGame() {
             </div>
 
             <button onClick={startGame} className="btn-terra text-xl py-5 px-12 rounded-2xl"
-              style={{ boxShadow:'0 4px 40px rgba(196,98,45,0.4)' }}>
+              style={{ boxShadow:'0 4px 40px rgba(26,107,138,0.4)' }}>
               🚀 התחל את המסע!
             </button>
             <p className="mt-4 text-xs opacity-40" style={{ color:'var(--gold-light)' }}>
@@ -311,32 +311,32 @@ export default function QRHuntGame() {
                 </div>
 
                 {/* Progress bar */}
-                <div className="h-2 w-full" style={{ background:'rgba(200,169,110,0.1)' }}>
+                <div className="h-2 w-full" style={{ background:'rgba(74,157,184,0.1)' }}>
                   <div className="h-full transition-all duration-500" style={{ width:`${(station.id/10)*100}%`, background:'linear-gradient(90deg, var(--gold), var(--terra))' }}/>
                 </div>
 
                 <div className="p-6 text-right">
                   {/* Riddle */}
-                  <div className="mb-6 p-4 rounded-2xl" style={{ background:'rgba(200,169,110,0.06)', border:'1px solid rgba(200,169,110,0.2)' }}>
+                  <div className="mb-6 p-4 rounded-2xl" style={{ background:'rgba(74,157,184,0.06)', border:'1px solid rgba(74,157,184,0.2)' }}>
                     <div className="text-xs font-bold mb-2 opacity-60" style={{ color:'var(--gold)' }}>📍 אתה נמצא כאן:</div>
                     <p className="leading-relaxed" style={{ color:'var(--parchment)' }}>{station.riddle}</p>
                   </div>
 
                   {/* Clue (hint) */}
                   {showClue && (
-                    <div className="mb-6 p-4 rounded-2xl fade-in" style={{ background:'rgba(196,98,45,0.1)', border:'1px solid rgba(196,98,45,0.4)' }}>
+                    <div className="mb-6 p-4 rounded-2xl fade-in" style={{ background:'rgba(26,107,138,0.1)', border:'1px solid rgba(26,107,138,0.4)' }}>
                       <div className="text-xs font-bold mb-2" style={{ color:'var(--terra)' }}>💡 רמז לתחנה הבאה:</div>
                       <p className="leading-relaxed text-sm" style={{ color:'var(--parchment)' }}>{station.clue}</p>
                     </div>
                   )}
 
                   {/* Prize preview */}
-                  <div className="flex items-center justify-between mb-6 p-3 rounded-xl" style={{ background:'rgba(200,169,110,0.08)', border:'1px solid rgba(200,169,110,0.15)' }}>
+                  <div className="flex items-center justify-between mb-6 p-3 rounded-xl" style={{ background:'rgba(74,157,184,0.08)', border:'1px solid rgba(74,157,184,0.15)' }}>
                     <span className="text-sm font-bold" style={{ color:'var(--gold)' }}>
                       {station.prizeEmoji} פרס תחנה זו: {station.prize}
                     </span>
                     {station.isCheckpoint && (
-                      <span className="text-xs px-2 py-1 rounded-full font-bold" style={{ background:'rgba(196,98,45,0.2)', color:'var(--terra)' }}>✅ מחסום בטוח</span>
+                      <span className="text-xs px-2 py-1 rounded-full font-bold" style={{ background:'rgba(26,107,138,0.2)', color:'var(--terra)' }}>✅ מחסום בטוח</span>
                     )}
                   </div>
 
@@ -357,7 +357,7 @@ export default function QRHuntGame() {
 
                   {/* Scan button */}
                   <button onClick={startScan} className="btn-terra w-full py-5 text-lg rounded-2xl justify-center"
-                    style={{ boxShadow:'0 4px 30px rgba(196,98,45,0.35)' }}>
+                    style={{ boxShadow:'0 4px 30px rgba(26,107,138,0.35)' }}>
                     <QrIcon /> סרקתי את ה-QR! ✓
                   </button>
                 </div>
@@ -378,7 +378,7 @@ export default function QRHuntGame() {
               </div>
             </div>
             <h3 className="text-2xl font-bold mb-4" style={{ color:'var(--gold)' }}>סורק QR...</h3>
-            <div className="w-64 mx-auto h-3 rounded-full overflow-hidden mb-4" style={{ background:'rgba(200,169,110,0.15)' }}>
+            <div className="w-64 mx-auto h-3 rounded-full overflow-hidden mb-4" style={{ background:'rgba(74,157,184,0.15)' }}>
               <div className="h-full rounded-full transition-all duration-100" style={{ width:`${scanProgress}%`, background:'linear-gradient(90deg, var(--gold), var(--terra))' }}/>
             </div>
             <p className="opacity-50 text-sm" style={{ color:'var(--gold-light)' }}>{scanProgress}%</p>
@@ -389,7 +389,7 @@ export default function QRHuntGame() {
         {phase === 'won' && (
           <div className="game-container p-8 md:p-12 text-center fade-in">
             {station.isCheckpoint && (
-              <div className="mb-6 p-4 rounded-2xl" style={{ background:'rgba(196,98,45,0.15)', border:'2px solid var(--terra)' }}>
+              <div className="mb-6 p-4 rounded-2xl" style={{ background:'rgba(26,107,138,0.15)', border:'2px solid var(--terra)' }}>
                 <div className="font-bold text-lg" style={{ color:'var(--terra)' }}>✅ נקודת ביקורת!</div>
                 <p className="text-sm mt-1 opacity-80" style={{ color:'var(--parchment)' }}>{station.checkpointMsg}</p>
               </div>
@@ -399,7 +399,7 @@ export default function QRHuntGame() {
               {station.id === 10 ? '🏆 השלמת את כל 10 התחנות!' : `תחנה ${station.id} — הושלמה!`}
             </h3>
             <div className="text-xl mb-2 font-bold" style={{ color:'var(--parchment)' }}>{station.prize}</div>
-            <div className="mb-8 p-4 rounded-2xl" style={{ background:'rgba(200,169,110,0.06)', border:'1px solid rgba(200,169,110,0.2)' }}>
+            <div className="mb-8 p-4 rounded-2xl" style={{ background:'rgba(74,157,184,0.06)', border:'1px solid rgba(74,157,184,0.2)' }}>
               <div className="text-xs font-bold mb-2 opacity-60" style={{ color:'var(--gold)' }}>🗺️ הרמז לתחנה הבאה:</div>
               <p className="text-sm leading-relaxed" style={{ color:'var(--parchment)' }}>{station.clue}</p>
             </div>
@@ -408,7 +408,7 @@ export default function QRHuntGame() {
             <div className="flex justify-center gap-1.5 mb-8 flex-wrap">
               {STATIONS.map((s,i) => (
                 <div key={s.id} className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border-2"
-                  style={{ background: i < current+1 ? 'var(--gold)' : 'transparent', borderColor: i < current+1 ? 'var(--gold)' : 'rgba(200,169,110,0.3)', color: i < current+1 ? 'var(--navy)' : 'rgba(200,169,110,0.4)' }}>
+                  style={{ background: i < current+1 ? 'var(--gold)' : 'transparent', borderColor: i < current+1 ? 'var(--gold)' : 'rgba(74,157,184,0.3)', color: i < current+1 ? 'var(--navy)' : 'rgba(74,157,184,0.4)' }}>
                   {i < current+1 ? '✓' : s.id}
                 </div>
               ))}
@@ -416,12 +416,12 @@ export default function QRHuntGame() {
 
             {station.id < 10 ? (
               <button onClick={nextStation} className="btn-gold text-xl py-5 px-12 rounded-2xl"
-                style={{ boxShadow:'0 4px 30px rgba(200,169,110,0.4)' }}>
+                style={{ boxShadow:'0 4px 30px rgba(74,157,184,0.4)' }}>
                 המשך לתחנה {station.id + 1}: {STATIONS[current + 1]?.location} →
               </button>
             ) : (
               <button onClick={() => setPhase('complete')} className="btn-gold text-xl py-5 px-12 rounded-2xl"
-                style={{ boxShadow:'0 4px 30px rgba(200,169,110,0.4)' }}>
+                style={{ boxShadow:'0 4px 30px rgba(74,157,184,0.4)' }}>
                 🏆 קבל את הפרס הגדול!
               </button>
             )}

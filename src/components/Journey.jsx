@@ -88,40 +88,111 @@ function CategoryGrid({ items, onOpen, cols }) {
   )
 }
 
+function PhoneLogo() {
+  // Phone-mockup style frame containing the Old Jaffa CHAPI logo
+  return (
+    <div className="flex justify-center mb-3 md:mb-5">
+      <div
+        style={{
+          position: 'relative',
+          width: 120,
+          height: 180,
+          borderRadius: 22,
+          background: 'linear-gradient(145deg, #0D3A56, #1A6B8A)',
+          border: '3px solid #4A9DB8',
+          boxShadow:
+            '0 0 0 4px rgba(225,240,245,0.5), 0 0 0 6px #4A9DB8, 0 16px 40px rgba(13,58,86,0.45), inset 0 1px 0 rgba(255,255,255,0.2)',
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: 12,
+        }}
+      >
+        {/* Speaker bar */}
+        <div style={{
+          position: 'absolute', top: 8, left: '50%', transform: 'translateX(-50%)',
+          width: 36, height: 4, background: '#4A9DB8', borderRadius: 2, opacity: 0.6,
+        }} />
+        {/* Logo circle */}
+        <div
+          style={{
+            width: 56,
+            height: 56,
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #B0D4E3, #4A9DB8)',
+            border: '3px solid rgba(225,240,245,0.7)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: 8,
+            boxShadow: '0 4px 16px rgba(13,58,86,0.4), inset 0 1px 0 rgba(255,255,255,0.5)',
+          }}
+        >
+          <span style={{
+            fontFamily: 'Frank Ruhl Libre, serif',
+            fontSize: 18,
+            fontWeight: 900,
+            color: '#0D3A56',
+            textShadow: '0 1px 2px rgba(255,255,255,0.4)',
+          }}>
+            חפ"י
+          </span>
+        </div>
+        <div style={{
+          fontSize: 10, fontWeight: 900, color: '#FFFFFF',
+          fontFamily: 'Frank Ruhl Libre, serif', textAlign: 'center',
+          textShadow: '0 1px 4px rgba(0,0,0,0.4)',
+        }}>
+          יפו העתיקה
+        </div>
+        <div style={{
+          fontSize: 8, color: '#B0D4E3', marginTop: 2, opacity: 0.85,
+        }}>
+          Old Jaffa Experience
+        </div>
+        {/* Home bar */}
+        <div style={{
+          position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)',
+          width: 30, height: 3, background: '#4A9DB8', borderRadius: 2, opacity: 0.55,
+        }} />
+      </div>
+    </div>
+  )
+}
+
 function CardWelcome({ active, onNext }) {
   return (
     <CardFrame active={active}>
       <div className="text-center">
-        <div className="inline-block mb-3 md:mb-5 px-3 md:px-5 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-bold border-2"
+        <PhoneLogo />
+        <div className="inline-block mb-2 md:mb-4 px-3 md:px-5 py-1 md:py-2 rounded-full text-[11px] md:text-sm font-bold border-2"
           style={{ color: '#0D3A56', borderColor: 'rgba(74,157,184,0.55)', background: 'rgba(225,240,245,0.75)' }}>
           🏛️ ברוכים הבאים לחפ"י
         </div>
-        <h1 className="text-3xl md:text-7xl font-black mb-2 md:mb-4 leading-tight"
+        <h1 className="text-2xl md:text-6xl font-black mb-1 md:mb-3 leading-tight"
           style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif', textShadow: '0 2px 8px rgba(255,255,255,0.5)' }}>
-          יפו העתיקה<br />
-          <span style={{ color: '#1A6B8A' }}>כחוויה חיה</span>
+          יפו העתיקה <span style={{ color: '#1A6B8A' }}>כחוויה חיה</span>
         </h1>
-        <p className="text-sm md:text-xl mb-3 md:mb-4 max-w-2xl mx-auto font-medium" style={{ color: '#0D3A56' }}>
-          משחקים · מפה · קהילה — הכל במקום אחד 🎉
+        <p className="text-xs md:text-base mb-3 md:mb-5 max-w-2xl mx-auto" style={{ color: '#1A6B8A' }}>
+          להפוך את יפו ממקום שמבקרים בו — לחוויה שמשתתפים בה ✨
         </p>
-        <p className="text-xs md:text-sm mb-4 md:mb-6 max-w-2xl mx-auto" style={{ color: '#1A6B8A' }}>
-          להפוך את יפו העתיקה ממקום שמבקרים בו — לחוויה שמשתתפים בה ✨
-        </p>
-        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-4 md:mb-6">
+        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-3 md:mb-5">
           {[
-            { num: '10', label: 'נקודות מתנה' },
+            { num: '10', label: 'נק׳ מתנה' },
             { num: '4',  label: 'משחקים' },
             { num: '12', label: 'מקומות' },
           ].map(s => (
-            <div key={s.label} className="px-3 py-1.5 md:px-5 md:py-3 rounded-xl md:rounded-2xl"
+            <div key={s.label} className="px-3 py-1.5 md:px-5 md:py-2.5 rounded-xl md:rounded-2xl"
               style={{ background: 'rgba(74,157,184,0.22)', border: '2px solid rgba(26,107,138,0.45)' }}>
-              <div className="text-xl md:text-3xl font-black leading-none" style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif' }}>{s.num}</div>
+              <div className="text-lg md:text-3xl font-black leading-none" style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif' }}>{s.num}</div>
               <div className="text-[10px] md:text-xs font-bold mt-0.5" style={{ color: '#1A6B8A' }}>{s.label}</div>
             </div>
           ))}
         </div>
         <button onClick={onNext}
-          className="py-3 md:py-5 px-8 md:px-12 rounded-2xl font-black text-base md:text-xl transition-all hover:scale-105 active:scale-95"
+          className="py-3 md:py-4 px-8 md:px-12 rounded-2xl font-black text-base md:text-xl transition-all hover:scale-105 active:scale-95"
           style={{
             background: 'linear-gradient(135deg, #0D3A56, #4A9DB8)',
             color: '#FFFFFF',

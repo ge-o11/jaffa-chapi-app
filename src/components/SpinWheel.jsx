@@ -107,7 +107,7 @@ export default function SpinWheel() {
       {/* Spin button */}
       <button onClick={spin} disabled={spinning}
         className="btn-terra text-xl py-4 px-12 rounded-2xl mb-6 disabled:opacity-50 disabled:cursor-not-allowed"
-        style={{ boxShadow: '0 4px 24px rgba(196,98,45,0.4)' }}>
+        style={{ boxShadow: '0 4px 24px rgba(26,107,138,0.4)' }}>
         {spinning ? (
           <span className="flex items-center gap-2">
             <svg className="animate-spin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" strokeOpacity=".25"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>

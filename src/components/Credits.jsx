@@ -16,7 +16,7 @@ export default function Credits() {
         </div>
 
         {/* Credit calculator */}
-        <div className="rounded-3xl p-8 md:p-12 mb-16 text-center" style={{ background: 'linear-gradient(135deg, rgba(200,169,110,0.12) 0%, rgba(200,169,110,0.04) 100%)', border: '1px solid rgba(200,169,110,0.3)' }}>
+        <div className="rounded-3xl p-8 md:p-12 mb-16 text-center" style={{ background: 'linear-gradient(135deg, rgba(74,157,184,0.12) 0%, rgba(74,157,184,0.04) 100%)', border: '1px solid rgba(74,157,184,0.3)' }}>
           <div className="text-5xl mb-4">🏅</div>
           <h3 className="text-3xl font-black mb-6" style={{ color: 'var(--gold)', fontFamily: 'Frank Ruhl Libre, serif' }}>
             כמה נקודות תצברו?
@@ -62,7 +62,7 @@ export default function Credits() {
         </div>
 
         {/* Business owners */}
-        <div className="card p-8 text-right" style={{ borderColor: 'rgba(200,169,110,0.4)' }}>
+        <div className="card p-8 text-right" style={{ borderColor: 'rgba(74,157,184,0.4)' }}>
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
               <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--gold)' }}>🏪 לבעלי מתחמים</h3>
