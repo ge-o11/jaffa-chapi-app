@@ -17,32 +17,10 @@ export default function Lottery() {
           <p className="section-subtitle">חוויה אינטראקטיבית שמייצרת באזז ברשתות החברתיות</p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
-          {/* Spin Wheel game */}
+        <div className="max-w-2xl mx-auto mb-16">
+          {/* Spin Wheel game — centered, no 4-step explainer */}
           <div className="card py-8">
             <SpinWheel />
-          </div>
-
-          {/* How it works */}
-          <div className="space-y-5">
-            <h3 className="text-2xl font-bold text-right mb-6" style={{ color: 'var(--gold)', fontFamily: 'Frank Ruhl Libre, serif' }}>
-              איך זה עובד?
-            </h3>
-            {[
-              { num: '01', icon: '📍', title: 'כניסה לאטרקציה', desc: 'המשפחה סורקת QR בנקודת האטרקציה. הילד נרשם להגרלה.' },
-              { num: '02', icon: '🎉', title: 'הבאזז בלייב', desc: 'בשעה קבועה — הגרלה פופ-אפ בסמטאות עם צלם מקצועי. שידור חי.' },
-              { num: '03', icon: '⏱️', title: 'שעון עצר — 90 דקות', desc: 'ההטבה תקפה ל-90 דקות בלבד. FOMO מיידי — הילדים לא יאפשרו לוותר.' },
-              { num: '04', icon: '🍽️', title: 'קופון למסעדות', desc: 'SMS אוטומטי עם קופון ו-ניווט למסעדה הקרובה — סבב אוכל שני!' },
-            ].map(s => (
-              <div key={s.num} className="card flex items-start gap-4 text-right">
-                <div className="text-3xl flex-shrink-0">{s.icon}</div>
-                <div>
-                  <div className="font-bold text-base mb-1" style={{ color: 'var(--gold)' }}>{s.title}</div>
-                  <div className="text-sm opacity-70 leading-relaxed" style={{ color: 'var(--parchment)' }}>{s.desc}</div>
-                </div>
-                <div className="text-4xl font-black opacity-20 flex-shrink-0" style={{ color: 'var(--gold)' }}>{s.num}</div>
-              </div>
-            ))}
           </div>
         </div>
 
