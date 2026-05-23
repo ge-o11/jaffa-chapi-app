@@ -39,23 +39,6 @@ export default function Lottery() {
           ))}
         </div>
 
-        {/* Golden rules */}
-        <div className="rounded-3xl p-8" style={{ background: 'linear-gradient(135deg, rgba(200,169,110,0.1), rgba(200,169,110,0.03))', border: '1px solid rgba(200,169,110,0.3)' }}>
-          <h3 className="text-2xl font-bold text-center mb-8" style={{ color: 'var(--gold)' }}>🏆 שלושת חוקי הזהב</h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { num: '1', title: 'פרס מובטח לכל ילד', desc: 'Instant Win — אף ילד לא יוצא ריק. "פרס ניחום" מצריך הגעה פיזית למסעדה.' },
-              { num: '2', title: 'שעון עצר 90 דקות', desc: 'Countdown Timer על מסך הזכייה. FOMO מיידי — הילדים ידחפו את ההורים!' },
-              { num: '3', title: 'ניווט פיזי למקום', desc: 'כפתור Waze/Maps בהודעה. הורים עייפים מגיעים ישר לנקודת המכירה.' },
-            ].map(rule => (
-              <div key={rule.num} className="card text-right">
-                <div className="text-4xl font-black mb-3 opacity-20" style={{ color: 'var(--gold)' }}>{rule.num}</div>
-                <div className="font-bold text-lg mb-2" style={{ color: 'var(--gold)' }}>{rule.title}</div>
-                <div className="text-sm opacity-70 leading-relaxed" style={{ color: 'var(--parchment)' }}>{rule.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   )
