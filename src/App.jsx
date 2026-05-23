@@ -77,6 +77,35 @@ function AppInner() {
 
       {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
       <CreditToast />
+
+      {/* Fixed logo badge — bottom right on all screens */}
+      <div style={{
+        position: 'fixed', bottom: 24, right: 24, zIndex: 9990,
+        background: 'linear-gradient(135deg, #0D3A56, #1A6B8A)',
+        border: '2px solid rgba(74,157,184,0.7)',
+        borderRadius: 12,
+        padding: '8px 14px',
+        textAlign: 'center',
+        boxShadow: '0 4px 20px rgba(13,58,86,0.4)',
+        backdropFilter: 'blur(8px)',
+        minWidth: 90,
+      }}>
+        <div style={{
+          fontFamily: 'Arial, Helvetica, sans-serif',
+          fontSize: 18,
+          fontWeight: 900,
+          color: '#FFFFFF',
+          lineHeight: 1.2,
+          textShadow: '0 1px 4px rgba(0,0,0,0.4)',
+        }}>חפי</div>
+        <div style={{
+          fontFamily: 'Arial, Helvetica, sans-serif',
+          fontSize: 11,
+          fontWeight: 700,
+          color: '#B0D4E3',
+          lineHeight: 1.3,
+        }}>יפו העתיקה</div>
+      </div>
     </div>
   )
 }

@@ -127,7 +127,7 @@ export default function VenueMap() {
           </div>
           <h2 className="section-title">יפו העתיקה — מפת הנקודות</h2>
           <div className="gold-divider" />
-          <p className="section-subtitle">לחץ על כל נקודה לפרטים מלאים, שעות ומספר טלפון אמיתיים</p>
+          <p className="section-subtitle">לחצו על כל נקודה לפרטים מלאים, שעות ומספר טלפון אמיתיים</p>
         </div>
 
         {/* Filters */}
@@ -237,7 +237,7 @@ export default function VenueMap() {
             ) : (
               <div className="card text-center py-10">
                 <div className="text-5xl mb-4">👆</div>
-                <p className="font-bold mb-2" style={{ color: 'var(--gold)' }}>לחץ על נקודה במפה</p>
+                <p className="font-bold mb-2" style={{ color: 'var(--gold)' }}>לחצו על נקודה במפה</p>
                 <p className="text-sm opacity-60 mb-6" style={{ color: 'var(--parchment)' }}>
                   פרטים אמיתיים, שעות פתיחה, טלפון וניווט
                 </p>

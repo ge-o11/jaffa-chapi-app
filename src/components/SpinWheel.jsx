@@ -58,7 +58,7 @@ export default function SpinWheel() {
       <h3 className="text-2xl font-bold mb-2" style={{ color: '#0D3A56', fontFamily: 'Frank Ruhl Libre, serif' }}>
         🎡 גלגל המזל
       </h3>
-      <p className="text-sm mb-8" style={{ color: '#1A6B8A', opacity: 0.9 }}>סובב וצבור נקודות לחשבון שלך — הקרדיטים שלך נצברים אוטומטית!</p>
+      <p className="text-sm mb-8" style={{ color: '#1A6B8A', opacity: 0.9 }}>סובבו וצברו נקודות לחשבון שלכם — הקרדיטים שלכם נצברים אוטומטית!</p>
 
       {/* Wheel */}
       <div className="wheel-container mb-8">
@@ -113,7 +113,7 @@ export default function SpinWheel() {
             <svg className="animate-spin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" strokeOpacity=".25"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>
             מסתובב...
           </span>
-        ) : '🎯 סובב את הגלגל!'}
+        ) : '🎯 סובבו את הגלגל!'}
       </button>
 
       {/* Result */}
@@ -133,7 +133,7 @@ export default function SpinWheel() {
             </p>
           )}
           <button onClick={spin} className="btn-outline mt-4 py-2 px-5 text-sm">
-            סובב שוב
+            סובבו שוב
           </button>
         </div>
       )}

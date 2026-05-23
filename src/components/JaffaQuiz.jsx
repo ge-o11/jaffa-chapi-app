@@ -79,7 +79,7 @@ const SCORE_MSGS = [
   { min: 7,  msg: '🥇 מצוין! יודע את יפו לעומק', color: '#C8A96E' },
   { min: 5,  msg: '🥈 טוב! כדאי לבקר ולגלות עוד', color: '#C8A96E' },
   { min: 3,  msg: '🥉 לא רע! יפו מחכה שתגיע ותלמד', color: '#8B7355' },
-  { min: 0,  msg: '📚 בוא תבקר ביפו — זה הלימוד הכי טוב!', color: '#1A6B8A' },
+  { min: 0,  msg: '📚 בואו תבקרו ביפו — זה הלימוד הכי טוב!', color: '#1A6B8A' },
 ]
 
 export default function JaffaQuiz() {
@@ -145,7 +145,7 @@ export default function JaffaQuiz() {
           <div className="game-container p-10 text-center fade-in">
             <div className="text-6xl mb-6">🏛️</div>
             <h3 className="text-3xl font-black mb-4" style={{ color: 'var(--gold)', fontFamily: 'Frank Ruhl Libre, serif' }}>
-              כמה אתה מכיר את יפו?
+              כמה אתם מכירים את יפו העתיקה?!
             </h3>
             <p className="mb-3" style={{ color: 'var(--gold-light)' }}>10 שאלות אמיתיות על ההיסטוריה, הארכיטקטורה והמסורות.</p>
             <p className="text-sm mb-10 opacity-60" style={{ color: 'var(--parchment)' }}>כל תשובה מגיעה עם הסבר מבוסס מקורות אמיתיים.</p>
@@ -158,7 +158,7 @@ export default function JaffaQuiz() {
               ))}
             </div>
             <button onClick={() => setPhase('quiz')} className="btn-gold text-xl py-5 px-12 rounded-2xl">
-              🚀 התחל את החידון!
+              🚀 התחילו את החידון!
             </button>
           </div>
         )}
@@ -249,7 +249,7 @@ export default function JaffaQuiz() {
               {scoreMsg.msg}
             </div>
             <p className="mb-8 opacity-60 text-sm" style={{ color: 'var(--parchment)' }}>
-              {score >= 7 ? 'ידע מרשים על יפו העתיקה! שתף חברים ואתגר אותם.' : 'בוא לבקר ביפו — הלמידה הכי טובה היא בשטח!'}
+              {score >= 7 ? 'ידע מרשים על יפו העתיקה! שתף חברים ואתגר אותם.' : 'בואו לבקר ביפו — הלמידה הכי טובה היא בשטח!'}
             </p>
 
             {/* Score breakdown */}

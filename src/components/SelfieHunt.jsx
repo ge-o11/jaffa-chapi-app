@@ -176,7 +176,7 @@ export default function SelfieHunt() {
         <div className="text-center mb-12">
           <h2 className="section-title">ציד הסלפי</h2>
           <div className="gold-divider"></div>
-          <p className="section-subtitle">10 יעדים לצלם ביפו העתיקה — אסוף נקודות וקבל פרס</p>
+          <p className="section-subtitle">10 יעדים לצלם ביפו העתיקה — אספו נקודות וקבלו פרס</p>
         </div>
 
         {/* Progress bar */}
@@ -321,7 +321,7 @@ export default function SelfieHunt() {
                     style={{ display: 'none' }}
                     disabled={captured}
                   />
-                  {captured ? '✅ צולם בהצלחה!' : '📷 פתח מצלמה וצלם!'}
+                  {captured ? '✅ צולם בהצלחה!' : '📷 פתחו מצלמה וצלמו!'}
                 </label>
               </div>
             )

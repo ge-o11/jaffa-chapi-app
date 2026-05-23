@@ -12,7 +12,7 @@ export default function Store() {
     <section id="store" className="py-24" style={{ background: 'var(--navy)' }}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-6">
-          <h2 className="section-title">חנות יפו — מוצרי השבוע</h2>
+          <h2 className="section-title">חנות הקהילה המשתלמת ביותר — קהילה יפו העתיקה</h2>
           <div className="gold-divider"></div>
           <p className="section-subtitle">מוצרים ייחודיים מגלריות ואמנים מקומיים. הרכישה נעשית ישירות במקום.</p>
         </div>
@@ -20,7 +20,7 @@ export default function Store() {
         <div className="flex items-center justify-center gap-3 mb-12 p-4 rounded-2xl max-w-xl mx-auto" style={{ background: 'rgba(74,157,184,0.08)', border: '1px solid rgba(74,157,184,0.2)' }}>
           <span className="text-2xl">💡</span>
           <p className="text-sm text-right" style={{ color: 'var(--gold-light)' }}>
-            רוצה לרכוש? בוא לגלריה, הצג את הקוד ורכוש ישירות מהאמן. הקניה נעשית <strong>במקום בלבד</strong>.
+            רוצה לרכוש? בואו לגלריה, הציגו את הקוד ורכשו ישירות מהאמן. הקניה נעשית <strong>במקום בלבד</strong>.
           </p>
         </div>
 

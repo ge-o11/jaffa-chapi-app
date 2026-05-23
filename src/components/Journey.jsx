@@ -26,7 +26,8 @@ const COMMUNITY = [
 const INFO = [
   { key: 'about',   icon: '🏛️', title: 'על חפ"י',       sub: 'אמנות העתיד · חוויה חיה', color: '#0D3A56' },
   { key: 'faq',     icon: '❓', title: 'שאלות נפוצות',   sub: 'תשובות לכל שאלה',         color: '#2D5F8B' },
-  { key: 'contact', icon: '✉️', title: 'צור קשר',        sub: 'שלח לנו הודעה',           color: '#4A9DB8' },
+  { key: 'contact', icon: '✉️', title: 'צור קשר',        sub: 'שלחו לנו הודעה',          color: '#4A9DB8' },
+  { key: 'contact', icon: '💌', title: 'תנו לנו משוב',   sub: 'נשמח לשמוע מכם',          color: '#1A6B8A' },
 ]
 
 function CardFrame({ active, children }) {
@@ -200,7 +201,7 @@ function CardWelcome({ active, onNext }) {
             border: '2px solid rgba(255,255,255,0.4)',
             textShadow: '0 1px 4px rgba(0,0,0,0.3)',
           }}>
-          🚀 בוא נתחיל!
+          🚀 בואו נתחיל!
         </button>
       </div>
     </CardFrame>
@@ -225,10 +226,10 @@ function CardCategory({ active, icon, title, desc, items, cols, onOpen }) {
 }
 
 function CardGames(p) {
-  return <CardCategory {...p} icon="🎮" title="משחקים" desc="4 משחקים אמיתיים — לחץ ושחק!" items={GAMES} cols={2} />
+  return <CardCategory {...p} icon="🎮" title="משחקים" desc="שחקו עכשיו וקבלו קרדיטים והפתעות" items={GAMES} cols={2} />
 }
 function CardPlaces(p) {
-  return <CardCategory {...p} icon="🗺️" title="מקומות וסיורים" desc="גלה את יפו — מפה, סיורים, איך מגיעים" items={PLACES} cols={3} />
+  return <CardCategory {...p} icon="🗺️" title="מקומות וסיורים" desc="גלו את יפו — מפה, סיורים, איך מגיעים" items={PLACES} cols={3} />
 }
 function CardCommunity(p) {
   return (
@@ -239,7 +240,7 @@ function CardCommunity(p) {
           קהילה ופעילות
         </h2>
         <p className="text-xs md:text-base font-medium" style={{ color: '#1A6B8A' }}>
-          הצטרף, צבור נקודות, קבל הטבות
+          הצטרפו, צברו נקודות, קבלו הטבות
         </p>
       </div>
 
@@ -258,7 +259,7 @@ function CardCommunity(p) {
           </svg>
           <div className="text-right">
             <div className="font-black text-sm md:text-2xl leading-tight" style={{ color: '#FFFFFF', textShadow: '0 2px 8px rgba(0,0,0,0.4)', fontFamily: 'Frank Ruhl Libre, serif' }}>
-              הצטרף לקהילת וואצ'אפ
+              הצטרפו לקהילת וואצ'אפ
             </div>
             <div className="text-[11px] md:text-sm font-medium leading-tight mt-0.5" style={{ color: 'rgba(255,255,255,0.95)' }}>
               10 נקודות מתנה + הטבות
@@ -272,7 +273,7 @@ function CardCommunity(p) {
   )
 }
 function CardInfo(p) {
-  return <CardCategory {...p} icon="ℹ️" title="מידע ועזרה" desc='כל מה שצריך לדעת על חפ"י' items={INFO} cols={3} />
+  return <CardCategory {...p} icon="ℹ️" title="מידע ועזרה" desc='כל מה שצריך לדעת על חפ"י' items={INFO} cols={2} />
 }
 
 const CARDS = [CardWelcome, CardGames, CardPlaces, CardCommunity, CardInfo]

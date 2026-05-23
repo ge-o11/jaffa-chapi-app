@@ -175,7 +175,7 @@ export default function AuthModal({ onClose }) {
               שחק, גלה, צבור — והמר נקודות להטבות ביפו
             </p>
             <button onClick={onClose} className="btn-gold w-full justify-center py-3 text-base">
-              בוא נתחיל! 🚀
+              בואו נתחיל! 🚀
             </button>
           </div>
         )}

@@ -237,7 +237,7 @@ export default function QRHuntGame() {
           </div>
           <h2 className="section-title">מסע 10 התחנות ביפו</h2>
           <div className="gold-divider"></div>
-          <p className="section-subtitle">סרוק QR בכל תחנה, פענח את הרמז, הגע לבאה — וזכה בפרסים אמיתיים!</p>
+          <p className="section-subtitle">סרקו QR בכל תחנה, פענחו את הרמז, הגיעו לבאה — וזכו בפרסים אמיתיים!</p>
         </div>
 
         {/* ── INTRO ── */}
@@ -267,7 +267,7 @@ export default function QRHuntGame() {
 
             <button onClick={startGame} className="btn-terra text-xl py-5 px-12 rounded-2xl"
               style={{ boxShadow:'0 4px 40px rgba(26,107,138,0.4)' }}>
-              🚀 התחל את המסע!
+              🚀 התחילו את המסע!
             </button>
             <p className="mt-4 text-xs opacity-40" style={{ color:'var(--gold-light)' }}>
               * ניתן לשחק בדמו גם מהבית. בשטח — QR אמיתיים בכל נקודה.

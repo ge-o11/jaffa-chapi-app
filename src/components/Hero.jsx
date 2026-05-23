@@ -48,11 +48,11 @@ export default function Hero() {
                   border: '2px solid rgba(255,255,255,0.3)',
                   textShadow: '0 1px 2px rgba(255,255,255,0.3)',
                 }}>
-                🚀 התחל עכשיו!
+                🚀 התחילו עכשיו!
               </a>
               <a href="https://chat.whatsapp.com/BhnFkwONJd6DeA7KlwG1MC" target="_blank" rel="noreferrer"
                 className="btn-whatsapp text-lg py-4 px-8 rounded-2xl pulse-ring shadow-2xl">
-                <WaIcon /> הצטרף לקהילה
+                <WaIcon /> הצטרפו לקהילה
               </a>
             </div>
 
@@ -88,7 +88,7 @@ export default function Hero() {
                   ))}
                 </div>
                 <div className="mt-3 w-full rounded-lg py-2 text-center text-xs font-bold" style={{ background: 'var(--whatsapp)', color: 'white' }}>
-                  ✓ הצטרף לקהילה
+                  ✓ הצטרפו לקהילה
                 </div>
               </div>
             </div>

@@ -29,7 +29,7 @@ export default function Contact() {
             </h3>
             {[
               { icon: '💬', label: 'וואצ\'אפ', value: '050-200-9350 · הפנייה המהירה ביותר', href: 'https://wa.me/972502009350?text=שלום, אני רוצה להצטרף לקהילת חפ"י ולקבל פרטים נוספים', cta: 'שלח הודעה' },
-              { icon: '👥', label: 'קהילת חפ"י', value: 'קבוצת הוואצ\'אפ הרשמית', href: 'https://chat.whatsapp.com/BhnFkwONJd6DeA7KlwG1MC', cta: 'הצטרף לקהילה' },
+              { icon: '👥', label: 'קהילת חפ"י', value: 'קבוצת הוואצ\'אפ הרשמית', href: 'https://chat.whatsapp.com/BhnFkwONJd6DeA7KlwG1MC', cta: 'הצטרפו לקהילה' },
               { icon: '📧', label: 'אימייל', value: 'info@jaffachapi.co.il', href: 'mailto:info@jaffachapi.co.il', cta: 'שלח מייל' },
               { icon: '📸', label: 'אינסטגרם', value: '@jaffa_chapi', href: '#', cta: 'עקוב' },
             ].map(c => (
@@ -53,7 +53,7 @@ export default function Contact() {
                 תהליך ההרשמה מתבצע בליווי אנשי חפ"י. נפגש, נסביר את המערכת ונקים עבורך את המיני-סייט.
               </p>
               <a href="https://wa.me/972502009350?text=שלום, אני בעל מתחם ביפו ורוצה להצטרף למערכת חפ״י" target="_blank" rel="noreferrer" className="btn-whatsapp text-sm">
-                התחל תהליך הצטרפות
+                התחילו תהליך הצטרפות
               </a>
             </div>
           </div>
