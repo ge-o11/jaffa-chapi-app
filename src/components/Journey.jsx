@@ -395,35 +395,9 @@ export default function Journey({ onOpenDrawer }) {
         ←
       </button>
 
-      {/* Bottom navigation (mobile) — compact */}
-      <div className="absolute bottom-2 md:bottom-5 left-0 right-0 z-20 flex justify-center gap-2 px-3">
-        <button
-          onClick={prev}
-          disabled={active === 0}
-          className="md:hidden py-3 px-5 rounded-xl font-bold text-sm transition-all hover:scale-105 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
-          style={{ background: 'rgba(225,240,245,0.95)', color: '#0D3A56', border: '2px solid rgba(74,157,184,0.5)', boxShadow: '0 2px 8px rgba(13,58,86,0.12)', minHeight: 44 }}>
-          → הקודם
-        </button>
-        {active < TOTAL - 1 && (
-          <button
-            onClick={next}
-            className="md:hidden py-3 px-6 rounded-xl font-black text-sm transition-all hover:scale-105 active:scale-95"
-            style={{
-              background: 'linear-gradient(135deg, #0D3A56, #4A9DB8)',
-              color: '#FFFFFF',
-              boxShadow: '0 6px 16px rgba(26,107,138,0.55), inset 0 1px 0 rgba(255,255,255,0.35)',
-              border: '2px solid rgba(255,255,255,0.4)',
-              textShadow: '0 1px 3px rgba(0,0,0,0.3)',
-              minHeight: 44,
-            }}>
-            המשך ←
-          </button>
-        )}
-      </div>
-
       {/* Swipe hint - first card mobile only */}
       {active === 0 && (
-        <div className="md:hidden absolute bottom-16 left-1/2 -translate-x-1/2 text-xs font-bold flex items-center gap-2"
+        <div className="md:hidden absolute bottom-4 left-1/2 -translate-x-1/2 text-xs font-bold flex items-center gap-2"
           style={{ color: '#0D3A56', opacity: 0.65 }}>
           <span className="animate-pulse">👉 החלק ימינה</span>
         </div>
