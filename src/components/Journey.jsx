@@ -30,17 +30,18 @@ const INFO = [
 
 function CardFrame({ active, children }) {
   return (
-    <div className="h-full w-full flex items-center justify-center p-4 md:p-8">
+    <div className="h-full w-full flex items-center justify-center px-3 py-3 md:p-8">
       <div
-        className="w-full max-w-4xl rounded-[36px] p-5 md:p-10 transition-all duration-500"
+        className="w-full max-w-3xl rounded-3xl md:rounded-[36px] p-4 md:p-10 transition-all duration-500"
         style={{
-          background: 'rgba(255,252,245,0.82)',
-          backdropFilter: 'blur(18px) saturate(1.1)',
-          border: '3px solid rgba(200,169,110,0.5)',
-          boxShadow: '0 24px 70px rgba(44,26,14,0.22), 0 4px 16px rgba(44,26,14,0.1)',
+          background: 'rgba(255,252,245,0.55)',
+          backdropFilter: 'blur(28px) saturate(1.25)',
+          WebkitBackdropFilter: 'blur(28px) saturate(1.25)',
+          border: '2px solid rgba(200,169,110,0.55)',
+          boxShadow: '0 16px 50px rgba(44,26,14,0.25), 0 4px 16px rgba(44,26,14,0.12)',
           opacity: active ? 1 : 0.82,
           transform: active ? 'scale(1)' : 'scale(0.96)',
-          maxHeight: 'calc(100vh - 160px)',
+          maxHeight: 'calc(100vh - 140px)',
           overflow: 'auto',
         }}
       >
@@ -55,28 +56,28 @@ function CategoryGrid({ items, onOpen, cols }) {
     : cols === 3 ? 'grid-cols-2 md:grid-cols-3'
     : 'grid-cols-2 md:grid-cols-4'
   return (
-    <div className={`grid gap-3 md:gap-4 ${gridCls}`}>
+    <div className={`grid gap-2 md:gap-4 ${gridCls}`}>
       {items.map(it => (
         <button
           key={it.key}
           onClick={() => onOpen(it.key)}
-          className="group block rounded-3xl p-4 md:p-5 text-center transition-all hover:-translate-y-2 active:scale-95 w-full"
+          className="group block rounded-2xl md:rounded-3xl p-3 md:p-5 text-center transition-all hover:-translate-y-2 active:scale-95 w-full"
           style={{
             background: `linear-gradient(135deg, ${it.color}, ${it.color}cc)`,
-            boxShadow: `0 10px 24px ${it.color}66, inset 0 1px 0 rgba(255,255,255,0.35)`,
-            border: '3px solid rgba(255,255,255,0.45)',
+            boxShadow: `0 6px 18px ${it.color}55, inset 0 1px 0 rgba(255,255,255,0.35)`,
+            border: '2px solid rgba(255,255,255,0.45)',
             cursor: 'pointer',
           }}
         >
-          <div className="text-4xl md:text-5xl mb-2 transition-transform group-hover:scale-110"
+          <div className="text-3xl md:text-5xl mb-1 md:mb-2 transition-transform group-hover:scale-110"
             style={{ filter: 'drop-shadow(0 3px 8px rgba(0,0,0,0.3))' }}>
             {it.icon}
           </div>
-          <div className="font-black text-base md:text-xl mb-1"
+          <div className="font-black text-sm md:text-xl leading-tight"
             style={{ color: '#FFFFFF', textShadow: '0 2px 8px rgba(0,0,0,0.4)', fontFamily: 'Frank Ruhl Libre, serif' }}>
             {it.title}
           </div>
-          <div className="text-xs md:text-sm font-medium"
+          <div className="text-[11px] md:text-sm font-medium leading-tight mt-0.5"
             style={{ color: 'rgba(255,255,255,0.95)' }}>
             {it.sub}
           </div>
@@ -90,38 +91,38 @@ function CardWelcome({ active, onNext }) {
   return (
     <CardFrame active={active}>
       <div className="text-center">
-        <div className="inline-block mb-5 px-5 py-2 rounded-full text-sm font-bold border-2"
+        <div className="inline-block mb-3 md:mb-5 px-3 md:px-5 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-bold border-2"
           style={{ color: '#8B5E00', borderColor: 'rgba(200,169,110,0.5)', background: 'rgba(255,255,255,0.7)' }}>
           🏛️ ברוכים הבאים לחפ"י
         </div>
-        <h1 className="text-4xl md:text-7xl font-black mb-4 leading-tight"
+        <h1 className="text-3xl md:text-7xl font-black mb-2 md:mb-4 leading-tight"
           style={{ color: '#8B5E00', fontFamily: 'Frank Ruhl Libre, serif' }}>
           יפו העתיקה<br />
           <span style={{ color: '#C4622D' }}>כחוויה חיה</span>
         </h1>
-        <p className="text-base md:text-2xl mb-6 max-w-2xl mx-auto font-medium" style={{ color: '#2C1A0E' }}>
+        <p className="text-sm md:text-2xl mb-4 md:mb-6 max-w-2xl mx-auto font-medium" style={{ color: '#2C1A0E' }}>
           משחקים · מפה · קהילה — הכל במקום אחד 🎉
         </p>
-        <div className="flex flex-wrap justify-center gap-3 mb-6">
+        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-4 md:mb-6">
           {[
             { num: '10', label: 'נקודות מתנה' },
             { num: '4',  label: 'משחקים' },
             { num: '12', label: 'מקומות' },
           ].map(s => (
-            <div key={s.label} className="px-4 py-2 md:px-5 md:py-3 rounded-2xl"
+            <div key={s.label} className="px-3 py-1.5 md:px-5 md:py-3 rounded-xl md:rounded-2xl"
               style={{ background: 'rgba(200,169,110,0.18)', border: '2px solid rgba(200,169,110,0.4)' }}>
-              <div className="text-2xl md:text-3xl font-black" style={{ color: '#8B5E00', fontFamily: 'Frank Ruhl Libre, serif' }}>{s.num}</div>
-              <div className="text-xs font-bold" style={{ color: '#6B4A00' }}>{s.label}</div>
+              <div className="text-xl md:text-3xl font-black leading-none" style={{ color: '#8B5E00', fontFamily: 'Frank Ruhl Libre, serif' }}>{s.num}</div>
+              <div className="text-[10px] md:text-xs font-bold mt-0.5" style={{ color: '#6B4A00' }}>{s.label}</div>
             </div>
           ))}
         </div>
         <button onClick={onNext}
-          className="py-4 md:py-5 px-10 md:px-12 rounded-2xl font-black text-lg md:text-xl transition-all hover:scale-105 active:scale-95"
+          className="py-3 md:py-5 px-8 md:px-12 rounded-2xl font-black text-base md:text-xl transition-all hover:scale-105 active:scale-95"
           style={{
             background: 'linear-gradient(135deg, #C4622D, #E8841C)',
             color: '#FFFFFF',
-            boxShadow: '0 12px 32px rgba(196,98,45,0.5), inset 0 1px 0 rgba(255,255,255,0.35)',
-            border: '3px solid rgba(255,255,255,0.4)',
+            boxShadow: '0 8px 24px rgba(196,98,45,0.5), inset 0 1px 0 rgba(255,255,255,0.35)',
+            border: '2px solid rgba(255,255,255,0.4)',
             textShadow: '0 1px 4px rgba(0,0,0,0.3)',
           }}>
           🚀 בוא נתחיל!
@@ -134,12 +135,12 @@ function CardWelcome({ active, onNext }) {
 function CardCategory({ active, icon, title, desc, items, cols, onOpen }) {
   return (
     <CardFrame active={active}>
-      <div className="text-center mb-5">
-        <div className="text-4xl md:text-5xl mb-2">{icon}</div>
-        <h2 className="text-2xl md:text-4xl font-black mb-1" style={{ color: '#8B5E00', fontFamily: 'Frank Ruhl Libre, serif' }}>
+      <div className="text-center mb-3 md:mb-5">
+        <div className="text-3xl md:text-5xl mb-1 md:mb-2">{icon}</div>
+        <h2 className="text-xl md:text-4xl font-black mb-0.5 md:mb-1" style={{ color: '#8B5E00', fontFamily: 'Frank Ruhl Libre, serif' }}>
           {title}
         </h2>
-        <p className="text-sm md:text-base" style={{ color: '#2C1A0E', opacity: 0.85 }}>
+        <p className="text-xs md:text-base" style={{ color: '#2C1A0E', opacity: 0.85 }}>
           {desc}
         </p>
       </div>
@@ -157,35 +158,35 @@ function CardPlaces(p) {
 function CardCommunity(p) {
   return (
     <CardFrame active={p.active}>
-      <div className="text-center mb-5">
-        <div className="text-4xl md:text-5xl mb-2">💬</div>
-        <h2 className="text-2xl md:text-4xl font-black mb-1" style={{ color: '#8B5E00', fontFamily: 'Frank Ruhl Libre, serif' }}>
+      <div className="text-center mb-3 md:mb-5">
+        <div className="text-3xl md:text-5xl mb-1 md:mb-2">💬</div>
+        <h2 className="text-xl md:text-4xl font-black mb-0.5 md:mb-1" style={{ color: '#8B5E00', fontFamily: 'Frank Ruhl Libre, serif' }}>
           קהילה ופעילות
         </h2>
-        <p className="text-sm md:text-base" style={{ color: '#2C1A0E', opacity: 0.85 }}>
+        <p className="text-xs md:text-base" style={{ color: '#2C1A0E', opacity: 0.85 }}>
           הצטרף, צבור נקודות, קבל הטבות
         </p>
       </div>
 
       {/* Big WhatsApp CTA on top */}
       <a href="https://chat.whatsapp.com/BhnFkwONJd6DeA7KlwG1MC" target="_blank" rel="noreferrer"
-        className="block rounded-3xl p-4 md:p-5 text-center transition-all hover:-translate-y-2 active:scale-95 mb-4"
+        className="block rounded-2xl md:rounded-3xl p-3 md:p-5 text-center transition-all hover:-translate-y-2 active:scale-95 mb-2 md:mb-4"
         style={{
           background: 'linear-gradient(135deg, #128C7E, #25D366)',
-          boxShadow: '0 12px 32px rgba(37,211,102,0.5), inset 0 1px 0 rgba(255,255,255,0.35)',
-          border: '3px solid rgba(255,255,255,0.45)',
+          boxShadow: '0 8px 24px rgba(37,211,102,0.5), inset 0 1px 0 rgba(255,255,255,0.35)',
+          border: '2px solid rgba(255,255,255,0.45)',
           textDecoration: 'none',
         }}>
-        <div className="flex items-center justify-center gap-3">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="#FFFFFF" style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.3))' }}>
+        <div className="flex items-center justify-center gap-2 md:gap-3">
+          <svg className="w-6 h-6 md:w-8 md:h-8 flex-shrink-0" viewBox="0 0 24 24" fill="#FFFFFF" style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.3))' }}>
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
           </svg>
-          <div>
-            <div className="font-black text-lg md:text-2xl" style={{ color: '#FFFFFF', textShadow: '0 2px 8px rgba(0,0,0,0.4)', fontFamily: 'Frank Ruhl Libre, serif' }}>
+          <div className="text-right">
+            <div className="font-black text-sm md:text-2xl leading-tight" style={{ color: '#FFFFFF', textShadow: '0 2px 8px rgba(0,0,0,0.4)', fontFamily: 'Frank Ruhl Libre, serif' }}>
               הצטרף לקהילת וואצ'אפ
             </div>
-            <div className="text-xs md:text-sm font-medium" style={{ color: 'rgba(255,255,255,0.95)' }}>
-              10 נקודות מתנה + הטבות ואירועים
+            <div className="text-[11px] md:text-sm font-medium leading-tight mt-0.5" style={{ color: 'rgba(255,255,255,0.95)' }}>
+              10 נקודות מתנה + הטבות
             </div>
           </div>
         </div>
@@ -245,24 +246,24 @@ export default function Journey({ onOpenDrawer }) {
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
-      {/* Progress pill at top */}
-      <div className="absolute top-4 md:top-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 px-4 py-2 rounded-full"
+      {/* Progress pill at top — compact on mobile */}
+      <div className="absolute top-2 md:top-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 md:gap-2 px-2.5 md:px-4 py-1.5 md:py-2 rounded-full"
         style={{ background: 'rgba(255,252,245,0.85)', backdropFilter: 'blur(10px)', border: '1px solid rgba(200,169,110,0.4)', boxShadow: '0 4px 14px rgba(44,26,14,0.1)' }}>
         {DOT_LABELS.map((label, i) => (
           <button key={i} onClick={() => go(i)}
             className="transition-all rounded-full"
             aria-label={`קלף ${i + 1}: ${label}`}
             style={{
-              width: i === active ? 44 : 12,
-              height: 12,
+              width: i === active ? 32 : 8,
+              height: 8,
               background: i === active ? 'linear-gradient(90deg, #C4622D, #E8841C)' : i < active ? '#C8A96E' : 'rgba(139,94,0,0.25)',
               border: 'none',
               cursor: 'pointer',
             }}
           />
         ))}
-        <span className="mr-3 text-xs font-bold tabular-nums" style={{ color: '#8B5E00' }}>
-          {active + 1} / {TOTAL}
+        <span className="mr-2 text-[10px] md:text-xs font-bold tabular-nums" style={{ color: '#8B5E00' }}>
+          {active + 1}/{TOTAL}
         </span>
       </div>
 
@@ -317,23 +318,23 @@ export default function Journey({ onOpenDrawer }) {
         ←
       </button>
 
-      {/* Bottom navigation (mobile) */}
-      <div className="absolute bottom-3 md:bottom-5 left-0 right-0 z-20 flex justify-center gap-3 px-4">
+      {/* Bottom navigation (mobile) — compact */}
+      <div className="absolute bottom-2 md:bottom-5 left-0 right-0 z-20 flex justify-center gap-2 px-3">
         <button
           onClick={prev}
           disabled={active === 0}
-          className="md:hidden py-3 px-5 rounded-2xl font-bold text-sm transition-all hover:scale-105 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
-          style={{ background: 'rgba(255,252,245,0.95)', color: '#8B5E00', border: '2px solid rgba(200,169,110,0.5)', boxShadow: '0 4px 12px rgba(44,26,14,0.1)' }}>
+          className="md:hidden py-2 px-4 rounded-xl font-bold text-xs transition-all hover:scale-105 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"
+          style={{ background: 'rgba(255,252,245,0.95)', color: '#8B5E00', border: '2px solid rgba(200,169,110,0.5)', boxShadow: '0 2px 8px rgba(44,26,14,0.1)' }}>
           → הקודם
         </button>
         {active < TOTAL - 1 && (
           <button
             onClick={next}
-            className="md:hidden py-3 px-7 rounded-2xl font-black text-base transition-all hover:scale-105 active:scale-95"
+            className="md:hidden py-2 px-5 rounded-xl font-black text-sm transition-all hover:scale-105 active:scale-95"
             style={{
               background: 'linear-gradient(135deg, #C4622D, #E8841C)',
               color: '#FFFFFF',
-              boxShadow: '0 8px 24px rgba(196,98,45,0.5), inset 0 1px 0 rgba(255,255,255,0.35)',
+              boxShadow: '0 6px 16px rgba(196,98,45,0.5), inset 0 1px 0 rgba(255,255,255,0.35)',
               border: '2px solid rgba(255,255,255,0.4)',
               textShadow: '0 1px 3px rgba(0,0,0,0.3)',
             }}>
@@ -344,7 +345,7 @@ export default function Journey({ onOpenDrawer }) {
 
       {/* Swipe hint - first card mobile only */}
       {active === 0 && (
-        <div className="md:hidden absolute bottom-16 left-1/2 -translate-x-1/2 text-xs font-bold flex items-center gap-2"
+        <div className="md:hidden absolute bottom-12 left-1/2 -translate-x-1/2 text-[10px] font-bold flex items-center gap-2"
           style={{ color: '#8B5E00', opacity: 0.6 }}>
           <span className="animate-pulse">👈 החלק שמאלה</span>
         </div>
